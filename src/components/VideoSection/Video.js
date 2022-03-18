@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { Button } from '../VideoSection/ButtonElement'
+import { Button } from '../StyledButton'
 import { MdArrowForward, MdKeyboardArrowRight } from "react-icons/md";
 
 import Vid from "../../videos/home.mp4";
@@ -32,7 +32,9 @@ const Video = () => {
               <div className="btnWrapper">
                 <Button to='signup' 
                 onMouseEnter={onHover} 
-                onMouseLeave={onHover}>
+                onMouseLeave={onHover}
+                primary='true'
+                dark='true'>
                   Inscrever-se {hover ? <MdArrowForward className="ArrowForward" /> : <MdKeyboardArrowRight/>}
                 </Button>
               </div>

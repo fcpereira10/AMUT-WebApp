@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Navb.css";
 import { Component } from "react";
 
@@ -9,10 +9,11 @@ export default class Navb extends Component {
       <>
         <Navbar className="navbar" collapseOnSelect expand="sm" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand className="logo" href="#home">
               <img
-                src={require('../../images/AMUT-Logo.png')}
+                src={require("../../images/AMUT-Logo.svg").default}
                 height="70"
+                className="d-inline-block align-top"
                 alt="amut"
               />
             </Navbar.Brand>

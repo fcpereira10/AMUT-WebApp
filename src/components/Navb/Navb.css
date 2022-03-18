@@ -1,4 +1,8 @@
 .navbar {
-    background-color: #575555
-    
+    background-color: #3D3D3D;
+    z-index: 999;
+}
+
+.logo {
+    padding: 1%;
 }
