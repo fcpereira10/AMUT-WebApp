@@ -7,7 +7,7 @@ export default class Navb extends Component {
   render() {
     return (
       <>
-        <Navbar className="navbar" collapseOnSelect expand="sm" variant="dark">
+        <Navbar className="navbar" collapseOnSelect expand="md" variant="dark">
           <Container>
             <Navbar.Brand className="logo" href="#home">
               <img

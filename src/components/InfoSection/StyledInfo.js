@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const InfoContainer = styled.div`
-  color: #fff;
-  background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')};
+  background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#3d3d3d')};
 
   @media screen and (max-width: 768px) {
     padding: 100px 0;
@@ -11,13 +10,18 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height: 860px;
+  height: 800px;
   width: 100%;
   max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
   padding: 0 24px;
   justify-content: center;
+
+    @media screen and (max-width: 768px){
+        height: 1000px;
+
+    }
 `;
 
 export const InfoRow = styled.div`
@@ -81,7 +85,7 @@ export const Subtitle = styled.p`
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
-  color: ${({ darkText }) => (darkText ? '#010606' : '#fff')};
+  color: ${({ lightTextDesc }) => (lightTextDesc ? '#fff' : '#010606')};
 `;
 
 export const BtnWrap = styled.div`

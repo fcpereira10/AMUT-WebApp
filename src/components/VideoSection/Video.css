@@ -6,8 +6,9 @@
   padding: 0 0px;
   height: 800px;
   position: relative;
-  z-index: 1;
-}c
+  z-index: auto;
+
+}
 
 .divBg {
   position: absolute;
@@ -24,7 +25,6 @@
   object-fit: cover;
   width: 100vw;
   height: 800px;
-
   -o-object-fit: cover;
   object-fit: cover;
 }
@@ -44,15 +44,15 @@
   align-self: center;
   color: #fff;
   font-family: "Satisfy", cursive;
-  font-size: 80px;
+  font-size: 60px;
   text-align: center;
 
   @media screen and (max-width: 768px) {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 32px;
+    font-size: 249px;
   }
 }
 

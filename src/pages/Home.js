@@ -3,17 +3,22 @@ import { Component } from "react";
 import Navb from "../components/Navb/Navb";
 import Video from "../components/VideoSection/Video"
 import Info from "../components/InfoSection/Info"
-import { homeObjOne, homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
+import Services from "../components/ServicesSection/Services";
+import { homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
+import News from "../components/NewsSection/News";
+
 export default class Home extends Component {
   render() {
     return (
       <>
-        <Navb />
+        <Navb/>
         <Video />
-        <Info {...homeObjOne}/>
+        <News />
         <Info {...homeObjTwo}/>
+        <Services />
         <Info {...homeObjThree}/>
-      </>
+        </>
+
     );
   }
 }
