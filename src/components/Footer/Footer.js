@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {FaFacebook,FaInstagram, FaYoutube, FaLinkedin} from 'react-icons/fa';
 import {
   FooterContainer,
@@ -17,7 +17,13 @@ import {
   NIF,
 } from "./StyledFooter";
 
-const Footer = () => {
+import { animateScroll as scroll } from "react-scroll"
+
+export default class Footer extends Component {
+  render() {
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  }
   return (
     <FooterContainer>
       <FooterWrap>
@@ -53,7 +59,7 @@ const Footer = () => {
         </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
-            <SocialLogo to="/"> <img
+            <SocialLogo onClick={toggleHome} to="/"> <img
                 src={require("../../images/AMUT-Logo.svg").default}
                 height="70"
                 className="d-inline-block align-top"
@@ -98,5 +104,4 @@ const Footer = () => {
     </FooterContainer>
   );
 };
-
-export default Footer;
+}

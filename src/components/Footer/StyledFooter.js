@@ -60,11 +60,13 @@ export const FooterLink = styled(Link)`
     margin-bottom: 0.5rem;
     font-size: 14px;
 
+
     &:hover {
     color: #d1312c;
     text-decoration: none;
-    transition: 0ms.3s ease-out;
-    }
+    transform: translate(0%);
+    transition: 0.25s ease-in-out ;
+  }
 `
 
 export const SocialMedia = styled.section`
@@ -111,12 +113,14 @@ export const SocialIcons = styled.div`
 export const SocialIconLink = styled.a`
     color: #fff;
     font-size: 24px;
+    cursor: pointer;
 
     &:hover {
     color: #d1312c;
     text-decoration: none;
-
-    }
+    transform: translate(0%);
+    transition: 0.25s ease-in-out ;
+  }
 `
 
 export const NIF = styled.a`

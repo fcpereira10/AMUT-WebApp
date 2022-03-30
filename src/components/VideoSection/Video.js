@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {Component} from "react";
 
 import { Button } from '../StyledButton'
 import { MdArrowForward, MdKeyboardArrowRight } from "react-icons/md";
@@ -6,17 +6,17 @@ import { MdArrowForward, MdKeyboardArrowRight } from "react-icons/md";
 import Vid from "../../videos/home.mp4";
 import "./Video.css";
 
-
-
-
-const Video = () => {
-
-      const [hover, setHover] = useState(false)
+export default class Video extends Component {
+  constructor(props){
+    super(props);
+    this.state= { hover: false};
+  }
     
-      const onHover = () =>{
-        setHover(!hover)
-      }
+   onHover = () =>{
+    this.setState({hover: !this.state.hover});
+  }
 
+  render() {
     return (
 
       <>
@@ -31,11 +31,11 @@ const Video = () => {
               </p>
               <div className="btnWrapper">
                 <Button to='signup' 
-                onMouseEnter={onHover} 
-                onMouseLeave={onHover}
-                primary='true'
-                dark='true'>
-                  Inscrever-se {hover ? <MdArrowForward className="ArrowForward" /> : <MdKeyboardArrowRight/>}
+                onMouseEnter={this.onHover} 
+                onMouseLeave={this.onHover}
+                primary={true}
+                dark={true}>
+                  Inscrever-se {this.state.hover ? <MdArrowForward className="ArrowForward" /> : <MdKeyboardArrowRight/>}
                 </Button>
               </div>
             </div>
@@ -43,6 +43,5 @@ const Video = () => {
       </>
     );
   }
-
-export default Video;
+}
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import {
   ServicesContainer,
   ServicesH1,
@@ -12,7 +12,8 @@ import {
 import Icon1 from "../../images/events.svg";
 import { Button } from "../StyledButton";
 
-const Services = () => {
+export default class Services extends Component {
+  render() {
   return (
     <>
       <ServicesContainer id="Services">
@@ -53,5 +54,4 @@ const Services = () => {
     </>
   );
 };
-
-export default Services;
+}

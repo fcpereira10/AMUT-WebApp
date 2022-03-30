@@ -1,22 +1,23 @@
 import React from "react";
 import { Component } from "react";
-import Video from "../components/VideoSection/Video"
-import Info from "../components/InfoSection/Info"
+import Video from "../components/VideoSection/Video";
+import Info from "../components/InfoSection/Info";
 import Services from "../components/ServicesSection/Services";
 import { homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
 import News from "../components/NewsSection/News";
+import Navb from "../components/Navb/Navb";
 
 export default class Home extends Component {
   render() {
     return (
       <>
+        <Navb/>
         <Video />
         <News />
-        <Info {...homeObjTwo}/>
+        <Info info={{ ...homeObjTwo }} />
         <Services />
-        <Info {...homeObjThree}/>
-        </>
-
+        <Info info={{ ...homeObjThree }} />
+      </>
     );
   }
 }

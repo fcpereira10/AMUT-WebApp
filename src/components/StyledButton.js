@@ -17,8 +17,10 @@ export const Button = styled(Link)`
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        transition: all 0.25s ease-in-out;
-        cursor: pointer;
+
+        transform: translate(0%);
+        transition: 0.25s ease-in-out ;
+
         background: ${({primary}) => (primary ? '#fff' : '#d1312c')};
     }
 `;
