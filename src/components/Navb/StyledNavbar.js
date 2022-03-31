@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { Container, Navbar, Nav } from "react-bootstrap";
-import { Link as LinkS } from "react-scroll";
-import { Link as LinkR } from "react-router-dom";
+import { Navbar, Nav } from "react-bootstrap";
 
 export const StyledNavbar = styled(Navbar)`
   background: #3d3d3d;

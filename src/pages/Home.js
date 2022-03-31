@@ -7,7 +7,7 @@ import { homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
 import News from "../components/NewsSection/News";
 import Navb from "../components/Navb/Navb";
 
-export default class Home extends Component {
+export default class HomePage extends Component {
   render() {
     return (
       <>
