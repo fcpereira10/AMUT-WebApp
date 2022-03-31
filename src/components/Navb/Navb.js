@@ -35,7 +35,7 @@ export default class Navb extends Component {
                 <StyledNavLink href="/">Notícias</StyledNavLink>
               </StyledNav>
               <StyledNav>
-                <StyledNavLink href="/signin">Entrar</StyledNavLink>
+                <StyledNavLink href="/Login">Entrar</StyledNavLink>
               </StyledNav>
             </Navbar.Collapse>
           </Container>

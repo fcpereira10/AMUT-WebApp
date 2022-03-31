@@ -10,9 +10,10 @@ import {
   Icon,
   Text,
   FormButton,
-} from "./StyledSignin";
+  Reg,
+} from "./StyledLogin";
 
-export default class SignIn extends Component {
+export default class Login extends Component {
   render() {
     return (
       <>
@@ -28,11 +29,12 @@ export default class SignIn extends Component {
               <Form action="#">
                 <FormH1>Área Reservada</FormH1>
                 <FormLabel htmlFor="for">Email</FormLabel>
-                <FormInput type="email" required />
+                <FormInput placeholder="exemplo@mail.com" type="email" required />
                 <FormLabel htmlFor='for'>Senha</FormLabel>
                 <FormInput type='password' required/>
                 <FormButton primary dark type='submit'>Entrar</FormButton>
                 <Text>Esqueceu-se da Senha?</Text>
+                <Reg to="/register">Solicitar Acesso</Reg>       
               </Form>
             </FormContent>
           </FormWrap>

@@ -28,10 +28,6 @@ export const StyledNavLink = styled(Nav.Link)`
     transform: translate(0%);
     transition: 0.3s ease-out;
   }
-
-  &.active {
-      border-bottom: 3px solid #d1312c ;
-  }
 `;
 
 export const StyledNav = styled(Nav)``;

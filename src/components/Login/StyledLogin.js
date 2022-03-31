@@ -113,3 +113,17 @@ export const Text = styled.span`
     transition: 0.25s ease-in-out ;
   }
 `;
+export const Reg = styled(Link)`
+  text-align: center;
+  margin-top: 24px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    color: #d1312c;
+    text-decoration: none;
+    transform: translate(0%);
+    transition: 0.25s ease-in-out ;
+  }
+`;
