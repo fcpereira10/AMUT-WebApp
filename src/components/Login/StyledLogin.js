@@ -5,12 +5,8 @@ import { Button } from "../StyledButton";
 
 export const Container = styled.div`
   min-height: 692px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 0;
+  position: relative;
+  height: 100vh;
   overflow: hidden;
   background: linear-gradient(
     108deg,
@@ -62,7 +58,7 @@ export const Form = styled(form)`
   z-index: 1;
   display: grid;
   margin: 0 auto;
-  padding: 80px 32px;
+  padding: 50px 32px;
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 

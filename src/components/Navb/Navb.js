@@ -1,6 +1,6 @@
 import React from "react";
 import { Container,Navbar } from "react-bootstrap";
-import { StyledNavbar, StyledNav, StyledNavLink} from "./StyledNavbar";
+import { StyledNavbar, StyledNav, StyledNavLink, Home} from "./StyledNavbar";
 import { Component } from "react";
 import { animateScroll as scroll } from "react-scroll"
   
@@ -15,12 +15,13 @@ export default class Navb extends Component {
         <StyledNavbar collapseOnSelect expand="lg" variant="dark">
           <Container>
             <Navbar.Brand style={{cursor: "pointer"}}className="logo" onClick={toggleHome}>
-              <img
+              <Home to="/" ><img
                 src={require("../../images/AMUT-Logo.svg").default}
                 height="80"
                 className="d-inline-block align-top"
                 alt="amut"
               />
+              </Home>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -35,7 +36,7 @@ export default class Navb extends Component {
                 <StyledNavLink href="/">Notícias</StyledNavLink>
               </StyledNav>
               <StyledNav>
-                <StyledNavLink href="/Login">Entrar</StyledNavLink>
+                <StyledNavLink href="/Login">Área Reservada</StyledNavLink>
               </StyledNav>
             </Navbar.Collapse>
           </Container>

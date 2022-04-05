@@ -19,12 +19,6 @@ export default class Login extends Component {
       <>
         <Container>
           <FormWrap>
-            <Icon to="/"><img
-                src={require("../../images/AMUT-Logo.svg").default}
-                height="80"
-                className="d-inline-block align-top"
-                alt="amut"
-              /></Icon>
             <FormContent>
               <Form action="#">
                 <FormH1>Área Reservada</FormH1>

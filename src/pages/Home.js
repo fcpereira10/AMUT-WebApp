@@ -5,18 +5,19 @@ import Info from "../components/InfoSection/Info";
 import Services from "../components/ServicesSection/Services";
 import { homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
 import News from "../components/NewsSection/News";
-import Navb from "../components/Navb/Navb";
+import Footer from "../components/Footer/Footer";
 
 export default class HomePage extends Component {
   render() {
     return (
       <>
-        <Navb/>
+
         <Video />
         <News />
         <Info info={{ ...homeObjTwo }} />
         <Services />
         <Info info={{ ...homeObjThree }} />
+        <Footer /> 
       </>
     );
   }

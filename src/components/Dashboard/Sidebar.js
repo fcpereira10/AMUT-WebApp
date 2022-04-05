@@ -39,16 +39,21 @@ export default class Sidebar extends Component {
             <SidebarContent>
               <Menu iconShape="square">
                 <MenuItem icon={<FaHome />}>Painel</MenuItem>
+
                 <MenuItem icon={<FaUser />}>Dados Pessoais</MenuItem>
+
                 <MenuItem icon={<FaChartPie />}>Conta Corrente</MenuItem>
+
                 <MenuItem icon={<FaUpload />}>Submissão</MenuItem>
               </Menu>
             </SidebarContent>
-            <SidebarFooter>
+            {/* <SidebarFooter>
               <Menu iconShape="square">
-                <MenuItem icon={<FiLogOut />}>Terminar Sessão</MenuItem>
+                <Link to="/area-reservada/painel">
+                  <MenuItem icon={<FiLogOut />}>Terminar Sessão</MenuItem>
+                </Link>
               </Menu>
-            </SidebarFooter>
+            </SidebarFooter> */}
           </ProSidebar>
         </div>
       </>
