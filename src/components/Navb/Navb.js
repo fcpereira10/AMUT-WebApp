@@ -12,7 +12,7 @@ export default class Navb extends Component {
     }
     return (
       <>
-        <StyledNavbar collapseOnSelect expand="lg" variant="dark">
+        <StyledNavbar collapseOnSelect expand="md" variant="dark" >
           <Container>
             <Navbar.Brand style={{cursor: "pointer"}}className="logo" onClick={toggleHome}>
               <Home to="/" ><img
@@ -36,7 +36,7 @@ export default class Navb extends Component {
                 <StyledNavLink href="/">Notícias</StyledNavLink>
               </StyledNav>
               <StyledNav>
-                <StyledNavLink href="/Login">Área Reservada</StyledNavLink>
+                <StyledNavLink href="/Login">Entrar</StyledNavLink>
               </StyledNav>
             </Navbar.Collapse>
           </Container>

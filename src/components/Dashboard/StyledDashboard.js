@@ -2,18 +2,23 @@ import styled from "styled-components";
 
 export const ContentContainer = styled.div`
     background-color: #fff;
-    top: 100px;
-    left: 0;
+    margin-top: 100px;
     margin-left: 80px;
     display: absolute;
-    z-index:0 ;
+    z-index: 1;
 `
 
 export const Content = styled.div`
-    padding: 30px;
     height: fit-content;
     position: relative;
     margin-right: 0;
+    z-index: 2;
 `
-
+export const Associado = styled.h2`
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  font-size: 1.2rem;
+`;
 

@@ -3,12 +3,12 @@ import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const StyledNavbar = styled(Navbar)`
-  background: #3d3d3d;
+  background: #3d3d3d !important;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
-  z-index: 999;
+  z-index: 9999;
   min-width: 307px;
   font-size: 1rem;
   position: fixed;
@@ -23,7 +23,6 @@ export const StyledNavLink = styled(Nav.Link)`
   color: #fff !important;
   font-weight: 600;
   cursor:pointer;
-
   &:hover {
     color: #d1312c !important;
     text-decoration: none;
