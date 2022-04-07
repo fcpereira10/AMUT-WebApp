@@ -1,19 +1,17 @@
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
-    background-color: #fff;
-    margin-top: 100px;
-    margin-left: 80px;
-    display: absolute;
-    z-index: 1;
-`
+  background-color: #fff;
+  margin-top: 100px;
+  margin-left: 80px;
+  display: absolute;
+`;
 
 export const Content = styled.div`
-    height: fit-content;
-    position: relative;
-    margin-right: 0;
-    z-index: 2;
-`
+  height: fit-content;
+  position: relative;
+  margin-right: 0;
+`;
 export const Associado = styled.h2`
   padding-left: 30px;
   padding-top: 30px;
@@ -21,4 +19,3 @@ export const Associado = styled.h2`
   padding-bottom: 30px;
   font-size: 1.2rem;
 `;
-

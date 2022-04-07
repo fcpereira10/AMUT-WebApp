@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 //react pro sidebar components
 import {
   ProSidebar,
   Menu,
   MenuItem,
-  SidebarFooter,
+
   SidebarContent,
 } from "react-pro-sidebar";
 //icons from react icons
-import { FaHome, FaUser, FaChartPie, FaUpload } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
+import { FaUser, FaChartPie, FaUpload } from "react-icons/fa";
 
 //sidebar css from react-pro-sidebar module
 import "react-pro-sidebar/dist/css/styles.css";
@@ -38,13 +36,11 @@ export default class Sidebar extends Component {
           >
             <SidebarContent>
               <Menu iconShape="square">
-                <MenuItem icon={<FaHome />}>Painel</MenuItem>
+                <MenuItem icon={<FaChartPie />}>Conta Corrente</MenuItem>
+                <MenuItem icon={<FaUpload />}>Submissão</MenuItem>
 
                 <MenuItem icon={<FaUser />}>Dados Pessoais</MenuItem>
-
-                <MenuItem icon={<FaChartPie />}>Conta Corrente</MenuItem>
-
-                <MenuItem icon={<FaUpload />}>Submissão</MenuItem>
+               
               </Menu>
             </SidebarContent>
             {/* <SidebarFooter>

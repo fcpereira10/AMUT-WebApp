@@ -1,26 +1,14 @@
 import styled from "styled-components";
-import { Card, Col, Row } from "react-bootstrap";
-import { GiMedicines } from "react-icons/gi";
-import { FaStethoscope } from "react-icons/fa";
+import { Card } from "react-bootstrap";
 
+import { FaStethoscope, FaPills, FaGlasses, FaTooth } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-export const ServicesContainer = styled.div`
-  height: 900px;
+export const ContaCorrenteContainer = styled.div`
+  height: 100%;
   display: flex;
+  padding-bottom: 30px;
   flex-direction: column;
-  z-index: 0;
-
-  @media screen and (max-width: 1380px) {
-    height: 1400px;
-  }
-
-  @media screen and (max-width: 768px) {
-    height: 1500px;
-  }
-
-  @media screen and (max-width: 400px) {
-    height: 1600px;
-  }
 `;
 export const TipologiaWrapper = styled.div`
   height: 100%;
@@ -30,14 +18,13 @@ export const TipologiaWrapper = styled.div`
   align-items: center;
   grid-gap: 30px;
 `;
-
-export const ServicesWrapper = styled.div`
+export const HistoricWrapper = styled.div`
   padding-left: 30px;
   padding-right: 30px;
   max-width: 100%;
   margin: 0px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
   grid-gap: 30px;
   @media screen and (max-width: 1100px) {
@@ -50,7 +37,27 @@ export const ServicesWrapper = styled.div`
   }
 `;
 
-export const ServicesCard = styled(Card)`
+export const ContaCorrenteWrapper = styled.div`
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 100%;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  grid-gap: 30px;
+  padding-bottom: 30px;
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 30px 30px;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 30px 30px;
+  }
+`;
+
+export const ContaCorrenteCard = styled(Card)`
   background: #fff;
   height: 100%;
   width: 100%;
@@ -63,13 +70,13 @@ export const ServicesCard = styled(Card)`
   padding: 30px;
   &:hover {
     z-index: 2;
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: all 0.25s ease-in-out;
     cursor: pointer;
   }
 `;
 
-export const ServicesIcon = styled(Card.Body)`
+export const ContaCorrenteIcon = styled(Card.Body)`
   height: 400px;
   width: 400px;
   @media screen and (max-width: 1580px) {
@@ -83,7 +90,7 @@ export const ServicesIcon = styled(Card.Body)`
   }
 `;
 
-export const ServicesH1 = styled.h1`
+export const ContaCorrenteH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
   margin-bottom: 64px;
@@ -93,7 +100,7 @@ export const ServicesH1 = styled.h1`
   }
 `;
 
-export const ServicesH2 = styled(Card.Title)`
+export const ContaCorrenteH2 = styled(Card.Title)`
   align-self: center;
   font-size: 1.5rem;
   text-align: center;
@@ -101,11 +108,11 @@ export const ServicesH2 = styled(Card.Title)`
 `;
 export const TipologiaTitle = styled(Card.Title)`
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
 `;
 
-export const ServicesP = styled(Card.Subtitle)`
+export const ContaCorrenteP = styled(Card.Subtitle)`
   margin-top: 10px;
   font-size: 1rem;
   text-align: center;
@@ -114,10 +121,9 @@ export const ServicesP = styled(Card.Subtitle)`
 export const IconTextTipologia = styled.div`
   display: grid;
   grid-template-columns: 0.3fr 1fr;
-padding-bottom: 20px;
+  padding-bottom: 20px;
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-
   }
 `;
 export const TextTipologia = styled.div`
@@ -126,26 +132,56 @@ export const TextTipologia = styled.div`
 `;
 
 export const TipologiaValor = styled.h4`
-
-@media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     font-size: large;
   }
 `;
 
-export const IconMedicamentos = styled(GiMedicines)`
-width: 70px;
-height: 70px;
-@media screen and (max-width: 430px) {
-  width: 40px;
-height: 40px;
+export const IconMedicamentos = styled(FaPills)`
+  width: 70px;
+  height: 70px;
+  @media screen and (max-width: 430px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
 export const IconAmbulatorio = styled(FaStethoscope)`
-width: 70px;
-height: 70px;
-@media screen and (max-width: 430px) {
-  width: 40px;
-height: 40px;
+  width: 70px;
+  height: 70px;
+  @media screen and (max-width: 430px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const IconEstomatologia = styled(FaTooth)`
+  width: 70px;
+  height: 70px;
+  @media screen and (max-width: 430px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const IconProteses = styled(FaGlasses)`
+  width: 70px;
+  height: 70px;
+  @media screen and (max-width: 430px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const Doc = styled(Link)`
+  text-align: center;
+  margin-top: 24px;
+  color: #000;
+
+  cursor: pointer;
+  &:hover {
+    color: #d1312c;
+    transform: translate(0%);
+    transition: 0.25s ease-in-out;
   }
 `;

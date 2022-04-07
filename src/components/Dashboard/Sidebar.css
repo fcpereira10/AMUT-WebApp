@@ -5,12 +5,12 @@
   min-width: 307px;
   left: 0;
   top: 100px;
-  z-index: 0;
 }
 
 #header:hover {
-    z-index: 3000;
+    z-index: 2;
 }
+
 
 
 #header .pro-sidebar {
