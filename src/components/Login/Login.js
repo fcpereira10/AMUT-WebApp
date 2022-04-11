@@ -7,7 +7,6 @@ import {
   FormH1,
   FormInput,
   FormWrap,
-  Icon,
   Text,
   FormButton,
   Reg,

@@ -3,7 +3,6 @@ import {
   Atencao,
   IconAtencao,
   IconTextTipologia,
-  Requisitos,
   SubmissaoContainer,
   TextTipologia,
   Wrapper,
@@ -15,7 +14,6 @@ import {
   Row,
   InputGroup,
   FormControl,
-  FloatingLabel,
 } from "react-bootstrap";
 import { Button } from "../StyledButton";
 
