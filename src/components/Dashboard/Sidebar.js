@@ -13,6 +13,10 @@ import { FaUser, FaChartPie, FaUpload } from "react-icons/fa";
 //sidebar css from react-pro-sidebar module
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
+import ContaCorrente from "./ContaCorrente";
+import Submissao from "./Submissao";
+import DadosPessoais from "./DadosPessoais";
+import { Link } from "react-router-dom";
 
 export default class Sidebar extends Component {
   constructor(props) {
