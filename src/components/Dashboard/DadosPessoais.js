@@ -69,7 +69,7 @@ export default class DadosPessoais extends Component {
                 </Form.Group>
               </Row>
             </Form>
-            <Button>Guardar</Button>
+            <Button to="">Guardar</Button>
           </Wrapper>
         </DadosPessoaisContainer>
       </>

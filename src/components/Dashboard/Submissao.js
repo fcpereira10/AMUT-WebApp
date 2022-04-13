@@ -140,7 +140,7 @@ export default class Submissao extends Component {
                 />
               </Form.Group>
             </Form>
-            <Button>Submeter</Button>
+            <Button to="">Submeter</Button>
           </Wrapper>
         </SubmissaoContainer>
       </>
