@@ -14,7 +14,7 @@ export default class Navb extends Component {
       <>
         <StyledNavbar collapseOnSelect expand="md" variant="dark" >
           <Container>
-            <Navbar.Brand style={{cursor: "pointer"}}className="logo" onClick={toggleHome}>
+            <Navbar.Brand style={{cursor: "pointer"}} className="logo" onClick={toggleHome}>
               <Home to="/" ><img
                 src={require("../../images/AMUT-Logo.svg").default}
                 height="80"
@@ -32,11 +32,11 @@ export default class Navb extends Component {
                 <StyledNavLink href="/">Saber</StyledNavLink>
                 <StyledNavLink href="/">Saúde</StyledNavLink>
                 <StyledNavLink href="/">Caminhando</StyledNavLink>
-                <StyledNavLink href="/">Eventos</StyledNavLink>
-                <StyledNavLink href="/">Notícias</StyledNavLink>
+                <StyledNavLink href="/eventos">Eventos</StyledNavLink>
+                <StyledNavLink href="/noticias">Notícias</StyledNavLink>
               </StyledNav>
               <StyledNav>
-                <StyledNavLink href="/Login">Entrar</StyledNavLink>
+                <StyledNavLink href="/login">Entrar</StyledNavLink>
               </StyledNav>
             </Navbar.Collapse>
           </Container>

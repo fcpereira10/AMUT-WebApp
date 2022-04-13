@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import { FaStethoscope, FaPills, FaGlasses, FaTooth } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+
 export const ContaCorrenteContainer = styled.div`
   height:100%;
   padding-bottom: 30px;
@@ -13,7 +14,6 @@ export const ContaCorrenteContainer = styled.div`
 `;
 export const TipologiaWrapper = styled.div`
   height: 100%;
-
   display: grid;
   grid-template-rows: 1fr 1fr;
   align-items: center;
@@ -28,14 +28,7 @@ export const HistoricWrapper = styled.div`
   grid-template-columns: 1fr;
   align-items: center;
   grid-gap: 30px;
-  @media screen and (max-width: 1100px) {
-    grid-template-columns: 1fr 1fr;
-    padding: 0 30px 30px;
-  }
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 0 30px 30px;
-  }
+
 `;
 
 export const ContaCorrenteWrapper = styled.div`

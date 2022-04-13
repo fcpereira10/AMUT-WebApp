@@ -7,10 +7,10 @@ import {
   FormH1,
   FormInput,
   FormWrap,
-  Icon,
   Text,
   FormButton,
   Reg,
+  Router,
 } from "./StyledLogin";
 
 export default class Login extends Component {
@@ -26,7 +26,9 @@ export default class Login extends Component {
                 <FormInput placeholder="exemplo@mail.com" type="email" required />
                 <FormLabel htmlFor='for'>Senha</FormLabel>
                 <FormInput type='password' required/>
-                <FormButton primary dark type='submit'>Entrar</FormButton>
+                <FormButton primary="true" dark="true" to="/area-reservada">
+                  Entrar
+                </FormButton>
                 <Text>Esqueceu-se da Senha?</Text>
                 <Reg to="/register">Solicitar Acesso</Reg>       
               </Form>

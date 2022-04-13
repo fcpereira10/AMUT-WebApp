@@ -1,11 +1,11 @@
 import React from "react";
 import { Component } from "react";
-import Video from "../components/VideoSection/Video";
-import Info from "../components/InfoSection/Info";
-import Services from "../components/ServicesSection/Services";
-import { homeObjTwo, homeObjThree } from "../components/InfoSection/Data";
-import News from "../components/NewsSection/News";
+import Video from "../components/Home/VideoSection/Video";
+import Info from "../components/Home/InfoSection/Info";
+import { homeObjTwo, homeObjThree } from "../components/Home/InfoSection/Data";
+import News from "../components/Home/NewsSection/News";
 import Footer from "../components/Footer/Footer";
+import Events from "../components/Home/EventsSection/Events";
 
 export default class HomePage extends Component {
   render() {
@@ -15,7 +15,7 @@ export default class HomePage extends Component {
         <Video />
         <News />
         <Info info={{ ...homeObjTwo }} />
-        <Services />
+        <Events />
         <Info info={{ ...homeObjThree }} />
         <Footer /> 
       </>

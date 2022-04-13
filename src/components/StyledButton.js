@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Link} from 'react-scroll'
+import {Link} from 'react-router-dom'
 
 export const Button = styled(Link)`
     border-radius: 50px;
@@ -10,6 +10,7 @@ export const Button = styled(Link)`
     color: ${({dark}) => (dark ? '#010606' : '#FFF')} !important; 
     outline: none;
     border: none;
+    text-decoration: none;
     cursor: pointer;
     display: flex ;
     justify-content: center;
@@ -17,7 +18,7 @@ export const Button = styled(Link)`
     transition: all 0.2s ease-in-out;
 
     &:hover {
-
+        text-decoration: none;
         transform: translate(0%);
         transition: 0.25s ease-in-out ;
 

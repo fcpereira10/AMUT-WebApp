@@ -1,17 +1,15 @@
 #header {
   position: fixed;
-  width: 235px;
+  width: 230px;
   height: 100vh;
-  min-width: 307px;
+  min-width: 230px;
   left: 0;
   top: 100px;
 }
 
 #header:hover {
-    z-index: 2;
+  z-index: 2;
 }
-
-
 
 #header .pro-sidebar {
   width: 100%;
@@ -25,16 +23,12 @@
   width: 80px;
   min-width: 80px;
   height: 100vh;
-
-  z-index: -2;
+  z-index: 1;
 }
+
 #header .pro-sidebar-inner {
-  background-color: #EDEDED;
+  background-color: #ededed;
   box-shadow: 0.9px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
-  
-}
-#header .pro-sidebar-inner .pro-sidebar-layout {
-
 }
 #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
   font-size: 20px;
@@ -54,21 +48,26 @@
   .pro-sidebar-layout
   ul
   .pro-inner-item
-  .pro-icon-wrapper{
+  .pro-icon-wrapper {
   background-color: #000;
   color: #fff;
   border-radius: 10px;
 }
+
 #header
   .pro-sidebar-inner
   .pro-sidebar-layout
   ul
   .pro-inner-item
-  .pro-icon-wrapper :hover{
+  .pro-icon-wrapper
+  :hover {
   background-color: #d1312c;
   color: #fff;
   border-radius: 10px;
-  
 }
 
-
+#header .active .pro-icon-wrapper {
+  background-color: #d1312c !important;
+  color: #fff;
+  border-radius: 10px;
+}

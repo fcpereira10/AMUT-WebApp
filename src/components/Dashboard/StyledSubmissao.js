@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { Alert, Form } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 import { FaExclamationTriangle } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 
 export const SubmissaoContainer = styled.div`
