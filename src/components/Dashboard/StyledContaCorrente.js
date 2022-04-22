@@ -170,7 +170,7 @@ export const IconProteses = styled(FaGlasses)`
 export const Doc = styled(Link)`
   text-align: center;
   margin-top: 24px;
-  color: #000;
+  color: #3d3d3d;
 
   cursor: pointer;
   &:hover {

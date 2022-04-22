@@ -1,28 +1,30 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const NotFoundContainer = styled.div`
+export const QuemSomosContainer = styled.div`
   background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#3d3d3d')};
+
   @media screen and (max-width: 768px) {
-    padding: 100px 0;
+    padding: 30px 0;
   }
 `;
-export const NotFoundWrapper = styled.div`
+export const QuemSomosWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height:100vh;
-  align-items: center;
-  justify-content: center;
-  justify-self: center;
-  width: 100vw;
-  max-width: 1200px;
+  height: 800px;
+  width: 100%;
+  max-width: 1100px;
   margin-right: auto;
   margin-left: auto;
   padding: 0 24px;
   justify-content: center;
+
+    @media screen and (max-width: 768px){
+        height: 1000px;
+
+    }
 `;
 
-export const NotFoundRow = styled.div`
+export const QuemSomosRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
@@ -35,8 +37,8 @@ export const NotFoundRow = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-areas: ${({ imgStart }) =>
       imgStart
-        ? `'col1'
-        'col2'`
+        ? `'col2'
+        'col1'`
         : `'col1 col1' 'col2 col2'`};
   }
 `;
@@ -55,8 +57,6 @@ export const Column2 = styled.div`
 
 export const TextWrapper = styled.p`
   max-width: 540px;
-  padding-top: 0;
-  padding-bottom: 60px;
 `;
 export const TopLine = styled.p`
   color: #d1312c;
@@ -69,13 +69,13 @@ export const TopLine = styled.p`
 `;
 export const Heading = styled.h1`
   margin-bottom: 24px;
-  font-size: 90px;
+  font-size: 48px;
   line-height: 1.1;
   font-weight: 600;
   color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#010606')};
 
   @media screen and (max-width: 480px) {
-    font-size: 60px;
+    font-size: 32px;
   }
 `;
 export const Subtitle = styled.p`
@@ -93,73 +93,13 @@ export const BtnWrap = styled.div`
 
 export const ImgWrap = styled.div`
   max-width: 555px;
+
   height: 100%;
 `;
 
 export const Img = styled.img`
   width: 100%;
   height: 0 0 10px 0;
+  border-radius: 100%;
   padding-right: 0;
 `;
-
-export const NotFoundWrap = styled.div`
-    padding: 24px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-`
-
-export const NotFoundLinksContainer = styled.div`
-    display: flex;
-    justify-content: left;
-`
-
-export const NotFoundLinksWrapper = styled.div`
-    display: flex;
-
-    @media screen and (max-width: 820px) {
-        flex-direction: column;
-    }
-`
-
-export const NotFoundLinkItems = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    text-align: left;
-    width: 160px;
-    box-sizing: border-box;
-    color: #fff;
-
-    @media screen and (max-width: 420px) {
-        margin: 0;
-        padding: 10px;
-        width: 100%;
-    }
-`
-
-export const NotFoundLinkTitle = styled.h1`
-    font-size: 18px;
-    margin-bottom: 16px;
-    font-weight: bold;
-`
-
-export const NotFoundLink = styled(Link)`
-    color: #3d3d3d;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    font-size: 16px;
-
-    &:hover {
-    color: #d1312c;
-    font-weight: bold;
-    text-decoration: none;
-    transform: translate(0%);
-    transition: 0.25s ease-in-out ;
-  }
-`
-

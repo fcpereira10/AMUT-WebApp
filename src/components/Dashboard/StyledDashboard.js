@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ContentContainer = styled.div`
   background-color: #fff;
-  margin-top: 100px;
   margin-left: 80px;
   display: absolute;
 `;

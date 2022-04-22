@@ -1,21 +1,20 @@
 import styled from 'styled-components'
 import {Card} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 import { Button } from '../../StyledButton'
 
-export const EventsContainer = styled.div`
+export const ActivitiesContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background:#3D3D3D;
+    background:#3d3d3d;
     padding-bottom: 30px;
     padding-top: 30px;
 
 `
 
-export const EventsWrapper = styled.div`
+export const ActivitiesWrapper = styled.div`
     max-width: 1500px;
     margin: 0px;
     display: grid;
@@ -37,7 +36,7 @@ export const EventsWrapper = styled.div`
     }
 `
 
-export const EventsCard = styled(Card)`
+export const ActivitiesCard = styled(Card)`
    background: #fff;
     display: flex;
     flex-direction: column;
@@ -57,7 +56,7 @@ export const EventsCard = styled(Card)`
     }
 `
 
-export const EventsIcon = styled(Card.Img)`
+export const ActivitiesIcon = styled(Card.Img)`
     height: 400px;
     width: 400px;
     justify-content: center;
@@ -73,7 +72,7 @@ export const EventsIcon = styled(Card.Img)`
     }
 `
 
-export const EventsH1 = styled.h1`
+export const ActivitiesH1 = styled.h1`
     font-size: 2.5rem;
     color: #fff;
     margin-bottom: 64px;
@@ -83,13 +82,13 @@ export const EventsH1 = styled.h1`
     }
 `
 
-export const EventsH2 = styled(Card.Title)`
+export const ActivitiesH2 = styled(Card.Title)`
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
 `
 
-export const EventsP = styled(Card.Subtitle)`
+export const ActivitiesP = styled(Card.Subtitle)`
     margin-top: 10px;        
     font-size: 1rem;
     text-align: center;
@@ -99,6 +98,8 @@ export const EventsP = styled(Card.Subtitle)`
         max-width: 300px;
     }
 `
+
 export const DetailsButton = styled(Button)`
+
 font-size: 16px;
 `

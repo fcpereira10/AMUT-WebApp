@@ -10,7 +10,9 @@ import {
   ContentContainer,
 } from "../components/Dashboard/StyledDashboard";
 export default class DashboardPage extends Component {
- 
+  componentDidMount() {
+    document.title = 'Área Reservada - AMUT Gondomar';
+  }
   constructor(props) {
     super(props);
     this.state = { selectedIndex: 1 };

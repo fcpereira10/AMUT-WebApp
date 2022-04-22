@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import {Card} from 'react-bootstrap'
 import { Button } from '../../StyledButton'
-import { Link } from 'react-router-dom'
 
 export const NewsContainer = styled.div`
     height: 100%;
@@ -9,25 +8,19 @@ export const NewsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background:#3D3D3D;
+    background:#3d3d3d;
     padding-bottom: 30px;
     padding-top: 30px;
     
 `
-
-export const NewsWrapper = styled.div`
-    max-width: 1500px;
-    margin: 0px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    grid-gap: 30px;
-    padding: 0 50px 50px;
-    padding-left: 30px;
-    padding-right: 30px;
-
-    @media screen and (max-width: 1380px){
-        grid-template-columns: 1fr 1fr;
+export const ActivityNewsWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 30px;
+  @media screen and (max-width: 1380px){
+        grid-template-columns: 1fr;
         padding: 0 30px 30px;
     }
 
@@ -35,6 +28,18 @@ export const NewsWrapper = styled.div`
         grid-template-columns:  1fr;
         padding: 0 30px 30px;
     }
+`;
+
+export const NewsWrapper = styled.div`
+    max-width: 1500px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    grid-gap: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+
 `
 
 export const NewsCard = styled(Card)`
@@ -78,7 +83,7 @@ export const NewsIcon = styled(Card.Img)`
 export const NewsH1 = styled.h1`
     font-size: 2.5rem;
     color: #fff;
-    margin-bottom: 64px;
+    text-align: center;
 
     @media screen and (max-width: 480px) {
         font-size: 2rem;
@@ -98,4 +103,21 @@ export const NewsP = styled(Card.Subtitle)`
 `
 export const DetailsButton = styled(Button)`
 font-size: 16px;
+`
+export const ActivitiesH2 = styled(Card.Title)`
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+`
+
+export const ActivitiesP = styled(Card.Subtitle)`
+    margin-top: 10px;        
+    font-size: 1.5rem;
+    text-align: center;
+    max-width: 500px;
+
+    @media screen and (max-width: 1000px) {
+        font-size: 1.5rem;
+        max-width: 300px;
+    }
 `

@@ -8,10 +8,13 @@ import {
   NewsIcon,
   NewsH2,
   NewsP,
-  Router,
   DetailsButton,
+  ActivityNewsWrapper,
+  ActivitiesH2,
+  ActivitiesP,
 } from "../NewsSection/StyledNews";
-import Icon1 from "../../../images/noticias.svg";
+import Icon1 from "../../../images/news.svg";
+import Icon2 from "../../../images/buracas do casmilo.png";
 import { Button } from "../../StyledButton";
 
 export default class News extends Component {
@@ -19,58 +22,50 @@ export default class News extends Component {
     return (
       <>
         <NewsContainer id="News">
-          <NewsH1>Notícias em Destaque</NewsH1>
+          <ActivityNewsWrapper>
+          
           <NewsWrapper>
-            <NewsCard>
-              <NewsIcon variant="top" src={Icon1} />
+          <NewsH1>Atividade em Destaque</NewsH1>
+          <NewsCard>
+              <NewsIcon variant="top" src={Icon2} />
               <NewsCard.Body>
-                <NewsH2>
-                  Convocatória Assembleia Geral Ordinária 2022: Relatório e
-                  Contas
-                </NewsH2>
-                <NewsP className="mb-2 text-muted">
-                  Publicado em 03/03/2022
-                </NewsP>
+                <ActivitiesH2>27/03/2022</ActivitiesH2>
+                <ActivitiesP>
+                  AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
+                </ActivitiesP>
               </NewsCard.Body>
-              <DetailsButton to="/eventos">
-                Ver Notícia
+              <DetailsButton to="">
+                Ver Detalhes
               </DetailsButton>
             </NewsCard>
-            <NewsCard>
-              <NewsIcon variant="top" src={Icon1} />
-              <NewsCard.Body>
-                <NewsH2>
-                  Convocatória Assembleia Geral Ordinária 2022: Relatório e
-                  Contas
-                </NewsH2>
-                <NewsP className="mb-2 text-muted">
-                  Publicado em 03/03/2022
-                </NewsP>
-              </NewsCard.Body>
-              <DetailsButton to="/eventos">
-                Ver Notícias
-              </DetailsButton>
-            </NewsCard>
-
-            <NewsCard>
-              <NewsIcon variant="top" src={Icon1} />
-              <NewsCard.Body>
-                <NewsH2>
-                  Convocatória Assembleia Geral Ordinária 2022: Relatório e
-                  Contas
-                </NewsH2>
-                <NewsP className="mb-2 text-muted">
-                  Publicado em 03/03/2022
-                </NewsP>
-              </NewsCard.Body>
-              <DetailsButton to="/eventos">
-                Ver Notícia
-              </DetailsButton>
-            </NewsCard>
+            <Button primary="true" dark="true" to="/eventos"> 
+              Ver mais Atividades
+          </Button>
           </NewsWrapper>
-          <Button primary="true" dark="true" to="/eventos"> 
+          
+          <NewsWrapper>
+          <NewsH1>Notícia em Destaque</NewsH1>
+            <NewsCard>
+              <NewsIcon variant="top" src={Icon1} />
+              <NewsCard.Body>
+                <NewsH2>
+                  Convocatória Assembleia Geral Ordinária 2022: Relatório e
+                  Contas
+                </NewsH2>
+                <NewsP className="mb-2 text-muted">
+                  Publicado em 03/03/2022
+                </NewsP>
+              </NewsCard.Body>
+              <DetailsButton to="/eventos">
+                Ver Notícia
+              </DetailsButton>
+            </NewsCard>
+            <Button primary="true" dark="true" to="/eventos"> 
               Ver mais Notícias
           </Button>
+          </NewsWrapper>
+          </ActivityNewsWrapper>
+          
         </NewsContainer>
       </>
     );

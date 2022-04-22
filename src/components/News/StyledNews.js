@@ -1,13 +1,88 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Card } from "react-bootstrap";
+import { Button } from "../StyledButton";
 
-export const NotFoundContainer = styled.div`
+import { Link } from "react-router-dom";
+
+
+export const ContentContainer = styled.div`
+  background-color: #fff;
+  display: absolute;
+`;
+
+export const NewsContainer = styled.div`
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NewsWrapper = styled.div`
+padding: 30px;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 1fr ;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-gap: 30px;
+
+  @media screen and (max-width: 480px) {
+    padding: 10px;
+  }
+`;
+
+export const NewsCard = styled(Card)`
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+  }
+`;
+
+export const NewsIcon = styled(Card.Img)`
+  height: 50%;
+  width: 50%;
+  justify-content: center;
+  margin-bottom: 10px;
+`;
+
+
+export const NewsH2 = styled(Card.Title)`
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+
+`;
+
+export const NewsP = styled(Card.Subtitle)`
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+`;
+export const DetailsButton = styled(Button)`
+  font-size: 16px;
+`;
+
+
+export const NewContainer = styled.div`
   background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#3d3d3d')};
   @media screen and (max-width: 768px) {
     padding: 100px 0;
   }
 `;
-export const NotFoundWrapper = styled.div`
+export const NewWrapper = styled.div`
   display: grid;
   z-index: 1;
   height:100vh;
@@ -22,7 +97,7 @@ export const NotFoundWrapper = styled.div`
   justify-content: center;
 `;
 
-export const NotFoundRow = styled.div`
+export const NewsRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
@@ -69,13 +144,13 @@ export const TopLine = styled.p`
 `;
 export const Heading = styled.h1`
   margin-bottom: 24px;
-  font-size: 90px;
+  font-size: 30px;
   line-height: 1.1;
   font-weight: 600;
   color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#010606')};
 
   @media screen and (max-width: 480px) {
-    font-size: 60px;
+    font-size: 25px;
   }
 `;
 export const Subtitle = styled.p`
@@ -102,7 +177,7 @@ export const Img = styled.img`
   padding-right: 0;
 `;
 
-export const NotFoundWrap = styled.div`
+export const NewsWrap = styled.div`
     padding: 24px 24px;
     display: flex;
     flex-direction: column;
@@ -112,12 +187,12 @@ export const NotFoundWrap = styled.div`
     margin: 0 auto;
 `
 
-export const NotFoundLinksContainer = styled.div`
+export const NewsLinksContainer = styled.div`
     display: flex;
     justify-content: left;
 `
 
-export const NotFoundLinksWrapper = styled.div`
+export const NewsLinksWrapper = styled.div`
     display: flex;
 
     @media screen and (max-width: 820px) {
@@ -125,7 +200,7 @@ export const NotFoundLinksWrapper = styled.div`
     }
 `
 
-export const NotFoundLinkItems = styled.div`
+export const NewsLinkItems = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -142,13 +217,13 @@ export const NotFoundLinkItems = styled.div`
     }
 `
 
-export const NotFoundLinkTitle = styled.h1`
+export const NewsLinkTitle = styled.h1`
     font-size: 18px;
     margin-bottom: 16px;
     font-weight: bold;
 `
 
-export const NotFoundLink = styled(Link)`
+export const NewsLink = styled(Link)`
     color: #3d3d3d;
     text-decoration: none;
     margin-bottom: 0.5rem;

@@ -1,48 +1,62 @@
 import React from "react";
-import { Container,Navbar } from "react-bootstrap";
-import { StyledNavbar, StyledNav, StyledNavLink, Home} from "./StyledNavbar";
+import { Container, NavDropdown } from "react-bootstrap";
+import { StyledNavbar, StyledNav, StyledNavLink, Home, StyledDropdown } from "./StyledNavbar";
 import { Component } from "react";
-import { animateScroll as scroll } from "react-scroll"
-  
+import { animateScroll as scroll } from "react-scroll";
+
 export default class Navb extends Component {
   render() {
-    
     const toggleHome = () => {
       scroll.scrollToTop();
-    }
+    };
     return (
       <>
-        <StyledNavbar collapseOnSelect expand="md" variant="dark" >
+        <StyledNavbar collapseOnSelect expand="lg" variant="dark" sticky="top">
           <Container>
-            <Navbar.Brand style={{cursor: "pointer"}} className="logo" onClick={toggleHome}>
-              <Home to="/" ><img
-                src={require("../../images/AMUT-Logo.svg").default}
-                height="80"
-                className="d-inline-block align-top"
-                alt="amut"
-              />
+            <StyledNavbar.Brand
+              style={{ cursor: "pointer" }}
+              className="logo"
+              onClick={toggleHome}
+            >
+              <Home to="/">
+                <img
+                  src={require("../../images/AMUT-Logo.svg").default}
+                  height="80"
+                  className="d-inline-block align-top"
+                  alt="amut"
+                />
               </Home>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            </StyledNavbar.Brand>
+            <StyledNavbar.Toggle aria-controls="responsive-navbar-nav" />
+            <StyledNavbar.Collapse id="responsive-navbar-nav">
               <StyledNav className="m-auto">
-                <StyledNavLink href="/">Home
-                </StyledNavLink>
-                <StyledNavLink href="/">AMUT</StyledNavLink>
-                <StyledNavLink href="/">Saber</StyledNavLink>
+                <StyledNavLink href="/">Home</StyledNavLink>
+                <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Quem Somos</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                  Missão, Visão e Valores
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                  Equipa
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                  Documentos
+                  </NavDropdown.Item>
+                </StyledDropdown>
                 <StyledNavLink href="/">Saúde</StyledNavLink>
                 <StyledNavLink href="/">Caminhando</StyledNavLink>
-                <StyledNavLink href="/eventos">Eventos</StyledNavLink>
-                <StyledNavLink href="/noticias">Notícias</StyledNavLink>
+                <StyledNavLink href="/">Formação</StyledNavLink>
+                <StyledNavLink href="/eventos">Atividades</StyledNavLink>
+                <StyledNavLink href="/">Projetos</StyledNavLink>
               </StyledNav>
               <StyledNav>
                 <StyledNavLink href="/login">Entrar</StyledNavLink>
               </StyledNav>
-            </Navbar.Collapse>
+            </StyledNavbar.Collapse>
           </Container>
         </StyledNavbar>
       </>
     );
   }
 }
-

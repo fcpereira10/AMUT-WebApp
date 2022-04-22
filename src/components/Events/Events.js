@@ -8,18 +8,19 @@ import {
   EventsP,
   ContentContainer,
   DetailsButton,
-  Router,
 } from "./StyledEvents";
 
 import Icon1 from "../../images/events.svg";
 
-export default class Events extends Component {
+
+export default class Activities extends Component {
   render() {
     return (
       <>
         <ContentContainer>
           <EventsContainer>
             <EventsH2>Próximos Eventos</EventsH2>
+
             <EventsWrapper>
               <EventsCard>
                 <EventsIcon variant="top" src={Icon1} />

@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 import {Card} from 'react-bootstrap'
 import { Button } from '../StyledButton';
-import { Link } from 'react-router-dom';
 
 
 export const ContentContainer = styled.div`
   background-color: #fff;
-  margin-top: 100px;
   display: absolute;
 `;
 
@@ -21,11 +19,13 @@ export const EventsContainer = styled.div`
 export const EventsWrapper = styled.div`
    padding-left: 30px;
   padding-right: 30px;
-  max-width: 100%;
+
   margin: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
+  align-content: center;
+  justify-content: center;
   grid-gap: 30px;
   padding-bottom: 60px;
   padding-top: 30px;

@@ -10,7 +10,6 @@ import {
   Text,
   FormButton,
   Reg,
-  Router,
 } from "./StyledLogin";
 
 export default class Login extends Component {
@@ -34,6 +33,7 @@ export default class Login extends Component {
               </Form>
             </FormContent>
           </FormWrap>
+          
         </Container>
       </>
     );

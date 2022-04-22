@@ -45,7 +45,7 @@ border: 1px solid #f2f2f2;
 `;
 
 export const Requisitos = styled(Atencao)`
-color: #000;
+color: #3d3d3d;
 background-color: #EDEDED;
 `;
 

@@ -5,7 +5,6 @@ import { Button } from "../StyledButton";
 
 export const Container = styled.div`
   min-height: 692px;
-  padding-top: 100px;
   position: relative;
   height: 100vh;
   overflow: hidden;
