@@ -10,7 +10,7 @@ export const NotFoundContainer = styled.div`
 export const NotFoundWrapper = styled.div`
   display: grid;
   z-index: 1;
-  height:100vh;
+  height: 800px;
   align-items: center;
   justify-content: center;
   justify-self: center;
