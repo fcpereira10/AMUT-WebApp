@@ -51,6 +51,7 @@ export const EventsCard = styled(Card)`
     align-items: center;
     padding: 30px;
     border-radius: 10px;
+
   border: 1px solid #f2f2f2;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-in-out;
@@ -88,8 +89,8 @@ export const EventsH2 = styled(Card.Title)`
 `
 
 export const EventsP = styled(Card.Subtitle)`
-    margin-top: 10px;        
-    font-size: 1rem;
+    max-width: 250px;
+    font-size: 1.2rem;
     text-align: center;
 `
 export const DetailsButton = styled(Button)`

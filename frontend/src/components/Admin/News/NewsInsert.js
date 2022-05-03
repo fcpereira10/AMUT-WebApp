@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { Button } from "../../StyledButton";
 import api from "../../../api";
-import { CancelButton, Wrapper } from "./StyledActivities";
+import { CancelButton, Wrapper } from "../Activities/StyledActivities";
 
-export default class ActivitiesInsert extends Component {
+export default class NewsInsert extends Component {
   constructor(props) {
     super(props);
 
@@ -51,7 +51,7 @@ export default class ActivitiesInsert extends Component {
   render() {
     const { title, date, description, local } = this.state;
     return (
-      <Wrapper>
+        <Wrapper>
         <Form>
           <Row className="mb-3">
             <Form.Group as={Col}>
@@ -99,7 +99,7 @@ export default class ActivitiesInsert extends Component {
           </Row>
         </Form>
         <Button to="" onClick={this.handleIncludeActivity}>
-          Adicionar Atividade
+          Adicionar Notícia
         </Button>
       </Wrapper>
     );

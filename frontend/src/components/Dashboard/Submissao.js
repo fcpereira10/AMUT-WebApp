@@ -8,13 +8,7 @@ import {
   Wrapper,
 } from "./StyledSubmissao";
 import "chart.js/auto";
-import {
-  Col,
-  Form,
-  Row,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
+import { Col, Form, Row, InputGroup, FormControl } from "react-bootstrap";
 import { Button } from "../StyledButton";
 
 const value = `1 – Todas as faturas-recibo ou faturas simplificadas apresentadas, devem conter o nome e número de contribuinte;
@@ -38,13 +32,13 @@ export default class Submissao extends Component {
         <SubmissaoContainer>
           <Wrapper>
             <Atencao>
-            <IconTextTipologia>
-            <IconAtencao/>
-                    <TextTipologia>
-              <Atencao.Heading>Atenção</Atencao.Heading>
-              Deve fazer uma submissão por cada despesa a reembolsar.
-              </TextTipologia>
-                  </IconTextTipologia>
+              <IconTextTipologia>
+                <IconAtencao />
+                <TextTipologia>
+                  <Atencao.Heading>Atenção</Atencao.Heading>
+                  Deve fazer uma submissão por cada despesa a reembolsar.
+                </TextTipologia>
+              </IconTextTipologia>
             </Atencao>
             <Form>
               <Row className="mb-3">
@@ -60,8 +54,8 @@ export default class Submissao extends Component {
                   <Form.Label>Nome Beneficiário</Form.Label>
                   <Form.Control required isInvalid />
                   <Form.Control.Feedback type="invalid">
-    Por favor, preencha o nome do beneficiário.
-  </Form.Control.Feedback>
+                    Por favor, preencha o nome do beneficiário.
+                  </Form.Control.Feedback>
                 </Form.Group>
               </Row>
               <Row className="mb-3">

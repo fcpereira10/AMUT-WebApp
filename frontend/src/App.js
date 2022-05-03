@@ -9,10 +9,9 @@ import Navb from "./components/Navb/Navb";
 import NotFoundPage from "./pages/404";
 import NewsPage from "./pages/News";
 import AmutPage from "./pages/AMUT";
-import { ActivitiesList } from "../src/components/Admin/Activities";
-import { ActivitiesInsert } from "../src/components/Admin/Activities";
-import { ActivitiesUpdate } from "../src/components/Admin/Activities";
+import ActivitiesUpdate from "../src/components/Admin/Activities/ActivitiesUpdate";
 import AdminPage from "./pages/Admin";
+import EventsPage from "./pages/Events";
 
 function App() {
   return (
@@ -26,8 +25,8 @@ function App() {
         <Route path="/noticias" element={<NewsPage />} />
         <Route path="/amut" element={<AmutPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/atividades/criar" exact component={ActivitiesInsert} />
-        <Route path="/atividades/editar/:id" exact component={ActivitiesUpdate} />
+        <Route path="/atividades" element={<EventsPage/>} />
+        <Route path="/atividades/:id" exact component={<ActivitiesUpdate/>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

@@ -1,6 +1,12 @@
 import React from "react";
 import { Container, NavDropdown } from "react-bootstrap";
-import { StyledNavbar, StyledNav, StyledNavLink, Home, StyledDropdown } from "./StyledNavbar";
+import {
+  StyledNavbar,
+  StyledNav,
+  StyledNavLink,
+  Home,
+  StyledDropdown,
+} from "./StyledNavbar";
 import { Component } from "react";
 import { animateScroll as scroll } from "react-scroll";
 
@@ -32,22 +38,27 @@ export default class Navb extends Component {
               <StyledNav className="m-auto">
                 <StyledNavLink href="/">Home</StyledNavLink>
                 <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Quem Somos</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                  Missão, Visão e Valores
+                  <NavDropdown.Item href="#action/3.1">
+                    Quem Somos
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
-                  Equipa
+                    Missão, Visão e Valores
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">Equipa</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.4">
-                  Documentos
+                    Documentos
                   </NavDropdown.Item>
                 </StyledDropdown>
                 <StyledNavLink href="/">Saúde</StyledNavLink>
                 <StyledNavLink href="/">Caminhando</StyledNavLink>
                 <StyledNavLink href="/">Formação</StyledNavLink>
-                <StyledNavLink href="/eventos">Atividades</StyledNavLink>
+                <StyledDropdown title="Atividades" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="/atividades">
+                    Eventos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/noticias">Notícias</NavDropdown.Item>
+                </StyledDropdown>
                 <StyledNavLink href="/">Projetos</StyledNavLink>
               </StyledNav>
               <StyledNav>

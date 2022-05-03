@@ -2,19 +2,31 @@ import React, { Component } from "react";
 import {
   EventsContainer,
   EventsWrapper,
-  EventsCard,
-  EventsIcon,
   EventsH2,
-  EventsP,
   ContentContainer,
-  DetailsButton,
 } from "./StyledEvents";
+import api from "../../api";
+import EventCard from "./EventCard";
 
-import Icon1 from "../../images/events.svg";
+export default class Events extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activities: [],
+    };
+  }
 
+  componentDidMount = async () => {
+    await api.getAllActivities().then((activities) => {
+      this.setState({
+        activities: activities.data.data,
+      });
+    });
+  };
 
-export default class Activities extends Component {
   render() {
+    const { activities } = this.state;
+
     return (
       <>
         <ContentContainer>
@@ -22,105 +34,15 @@ export default class Activities extends Component {
             <EventsH2>Próximos Eventos</EventsH2>
 
             <EventsWrapper>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
+              {activities.map((activity) => (
+                <EventCard data={activity} />
+              ))}
             </EventsWrapper>
             <EventsH2>Eventos Anteriores</EventsH2>
             <EventsWrapper>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
-              <EventsCard>
-                <EventsIcon variant="top" src={Icon1} />
-                <EventsCard.Body>
-                  <EventsH2>27/03/2022</EventsH2>
-                  <EventsP>
-                    AMUT'Caminhando<p>Caminhada as Buracas do Casmilo</p>
-                  </EventsP>
-                </EventsCard.Body>
-                <DetailsButton to="">
-                  Ver Detalhes
-                </DetailsButton>
-              </EventsCard>
+              {activities.map((activity) => (
+                <EventCard data={activity} />
+              ))}
             </EventsWrapper>
           </EventsContainer>
         </ContentContainer>

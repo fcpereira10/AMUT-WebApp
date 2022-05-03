@@ -3,19 +3,18 @@ import React, { Component } from "react";
 import Sidebar from "../components/Admin/Sidebar/Sidebar";
 
 import {
-  Associado,
   Content,
   ContentContainer,
 } from "../components/Admin/StyledAdmin";
-import { ActivitiesInsert } from "../components/Admin/Activities";
-import { ActivitiesList } from "../components/Admin/Activities";
-import { ActivitiesUpdate } from "../components/Admin/Activities";
-import { Nav } from "react-bootstrap";
-import { Button } from "../components/StyledButton";
+
+import NewsList from "../components/Admin/News/NewsList";
+import UsersList from "../components/Admin/Users/UsersList";
+import Activity from "../components/Admin/Activities/Activity";
+import News from "../components/Admin/News/News";
 
 export default class AdminPage extends Component {
   componentDidMount() {
-    document.title = 'Administração - AMUT Gondomar';
+    document.title = "Administração - AMUT Gondomar";
   }
   constructor(props) {
     super(props);
@@ -26,32 +25,34 @@ export default class AdminPage extends Component {
 
   setSelectedTab(index) {
     this.setState({
-      selectedIndex: index
-    })
-
+      selectedIndex: index,
+    });
   }
   setSelectedPage() {
     this.setState({ menuCollapse: !this.state.menuCollapse });
-  };
+  }
 
   renderTab() {
-    switch(this.state.selectedIndex){
+    switch (this.state.selectedIndex) {
       case 1:
-        return <ActivitiesList/>;
+        return <Activity />;
       case 2:
-        return <ActivitiesInsert/>;
+        return <News />;
+      case 3:
+        return <UsersList />;
       default:
-        return <ActivitiesList/>;
+        return <Activity />;
     }
   }
   render() {
     return (
       <>
-        <Sidebar/>
+        <Sidebar
+          setSelectedTab={this.setSelectedTab}
+          parentCallback={this.callbackFunction}
+        />
         <ContentContainer>
-          <Content >
-            { this.renderTab() }
-          </Content>
+          <Content>{this.renderTab()}</Content>
         </ContentContainer>
       </>
     );

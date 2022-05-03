@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import api from "../../../api";
-import { Delete, ListWrapper, Update } from "./StyledActivities";
+import { Delete, ListWrapper, Title, Update } from "../Activities/StyledActivities";
 
 import "react-table/react-table.css";
+import { Col, Row } from "react-bootstrap";
+import { Button } from "../../StyledButton";
 
 class UpdateActivity extends Component {
   updateUser = (event) => {
     event.preventDefault();
 
-    window.location.href = `/admin/atividades/${this.props.id}`;
+    window.location.href = `/atividades/editar/${this.props.id}`;
   };
 
   render() {
@@ -36,22 +38,16 @@ class DeleteActivity extends Component {
   }
 }
 
-export default class ActivitiesList extends Component {
+export default class NewsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activities: [],
       columns: [],
       isLoading: false,
-      activeButton: 1
     };
   }
 
-  setActiveButton(activeButton) {
-
-    this.setState({activeButton});
-
-  }
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
@@ -120,12 +116,11 @@ export default class ActivitiesList extends Component {
     let showTable = true;
     if (!activities.length) {
       showTable = false;
-      return <div>Não existem Atividades para serem mostrados.</div>
+      return <div>Não existem Notícias para serem mostradas.</div>
     }
 
     return (
       <>
-
         <ListWrapper>
           {showTable && (
             <ReactTable

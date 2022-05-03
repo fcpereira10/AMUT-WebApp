@@ -3,11 +3,18 @@ import styled from 'styled-components'
 export const Title = styled.h1
 ` `
 
-export const Wrapper = styled.div.attrs({
-    className: 'form-group',
-})`
-    margin: 0 30px;
-`
+
+export const Wrapper = styled.div`
+    padding-top: 30px;
+  max-width: 100%;
+  margin: 0px;
+  display: grid;
+ 
+  align-items: center;
+  grid-gap: 30px;
+
+`;
+
 
 export const Label = styled.label`
     margin: 5px;
