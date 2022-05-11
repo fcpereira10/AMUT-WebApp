@@ -62,14 +62,16 @@ export const NewsIcon = styled(Card.Img)`
 export const NewsH2 = styled(Card.Title)`
   font-size: 1.5rem;
   text-align: center;
+  padding-top: 30px;
   font-weight: bold;
 
 `;
 
 export const NewsP = styled(Card.Subtitle)`
-  margin-top: 10px;
   font-size: 1rem;
-  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  color: '#3d3d3d';
 `;
 export const DetailsButton = styled(Button)`
   font-size: 16px;
@@ -82,20 +84,7 @@ export const NewContainer = styled.div`
     padding: 100px 0;
   }
 `;
-export const NewWrapper = styled.div`
-  display: grid;
-  z-index: 1;
-  height:100vh;
-  align-items: center;
-  justify-content: center;
-  justify-self: center;
-  width: 100vw;
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0 24px;
-  justify-content: center;
-`;
+
 
 export const NewsRow = styled.div`
   display: grid;
@@ -144,6 +133,7 @@ export const TopLine = styled.p`
 `;
 export const Heading = styled.h1`
   margin-bottom: 24px;
+  max-width: 555px;
   font-size: 30px;
   line-height: 1.1;
   font-weight: 600;
@@ -154,7 +144,7 @@ export const Heading = styled.h1`
   }
 `;
 export const Subtitle = styled.p`
-  max-width: 440px;
+  max-width: 555px;
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;

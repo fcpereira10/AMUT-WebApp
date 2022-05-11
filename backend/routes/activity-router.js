@@ -4,10 +4,11 @@ const ActivityCtrl = require('../controllers/activity-ctrl')
 
 const router = express.Router()
 
-router.post('/atividade', ActivityCtrl.createActivity)
-router.put('/atividades/:id', ActivityCtrl.updateActivity)
-router.delete('/atividades/:id', ActivityCtrl.deleteActivity)
-router.get('/atividades/:id', ActivityCtrl.getActivityById)
-router.get('/atividades', ActivityCtrl.getActivities)
+router.post('/activities', ActivityCtrl.createActivity)
+router.put('/activity/:id', ActivityCtrl.updateActivity)
+router.delete('/activity/:id', ActivityCtrl.deleteActivity)
+router.get('/activity/:id', ActivityCtrl.getActivityById)
+router.get('/activities', ActivityCtrl.getActivities)
+router.get('/activities/recent', ActivityCtrl.getMostRecentActivity)
 
 module.exports = router

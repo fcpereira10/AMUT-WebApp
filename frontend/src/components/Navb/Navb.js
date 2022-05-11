@@ -41,6 +41,9 @@ export default class Navb extends Component {
                   <NavDropdown.Item href="#action/3.1">
                     Quem Somos
                   </NavDropdown.Item>
+                  <NavDropdown.Item href="AMUT/Associados">
+                    Associados
+                  </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     Missão, Visão e Valores
                   </NavDropdown.Item>

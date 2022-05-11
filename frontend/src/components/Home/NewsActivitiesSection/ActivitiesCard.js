@@ -5,17 +5,16 @@ import {
   EventsH2,
   EventsP,
   DetailsButton,
-} from "./StyledEvents";
+} from "./StyledNews";
 
-import Icon1 from "../../images/buracas do casmilo.png";
+import Icon1 from "../../../images/events.svg";
 import moment from 'moment';
 
-export default class EventCard extends Component {
+export default class ActivitiesCard extends Component {
     
   render() {
     return (
       <>
-     
         <EventsCard>
           <EventsIcon variant="top" src={Icon1} />
           <EventsCard.Body>

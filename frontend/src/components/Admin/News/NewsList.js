@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 import ReactTable from "react-table";
 import api from "../../../api";
-import { Delete, ListWrapper, Title, Update } from "../Activities/StyledActivities";
+import { Delete, ListWrapper, Update } from "../Activities/StyledActivities";
 
 import "react-table/react-table.css";
-import { Col, Row } from "react-bootstrap";
-import { Button } from "../../StyledButton";
 
-class UpdateActivity extends Component {
+class UpdateArticle extends Component {
   updateUser = (event) => {
     event.preventDefault();
 
-    window.location.href = `/atividades/editar/${this.props.id}`;
+    window.location.href = `/admin/noticias/${this.props.id}`;
   };
 
   render() {
@@ -19,7 +17,7 @@ class UpdateActivity extends Component {
   }
 }
 
-class DeleteActivity extends Component {
+class DeleteArticle extends Component {
   deleteUser = (event) => {
     event.preventDefault();
 
@@ -28,7 +26,7 @@ class DeleteActivity extends Component {
         `Tem a certeza que pretende apagar ${this.props.id} permanentemente?`
       )
     ) {
-      api.deleteActivityById(this.props.id);
+      api.deleteArticleById(this.props.id);
       window.location.reload();
     }
   };
@@ -42,26 +40,32 @@ export default class NewsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activities: [],
+      news: [],
       columns: [],
       isLoading: false,
+      activeButton: 1
     };
   }
 
+  setActiveButton(activeButton) {
+
+    this.setState({activeButton});
+
+  }
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
 
-    await api.getAllActivities().then((activities) => {
+    await api.getAllNews().then((news) => {
       this.setState({
-        activities: activities.data.data,
+        news: news.data.data,
         isLoading: false,
       });
     });
   };
 
   render() {
-    const { activities, isLoading } = this.state;
+    const { news, isLoading } = this.state;
 
     const columns = [
       {
@@ -85,17 +89,12 @@ export default class NewsList extends Component {
         filterable: false,
       },
       {
-        Header: "Local",
-        accessor: "local",
-        filterable: true,
-      },
-      {
         Header: "",
         accessor: "",
         Cell: function (props) {
           return (
             <span>
-              <DeleteActivity id={props.original._id} />
+              <DeleteArticle id={props.original._id} />
             </span>
           );
         },
@@ -106,7 +105,7 @@ export default class NewsList extends Component {
         Cell: function (props) {
           return (
             <span>
-              <UpdateActivity id={props.original._id} />
+              <UpdateArticle id={props.original._id} />
             </span>
           );
         },
@@ -114,17 +113,18 @@ export default class NewsList extends Component {
     ];
 
     let showTable = true;
-    if (!activities.length) {
+    if (!news.length) {
       showTable = false;
-      return <div>Não existem Notícias para serem mostradas.</div>
+      return <div>Não existem Notícias para serem mostrados.</div>
     }
 
     return (
       <>
+
         <ListWrapper>
           {showTable && (
             <ReactTable
-              data={activities}
+              data={news}
               columns={columns}
               loading={isLoading}
               defaultPageSize={10}

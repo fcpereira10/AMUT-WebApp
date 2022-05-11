@@ -26,7 +26,7 @@ export default class News extends Component {
     return <>
     <Row>
           <Col sm={10}>
-            <Title>Lista de Notícias</Title>
+          <Title>{this.state.bool ? "Lista de Notícias" : "Nova Notícia"}</Title>
           </Col>
           <Col sm={2}>
             <Button onClick={this.onClick} to="">{this.state.bool ? <FaPlus className="ArrowForward" /> : <FaList/>}</Button>

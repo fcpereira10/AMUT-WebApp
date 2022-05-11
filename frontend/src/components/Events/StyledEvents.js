@@ -51,6 +51,8 @@ export const EventsCard = styled(Card)`
     align-items: center;
     padding: 30px;
     border-radius: 10px;
+    height: 100%;
+
 
   border: 1px solid #f2f2f2;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
@@ -64,10 +66,9 @@ export const EventsCard = styled(Card)`
 `
 
 export const EventsIcon = styled(Card.Img)`
-    height: 100%;
+    height: 200px;
     width: 100%;
-    justify-content: center;
-    margin-bottom: 10px;
+    aspect-ratio: auto ;
 
 `
 
@@ -92,6 +93,12 @@ export const EventsP = styled(Card.Subtitle)`
     max-width: 250px;
     font-size: 1.2rem;
     text-align: center;
+    @media screen and (max-width: 980px) {
+      max-width: 200px;
+  }
+    @media screen and (max-width: 389px) {
+      max-width: 150px;
+  }
 `
 export const DetailsButton = styled(Button)`
 font-size: 16px;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { Button } from "../../StyledButton";
 import api from "../../../api";
-import { CancelButton, Wrapper } from "../Activities/StyledActivities";
+import { Wrapper } from "../Activities/StyledActivities";
 
 export default class NewsInsert extends Component {
   constructor(props) {
@@ -10,9 +10,8 @@ export default class NewsInsert extends Component {
 
     this.state = {
       title: "",
-      date: "",
+      date: Date.now(),
       description: "",
-      local: "",
     };
   }
 
@@ -20,38 +19,29 @@ export default class NewsInsert extends Component {
     const title = event.target.value;
     this.setState({ title });
   };
-  handleChangeInputDate = async (event) => {
-    const date = event.target.value;
-    this.setState({ date });
-  };
   handleChangeInputDescription = async (event) => {
     const description = event.target.value;
     this.setState({ description });
   };
-  handleChangeInputLocal = async (event) => {
-    const local = event.target.value;
-    this.setState({ local });
-  };
 
-  handleIncludeActivity = async () => {
-    const { title, date, description, local } = this.state;
-    const payload = { title, date, description, local };
+  handleIncludeArticle = async () => {
+    const { title, date, description } = this.state;
+    const payload = { title, date, description };
 
-    await api.insertActivity(payload).then((res) => {
-      window.alert(`Atividade inserida com Sucesso!`);
+    await api.insertArticle(payload).then((res) => {
+      window.alert(`Notícia inserida com Sucesso!`);
       this.setState({
         title: "",
         date: "",
         description: "",
-        local: "",
       });
     });
   };
 
   render() {
-    const { title, date, description, local } = this.state;
+    const { title, description } = this.state;
     return (
-        <Wrapper>
+      <Wrapper>
         <Form>
           <Row className="mb-3">
             <Form.Group as={Col}>
@@ -61,22 +51,8 @@ export default class NewsInsert extends Component {
                 onChange={this.handleChangeInputTitle}
               />
             </Form.Group>
-            <Form.Group as={Col} sm={4}>
-              <Form.Label>Local</Form.Label>
-              <Form.Control
-                value={local}
-                onChange={this.handleChangeInputLocal}
-                rows={3}
-              />
-            </Form.Group>
-            <Form.Group as={Col} sm={4}>
-              <Form.Label>Data</Form.Label>
-              <Form.Control
-                value={date}
-                onChange={this.handleChangeInputDate}
-                type="date"
-              />
-            </Form.Group>
+
+           
           </Row>
           <Row className="mb-3">
             <Form.Group as={Col}>
@@ -85,7 +61,7 @@ export default class NewsInsert extends Component {
                 value={description}
                 onChange={this.handleChangeInputDescription}
                 as="textarea"
-                rows={3}
+                rows={10}
               />
             </Form.Group>
           </Row>
@@ -98,7 +74,7 @@ export default class NewsInsert extends Component {
             </Form.Group>
           </Row>
         </Form>
-        <Button to="" onClick={this.handleIncludeActivity}>
+        <Button to="" onClick={this.handleIncludeArticle}>
           Adicionar Notícia
         </Button>
       </Wrapper>

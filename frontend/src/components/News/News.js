@@ -28,94 +28,34 @@ import {
 } from "./StyledNews";
 import Icon1 from "../../images/news.svg";
 import { Button } from "../StyledButton";
-
+import api from "../../api";
+import ArticleCard from "./ArticleCard";
 export default class News extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      news: [],
+    };
+  }
+
+  componentDidMount = async () => {
+    await api.getAllNews().then((news) => {
+      this.setState({
+        news: news.data.data,
+      });
+    });
+  };
   render() {
+    const { news } = this.state;
     return (
       <>
         <ContentContainer>
+          <NewsH2>Notícias</NewsH2>
           <NewsContainer>
-
-            <NewsH2>Notícias</NewsH2>
-
             <NewsWrapper>
-              <NewsCard>
-                <NewsRow>
-                  <Column1>
-                    <TextWrapper>
-                      <Heading lightText={false}>
-                        Convocatória Assembleia Geral Ordinária 2022: Relatório
-                        e Contas
-                      </Heading>
-                      <TopLine>#irs #amut</TopLine>
-                      <Subtitle lightTextDesc={false}>
-                        A AMUT (Contribuinte 501 634 851) pertence à lista de
-                        entidades que podem beneficiar da consignação de 0,5% do
-                        IRS e do IVA suportado. Esta consignação não tem
-                        qualquer custo para o contribuinte,…
-                      </Subtitle>
-                      <BtnWrap>
-                        <Button to="/">Continuar a Ler</Button>
-                      </BtnWrap>
-                    </TextWrapper>
-                  </Column1>
-                  <Column2>
-                    <ImgWrap>
-                      <Img src={Icon1} alt="404" />
-                    </ImgWrap>
-                  </Column2>
-                </NewsRow>
-              </NewsCard>
-              <NewsCard>
-                <NewsRow>
-                  <Column1>
-                    <TextWrapper>
-                      <Heading lightText={false}>
-                        Convocatória Assembleia Geral Ordinária 2022: Relatório
-                        e Contas
-                      </Heading>
-                      <TopLine>#saber #amut #caminhadas</TopLine>
-                      <Subtitle lightTextDesc={false}>
-                        Parece que não encontramos a página que estava à
-                        procura.
-                      </Subtitle>
-                      <BtnWrap>
-                        <Button to="/">Continuar a Ler</Button>
-                      </BtnWrap>
-                    </TextWrapper>
-                  </Column1>
-                  <Column2>
-                    <ImgWrap>
-                      <Img src={Icon1} alt="404" />
-                    </ImgWrap>
-                  </Column2>
-                </NewsRow>
-              </NewsCard>
-              <NewsCard>
-                <NewsRow>
-                  <Column1>
-                    <TextWrapper>
-                      <Heading lightText={false}>
-                        Convocatória Assembleia Geral Ordinária 2022: Relatório
-                        e Contas
-                      </Heading>
-                      <TopLine>#saber #amut #caminhadas</TopLine>
-                      <Subtitle lightTextDesc={false}>
-                        Parece que não encontramos a página que estava à
-                        procura.
-                      </Subtitle>
-                      <BtnWrap>
-                        <Button to="/">Continuar a Ler</Button>
-                      </BtnWrap>
-                    </TextWrapper>
-                  </Column1>
-                  <Column2>
-                    <ImgWrap>
-                      <Img src={Icon1} alt="404" />
-                    </ImgWrap>
-                  </Column2>
-                </NewsRow>
-              </NewsCard>
+              {news.map((article) => (
+                <ArticleCard data={article} />
+              ))}
             </NewsWrapper>
           </NewsContainer>
         </ContentContainer>

@@ -1,39 +1,39 @@
-const Activity = require('../models/activity-model')
+const Article = require('../models/news-model')
 
-createActivity = (req, res) => {
+createArticle = (req, res) => {
     const body = req.body
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a Activity',
+            error: 'You must provide a Article',
         })
     }
 
-    const activity = new Activity(body)
+    const article = new Article(body)
 
-    if (!activity) {
+    if (!article) {
         return res.status(400).json({ success: false, error: err })
     }
 
-    activity
+    article
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: activity._id,
-                message: 'Activity created!',
+                id: article._id,
+                message: 'Article created!',
             })
         })
         .catch(error => {
             return res.status(400).json({
                 error,
-                message: 'Activity not created!',
+                message: 'Article not created!',
             })
         })
 }
 
-updateActivity = async (req, res) => {
+updateArticle = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -43,98 +43,99 @@ updateActivity = async (req, res) => {
         })
     }
 
-    Activity.findOne({ _id: req.params.id }, (err, activity) => {
+    Article.findOne({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Activity not found!',
+                message: 'Article not found!',
             })
         }
-        activity.name = body.name
-        activity.time = body.time
-        activity.rating = body.rating
-        activity
+        article.name = body.name
+        article.time = body.time
+        article.rating = body.rating
+        article
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: activity._id,
-                    message: 'Activity updated!',
+                    id: article._id,
+                    message: 'Article updated!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Activity not updated!',
+                    message: 'Article not updated!',
                 })
             })
     })
 }
 
-deleteActivity = async (req, res) => {
-    await Activity.findOneAndDelete({ _id: req.params.id }, (err, activity) => {
+deleteArticle = async (req, res) => {
+    await Article.findOneAndDelete({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!activity) {
+        if (!article) {
             return res
                 .status(404)
-                .json({ success: false, error: `Activity not found` })
+                .json({ success: false, error: `Article not found` })
         }
 
-        return res.status(200).json({ success: true, data: activity })
+        return res.status(200).json({ success: true, data: article })
     }).catch(err => console.log(err))
 }
 
-getMostRecentActivity = async (req, res) => {
-    await Activity.find({}, (err, activities) => {
-        if (err) {
-            return res.status(400).json({ success: false, error: err })
-        }
-        if (!activities.length) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Activity not found` })
-        }
-        return res.status(200).json({ success: true, data: activities[0] })
-    }).catch(err => console.log(err))
-}
-
-getActivityById = async (req, res) => {
-    await Activity.findOne({ _id: req.params.id }, (err, activity) => {
+getArticleById = async (req, res) => {
+    await Article.findOne({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!activity) {
+        if (!article) {
             return res
                 .status(404)
-                .json({ success: false, error: `Activity not found` })
+                .json({ success: false, error: `Article not found` })
         }
-        return res.status(200).json({ success: true, data: activity })
+        return res.status(200).json({ success: true, data: article })
     }).catch(err => console.log(err))
 }
-
-getActivities = async (req, res) => {
-    await Activity.find({}, (err, activities) => {
+getMostRecentArticle = async (req, res) => {
+    await Article.find({}, (err, news) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!activities.length) {
+        if (!news.length) {
             return res
                 .status(404)
                 .json({ success: false, error: `Activity not found` })
         }
-        return res.status(200).json({ success: true, data: activities })
+        return res.status(200).json({ success: true, data: news[0] })
     }).catch(err => console.log(err))
 }
+
+getNews = async (req, res) => {
+    await Article.find({}, (err, articles) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!articles.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Article not found` })
+        }
+        return res.status(200).json({ success: true, data: articles })
+    }).catch(err => console.log(err))
+}
+
+
 
 module.exports = {
-    createActivity,
-    updateActivity,
-    deleteActivity,
-    getActivities,
-    getActivityById,
-    getMostRecentActivity,
+    createArticle,
+    updateArticle,
+    deleteArticle,
+    getNews,
+    getArticleById,
+    getMostRecentArticle,
 }

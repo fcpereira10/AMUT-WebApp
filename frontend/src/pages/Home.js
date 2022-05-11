@@ -3,8 +3,8 @@ import { Component } from "react";
 import Video from "../components/Home/VideoSection/Video";
 import Info from "../components/Home/InfoSection/Info";
 import { homeObjTwo, homeObjThree } from "../components/Home/InfoSection/Data";
-import News from "../components/Home/NewsSection/News";
 import Footer from "../components/Footer/Footer";
+import NewsActivities from "../components/Home/NewsActivitiesSection/NewsActivities";
 
 export default class HomePage extends Component {
   componentDidMount() {
@@ -16,9 +16,8 @@ export default class HomePage extends Component {
       <>
 
         <Video />
-        <News />
+        <NewsActivities />
         <Info info={{ ...homeObjTwo }} />
-        <Info info={{ ...homeObjThree }} />
         <Footer /> 
       </>
     );
