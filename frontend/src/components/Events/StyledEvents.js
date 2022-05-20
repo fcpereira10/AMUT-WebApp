@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {Card} from 'react-bootstrap'
 import { Button } from '../StyledButton';
+import { FaClock, FaCalendarAlt, FaMapMarkerAlt, FaInfo } from "react-icons/fa";
 
 
 export const ContentContainer = styled.div`
@@ -17,8 +18,7 @@ export const EventsContainer = styled.div`
 `;
 
 export const EventsWrapper = styled.div`
-   padding-left: 30px;
-  padding-right: 30px;
+
 
   margin: 0px;
   display: grid;
@@ -26,9 +26,9 @@ export const EventsWrapper = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-  grid-gap: 30px;
+  grid-gap: 20px;
   padding-bottom: 60px;
-  padding-top: 30px;
+
   @media screen and (max-width: 1100px) {
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0 30px 30px;
@@ -66,17 +66,12 @@ export const EventsCard = styled(Card)`
 `
 
 export const EventsIcon = styled(Card.Img)`
-    height: 200px;
-    width: 100%;
-    aspect-ratio: auto ;
-
 `
+
 
 export const EventsH1 = styled.h1`
     font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 64px;
-
+    font-weight: bold;
     @media screen and (max-width: 480px) {
         font-size: 2rem;
     }
@@ -90,18 +85,109 @@ export const EventsH2 = styled(Card.Title)`
 `
 
 export const EventsP = styled(Card.Subtitle)`
-    max-width: 250px;
+    max-width: 240px;
     font-size: 1.2rem;
     text-align: center;
-    @media screen and (max-width: 980px) {
-      max-width: 200px;
+    @media screen and (max-width: 1100px) {
+      max-width: 230px;
   }
-    @media screen and (max-width: 389px) {
-      max-width: 150px;
+  @media screen and (max-width: 800px) {
+    max-width: 200px;
+  }
+  @media screen and (max-width: 580px) {
+    max-width: 200px;
   }
 `
 export const DetailsButton = styled(Button)`
 font-size: 16px;
 `
 
+export const TipologiaWrapper = styled.div`
 
+padding-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  grid-gap: 10px;
+  @media screen and (max-width: 1100px) {
+     grid-template-columns: 1fr;
+  }
+`;
+
+export const IconHora = styled(FaClock)`
+  width: 60px;
+  height: 60px;
+
+`;
+export const IconCalendario = styled(FaCalendarAlt)`
+  width: 60px;
+  height: 60px;
+
+`;
+export const IconLocal = styled(FaMapMarkerAlt)`
+  width: 60px;
+  height: 60px;
+
+`;
+export const IconInfo = styled(FaInfo)`
+  width: 60px;
+  height: 60px;
+
+`;
+
+export const IconTextTipologia = styled.div`
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  padding-bottom: 20px;
+
+`;
+export const TextTipologia = styled.div`
+  padding-left: 10px;
+  display: grid;
+`;
+export const TipologiaTitle = styled(Card.Title)`
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+export const TipologiaValor = styled.h4`
+  color: #d1312c;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+export const DescriptionText = styled(TipologiaValor)`
+  color: #000;
+  font-weight: lighter;
+  line-height: 2rem;
+  font-size: 1.2rem;
+
+`;
+export const InfoRow = styled.div`
+  display: grid;
+  grid-auto-columns: minmax(fill, 0.3fr);
+  grid-template-areas: ${({ imgStart }) =>
+    imgStart
+      ? `'col2
+     col1'`
+      : `'col1 col2'`};
+
+  @media screen and (max-width: 768px) {
+    grid-template-areas: ${({ imgStart }) =>
+      imgStart
+        ? `'col2'
+        'col1'`
+        : `'col2 col2' 'col1 col1'`};
+  }
+`;
+export const Column1 = styled.div`
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col1;
+
+`;
+
+export const Column2 = styled.div`
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col2;
+`;

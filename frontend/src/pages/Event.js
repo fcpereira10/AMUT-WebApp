@@ -1,17 +1,17 @@
 import React from "react";
 import { Component } from "react";
 import Footer from "../components/Footer/Footer";
-import Events from "../components/Events/Events"
+import Event from "../components/Events/Event";
 
 
-export default class EventsPage extends Component {
+export default class EventPage extends Component {
   componentDidMount() {
-    document.title = 'Eventos - AMUT Gondomar';
+    document.title = 'Evento - AMUT Gondomar';
   }
   render() {
     return (
       <>
-        <Events />
+        <Event />
         <Footer />
       </>
     );

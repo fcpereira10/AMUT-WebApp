@@ -50,9 +50,10 @@ updateActivity = async (req, res) => {
                 message: 'Activity not found!',
             })
         }
-        activity.name = body.name
-        activity.time = body.time
-        activity.rating = body.rating
+        activity.title = body.title
+        activity.description = body.description
+        activity.date = body.date
+        activity.local = body.local
         activity
             .save()
             .then(() => {
@@ -107,11 +108,6 @@ getActivityById = async (req, res) => {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!activity) {
-            return res
-                .status(404)
-                .json({ success: false, error: `Activity not found` })
-        }
         return res.status(200).json({ success: true, data: activity })
     }).catch(err => console.log(err))
 }

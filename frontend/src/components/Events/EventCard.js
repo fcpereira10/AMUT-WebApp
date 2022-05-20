@@ -10,6 +10,17 @@ import {
 import Icon1 from "../../images/buracas do casmilo.png";
 import moment from 'moment';
 
+class Details extends Component {
+  eventPage = (event) => {
+    event.preventDefault();
+
+    window.location.href = `/atividades/${this.props.id}`;
+  };
+
+  render() {
+    return <DetailsButton to="" onClick={this.eventPage}>Ver Detalhes</DetailsButton>;
+  }
+}
 export default class EventCard extends Component {
     
   render() {
@@ -22,7 +33,7 @@ export default class EventCard extends Component {
             <EventsH2>{moment(this.props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{this.props.data.title}</EventsP>
           </EventsCard.Body>
-          <DetailsButton to="">Ver Detalhes</DetailsButton>
+          <Details id={this.props.data._id}/>
         </EventsCard>
       </>
     );

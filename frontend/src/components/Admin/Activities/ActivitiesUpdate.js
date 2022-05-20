@@ -3,13 +3,14 @@ import { Col, Form } from "react-bootstrap";
 import { Button } from "../../StyledButton";
 import api from "../../../api";
 import { CancelButton, Wrapper } from "./StyledActivities";
+import {useParams} from "react-router-dom";
 
 export default class ActivitiesUpdate extends Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
-      id: this.props.match.params.id,
+      id: "6268585a5164c66a83557c45",
       title: "",
       date: "",
       description: "",
@@ -60,7 +61,7 @@ export default class ActivitiesUpdate extends Component {
         local: activity.data.data.local,
        
     })
-}
+  }
 
   render() {
     const { title, date, description, local } = this.state;
@@ -102,7 +103,6 @@ export default class ActivitiesUpdate extends Component {
           </Form.Group>
         </Form>
         <Button onClick={this.handleUpdateActivity}>Add Movie</Button>
-        <CancelButton to={"/atividades/lista"}>Cancel</CancelButton>
       </Wrapper>
     );
   }

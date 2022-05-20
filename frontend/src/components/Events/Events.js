@@ -7,7 +7,6 @@ import {
 } from "./StyledEvents";
 import api from "../../api";
 import EventCard from "./EventCard";
-
 export default class Events extends Component {
   constructor(props) {
     super(props);

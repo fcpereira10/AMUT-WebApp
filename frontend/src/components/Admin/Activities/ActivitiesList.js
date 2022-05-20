@@ -8,7 +8,7 @@ import "react-table/react-table.css";
 class UpdateActivity extends Component {
   updateUser = (event) => {
     event.preventDefault();
-
+    
     window.location.href = `/admin/atividades/${this.props.id}`;
   };
 

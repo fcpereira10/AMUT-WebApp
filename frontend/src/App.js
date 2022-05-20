@@ -12,6 +12,7 @@ import AmutPage from "./pages/AMUT";
 import ActivitiesUpdate from "../src/components/Admin/Activities/ActivitiesUpdate";
 import AdminPage from "./pages/Admin";
 import EventsPage from "./pages/Events";
+import EventPage from "./pages/Event"
 import AssociadosPage from "./pages/Associados";
 
 function App() {
@@ -26,8 +27,13 @@ function App() {
         <Route path="/noticias" element={<NewsPage />} />
         <Route path="/AMUT/associados" element={<AssociadosPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route
+                    path="/admin/atividades/:id"
+                    exact
+                    element={<ActivitiesUpdate/>}
+                />
         <Route path="/atividades" element={<EventsPage/>} />
-        <Route path="/atividades/:id" exact component={<ActivitiesUpdate/>} />
+        <Route path="/atividades/:id" element={<EventPage/>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
