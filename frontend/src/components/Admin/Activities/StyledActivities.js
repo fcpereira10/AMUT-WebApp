@@ -5,7 +5,7 @@ export const Title = styled.h1
 
 
 export const Wrapper = styled.div`
-    padding-top: 30px;
+    padding: 30px;
   max-width: 100%;
   margin: 0px;
   display: grid;

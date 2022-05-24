@@ -31,12 +31,12 @@ export default class Video extends Component {
                 Torne-se Associado já Hoje!
               </p>
               <div className="btnWrapper">
-                <Button to='signup' 
+                <Button to='/AMUT/associados' 
                 onMouseEnter={this.onHover} 
                 onMouseLeave={this.onHover}
                 primary="true"
                 dark="true">
-                  Inscrever-se {this.state.hover ? <MdArrowForward className="ArrowForward" /> : <MdKeyboardArrowRight/>}
+                  Descubra as Vantagens {this.state.hover ? <MdArrowForward className="ArrowForward" /> : <MdKeyboardArrowRight/>}
                 </Button>
               </div>
             </div>

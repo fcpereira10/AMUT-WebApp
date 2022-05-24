@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "moment": "^2.29.3"
+    "moment": "^2.29.3",
+    "react-bootstrap-date-picker": "^5.1.0"
   }
 }

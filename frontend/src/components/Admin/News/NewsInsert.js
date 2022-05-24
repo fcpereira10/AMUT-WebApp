@@ -32,7 +32,7 @@ export default class NewsInsert extends Component {
       window.alert(`Notícia inserida com Sucesso!`);
       this.setState({
         title: "",
-        date: "",
+        date: Date.now(),
         description: "",
       });
     });

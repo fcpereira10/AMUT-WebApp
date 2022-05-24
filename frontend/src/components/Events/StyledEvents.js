@@ -66,6 +66,7 @@ export const EventsCard = styled(Card)`
 `
 
 export const EventsIcon = styled(Card.Img)`
+border-radius: 10px;
 `
 
 

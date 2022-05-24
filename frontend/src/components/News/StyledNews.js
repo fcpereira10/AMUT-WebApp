@@ -52,13 +52,17 @@ export const NewsCard = styled(Card)`
 `;
 
 export const NewsIcon = styled(Card.Img)`
-  height: 50%;
-  width: 50%;
-  justify-content: center;
-  margin-bottom: 10px;
+border-radius: 10px;
 `;
 
 
+export const NewsH1 = styled.h1`
+    font-size: 2.5rem;
+    font-weight: bold;
+    @media screen and (max-width: 480px) {
+        font-size: 2rem;
+    }
+`
 export const NewsH2 = styled(Card.Title)`
   font-size: 1.5rem;
   text-align: center;
@@ -88,8 +92,7 @@ export const NewContainer = styled.div`
 
 export const NewsRow = styled.div`
   display: grid;
-  grid-auto-columns: minmax(auto, 1fr);
-  align-items: center;
+  grid-auto-columns: minmax(fill, 0.3fr);
   grid-template-areas: ${({ imgStart }) =>
     imgStart
       ? `'col2
@@ -99,9 +102,9 @@ export const NewsRow = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-areas: ${({ imgStart }) =>
       imgStart
-        ? `'col1'
-        'col2'`
-        : `'col1 col1' 'col2 col2'`};
+        ? `'col2'
+        'col1'`
+        : `'col2 col2' 'col1 col1'`};
   }
 `;
 
@@ -109,6 +112,7 @@ export const Column1 = styled.div`
   margin-bottom: 15px;
   padding: 0 15px;
   grid-area: col1;
+
 `;
 
 export const Column2 = styled.div`
@@ -133,7 +137,7 @@ export const TopLine = styled.p`
 `;
 export const Heading = styled.h1`
   margin-bottom: 24px;
-  max-width: 555px;
+  max-width: 100%;
   font-size: 30px;
   line-height: 1.1;
   font-weight: 600;
@@ -144,7 +148,7 @@ export const Heading = styled.h1`
   }
 `;
 export const Subtitle = styled.p`
-  max-width: 555px;
+  max-width: 100%;
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
@@ -228,3 +232,21 @@ export const NewsLink = styled(Link)`
   }
 `
 
+export const TipologiaValor = styled.h4`
+  color: #d1312c;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+export const DescriptionText = styled(TipologiaValor)`
+  color: #000;
+  font-weight: normal;
+  line-height: 2rem;
+  font-size: 1.2rem;
+
+`;
+export const PublicationDate = styled(DescriptionText)`
+  color: #3d3d3d;
+  font-weight: lighter;
+  font-size: 1rem;
+
+`;

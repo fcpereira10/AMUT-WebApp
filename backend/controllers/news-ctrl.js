@@ -43,22 +43,22 @@ updateArticle = async (req, res) => {
         })
     }
 
-    Article.findOne({ _id: req.params.id }, (err, article) => {
+    Activity.findOne({ _id: req.params.id }, (err, activity) => {
         if (err) {
             return res.status(404).json({
                 err,
                 message: 'Article not found!',
             })
         }
-        article.name = body.name
-        article.time = body.time
-        article.rating = body.rating
-        article
+        activity.title = body.title
+        activity.description = body.description
+        activity.date = body.date
+        activity
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: article._id,
+                    id: activity._id,
                     message: 'Article updated!',
                 })
             })

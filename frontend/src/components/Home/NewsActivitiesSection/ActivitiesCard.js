@@ -13,6 +13,7 @@ import moment from 'moment';
 export default class ActivitiesCard extends Component {
     
   render() {
+    
     return (
       <>
         <EventsCard>

@@ -38,6 +38,7 @@ export default class NewsCard extends Component {
             {this.props.data.description}
           </Subtitle>
           <NewsP>
+       
             Publicado em {moment(this.props.data.date).format("DD/MM/YYYY")}
           </NewsP>
           <DetailsButton to="/">Continuar a Ler</DetailsButton>

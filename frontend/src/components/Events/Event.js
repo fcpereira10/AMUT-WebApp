@@ -23,6 +23,8 @@ import {
 import api from "../../api";
 import Icon1 from "../../images/buracas do casmilo.png";
 import moment from "moment";
+import { Button } from "../StyledButton";
+import { MdArrowBack, MdKeyboardArrowLeft } from "react-icons/md";
 
 export default class Event extends Component {
   constructor(props) {
@@ -34,8 +36,12 @@ export default class Event extends Component {
       date: "",
       description: "",
       local: "",
+      hover: false,
     };
   }
+  onHover = () => {
+    this.setState({ hover: !this.state.hover });
+  };
 
   componentDidMount = async () => {
     const { id } = this.state;
@@ -55,6 +61,27 @@ export default class Event extends Component {
     return (
       <>
         <ContentContainer>
+          <div
+            className="btnWrapper"
+            style={{
+              paddingLeft: "30px",
+              alignItems: "flex-start",
+              textAlign: "left",
+            }}
+          >
+            <Button
+              to="/noticias"
+              onMouseEnter={this.onHover}
+              onMouseLeave={this.onHover}
+            >
+              {this.state.hover ? (
+                <MdArrowBack className="ArrowBack" />
+              ) : (
+                <MdKeyboardArrowLeft />
+              )}{" "}
+              Eventos
+            </Button>
+          </div>
           <EventsContainer>
             <InfoRow imgStart={false}>
               <Column1>
