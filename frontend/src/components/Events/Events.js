@@ -34,15 +34,10 @@ export default class Events extends Component {
 
             <EventsWrapper>
               {activities.map((activity) => (
-                <EventCard data={activity} />
+                <EventCard key={activity._id} data={activity} />
               ))}
             </EventsWrapper>
             <EventsH2>Eventos Anteriores</EventsH2>
-            <EventsWrapper>
-              {activities.map((activity) => (
-                <EventCard data={activity} />
-              ))}
-            </EventsWrapper>
           </EventsContainer>
         </ContentContainer>
       </>

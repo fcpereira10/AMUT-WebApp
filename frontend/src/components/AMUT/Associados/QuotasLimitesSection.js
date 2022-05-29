@@ -130,7 +130,7 @@ export default class QuotaslimitesSection extends Component {
             <Heading>Simulação de Quota e Limites Anuais</Heading>
             <Form.Group as={Col}>
               <Form.Group as={Row}>
-                <SubHeading>Estado Civil</SubHeading>
+                <SubHeading>Titulares</SubHeading>
 
                 <Col sm={3}>
                   <Form.Control
@@ -146,8 +146,8 @@ export default class QuotaslimitesSection extends Component {
                     value={estado}
                     onChange={this.handleChangeEstado}
                   >
-                    <option value="1">Solteiro</option>
-                    <option value="2">Casado</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                   </Form.Control>
                 </Col>
               </Form.Group>

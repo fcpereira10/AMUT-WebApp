@@ -14,7 +14,6 @@ export default class HomePage extends Component {
     
     return (
       <>
-
         <Video />
         <NewsActivities />
         <Info info={{ ...homeObjTwo }} />

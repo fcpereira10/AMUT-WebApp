@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import { Button } from "../../StyledButton";
 import api from "../../../api";
-import { CancelButton, Wrapper } from "./StyledActivities";
+import { Wrapper } from "./StyledActivities";
 
 export default class ActivitiesInsert extends Component {
   constructor(props) {
@@ -89,7 +89,9 @@ export default class ActivitiesInsert extends Component {
               />
             </Form.Group>
           </Row>
-          <Row className="mb-3">
+        </Form>
+
+        <Row className="mb-3">
             <Form.Group as={Col} sm={4}>
               <Form.Label>Imagem</Form.Label>
               <Form.Group controlId="formFile" className="mb-3">
@@ -97,7 +99,7 @@ export default class ActivitiesInsert extends Component {
               </Form.Group>
             </Form.Group>
           </Row>
-        </Form>
+
         <Button to="" onClick={this.handleIncludeActivity}>
           Adicionar Atividade
         </Button>

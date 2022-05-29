@@ -36,6 +36,7 @@ function App() {
         <Route path="/atividades/:id" element={<EventPage />} />
         <Route path="/noticias/:id" element={<ArticlePage />} />
         <Route path="*" element={<NotFoundPage />} />
+        
       </Routes>
     </Router>
   );

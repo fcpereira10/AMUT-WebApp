@@ -19,7 +19,10 @@ app.get('/', (req, res) => {
     res.send(`Server running on port ${apiPort}`)
 })
 
+
 app.use('/api', ActivityRouter)
 app.use('/api', NewsRouter)
 
+
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+
