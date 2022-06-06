@@ -1,19 +1,16 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   EventsContainer,
   EventsWrapper,
-  EventsH2,
   ContentContainer,
   EventsIcon,
   TipologiaWrapper,
-  IconHora,
   IconTextTipologia,
   TextTipologia,
   TipologiaTitle,
   TipologiaValor,
   IconCalendario,
   IconLocal,
-  IconInfo,
   EventsH1,
   DescriptionText,
   InfoRow,

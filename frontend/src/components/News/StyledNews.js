@@ -4,7 +4,6 @@ import { Button } from "../StyledButton";
 
 import { Link } from "react-router-dom";
 
-
 export const ContentContainer = styled.div`
   background-color: #fff;
   display: absolute;
@@ -18,10 +17,10 @@ export const NewsContainer = styled.div`
 `;
 
 export const NewsWrapper = styled.div`
-padding: 30px;
+  padding: 30px;
   margin: 0px;
   display: grid;
-  grid-template-columns: 1fr ;
+  grid-template-columns: 1fr;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -52,47 +51,43 @@ export const NewsCard = styled(Card)`
 `;
 
 export const NewsIcon = styled(Card.Img)`
-border-radius: 10px;
+  border-radius: 10px;
 `;
 
-
 export const NewsH1 = styled.h1`
-    font-size: 2.5rem;
-    font-weight: bold;
-    @media screen and (max-width: 480px) {
-        font-size: 2rem;
-    }
-`
+  font-size: 2.5rem;
+  font-weight: bold;
+  @media screen and (max-width: 480px) {
+    font-size: 2rem;
+  }
+`;
 export const NewsH2 = styled(Card.Title)`
   font-size: 1.5rem;
   text-align: center;
   padding-top: 30px;
   font-weight: bold;
-
 `;
 
 export const NewsP = styled(Card.Subtitle)`
   font-size: 1rem;
   padding-bottom: 10px;
   padding-top: 20px;
-  color: '#3d3d3d';
+  color: "#3d3d3d";
 `;
 export const DetailsButton = styled(Button)`
   font-size: 16px;
 `;
 
-
 export const NewContainer = styled.div`
-  background: ${({ lightBg }) => (lightBg ? '#f9f9f9' : '#3d3d3d')};
+  background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#3d3d3d")};
   @media screen and (max-width: 768px) {
     padding: 100px 0;
   }
 `;
 
-
 export const NewsRow = styled.div`
   display: grid;
-  grid-auto-columns: minmax(fill, 0.3fr);
+  grid-auto-columns: minmax(1fr, 1fr);
   grid-template-areas: ${({ imgStart }) =>
     imgStart
       ? `'col2
@@ -109,10 +104,13 @@ export const NewsRow = styled.div`
 `;
 
 export const Column1 = styled.div`
+  min-width: 600px;
   margin-bottom: 15px;
   padding: 0 15px;
   grid-area: col1;
-
+  @media screen and (max-width: 768px) {
+    min-width: 0px;
+  }
 `;
 
 export const Column2 = styled.div`
@@ -141,7 +139,7 @@ export const Heading = styled.h1`
   font-size: 30px;
   line-height: 1.1;
   font-weight: 600;
-  color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#010606')};
+  color: ${({ lightText }) => (lightText ? "#f7f8fa" : "#010606")};
 
   @media screen and (max-width: 480px) {
     font-size: 25px;
@@ -152,7 +150,7 @@ export const Subtitle = styled.p`
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
-  color: ${({ lightTextDesc }) => (lightTextDesc ? '#fff' : '#010606')};
+  color: ${({ lightTextDesc }) => (lightTextDesc ? "#fff" : "#010606")};
 `;
 
 export const BtnWrap = styled.div`
@@ -172,65 +170,65 @@ export const Img = styled.img`
 `;
 
 export const NewsWrap = styled.div`
-    padding: 24px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-`
+  padding: 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+`;
 
 export const NewsLinksContainer = styled.div`
-    display: flex;
-    justify-content: left;
-`
+  display: flex;
+  justify-content: left;
+`;
 
 export const NewsLinksWrapper = styled.div`
-    display: flex;
+  display: flex;
 
-    @media screen and (max-width: 820px) {
-        flex-direction: column;
-    }
-`
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+  }
+`;
 
 export const NewsLinkItems = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    text-align: left;
-    width: 160px;
-    box-sizing: border-box;
-    color: #fff;
+  text-align: left;
+  width: 160px;
+  box-sizing: border-box;
+  color: #fff;
 
-    @media screen and (max-width: 420px) {
-        margin: 0;
-        padding: 10px;
-        width: 100%;
-    }
-`
+  @media screen and (max-width: 420px) {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+  }
+`;
 
 export const NewsLinkTitle = styled.h1`
-    font-size: 18px;
-    margin-bottom: 16px;
-    font-weight: bold;
-`
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: bold;
+`;
 
 export const NewsLink = styled(Link)`
-    color: #3d3d3d;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    font-size: 16px;
+  color: #3d3d3d;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
 
-    &:hover {
+  &:hover {
     color: #d1312c;
     font-weight: bold;
     text-decoration: none;
     transform: translate(0%);
-    transition: 0.25s ease-in-out ;
+    transition: 0.25s ease-in-out;
   }
-`
+`;
 
 export const TipologiaValor = styled.h4`
   color: #d1312c;
@@ -242,11 +240,9 @@ export const DescriptionText = styled(TipologiaValor)`
   font-weight: normal;
   line-height: 2rem;
   font-size: 1.2rem;
-
 `;
 export const PublicationDate = styled(DescriptionText)`
   color: #3d3d3d;
   font-weight: lighter;
   font-size: 1rem;
-
 `;

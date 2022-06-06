@@ -73,6 +73,7 @@ border-radius: 10px;
 export const EventsH1 = styled.h1`
     font-size: 2.5rem;
     font-weight: bold;
+    max-width: 555px;
     @media screen and (max-width: 480px) {
         font-size: 2rem;
     }
@@ -157,6 +158,7 @@ export const TipologiaValor = styled.h4`
   font-size: 1.2rem;
 `;
 export const DescriptionText = styled(TipologiaValor)`
+max-width: 655px;
   color: #000;
   font-weight: lighter;
   line-height: 2rem;
@@ -165,7 +167,7 @@ export const DescriptionText = styled(TipologiaValor)`
 `;
 export const InfoRow = styled.div`
   display: grid;
-  grid-auto-columns: minmax(fill, 0.3fr);
+  grid-auto-columns: minmax(1fr, 1fr);
   grid-template-areas: ${({ imgStart }) =>
     imgStart
       ? `'col2
@@ -181,9 +183,13 @@ export const InfoRow = styled.div`
   }
 `;
 export const Column1 = styled.div`
+  min-width: 600px;
   margin-bottom: 15px;
   padding: 0 15px;
   grid-area: col1;
+  @media screen and (max-width: 768px) {
+    min-width: 0px;
+  }
 
 `;
 

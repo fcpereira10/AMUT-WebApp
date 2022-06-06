@@ -12,8 +12,16 @@ export default class NewsInsert extends Component {
       title: "",
       date: Date.now(),
       description: "",
+      selectedFile: "",
     };
   }
+
+  // On file select (from the pop up)
+  onFileChange = (event) => {
+    // Update the state
+    const file = event.target.files[0];
+    this.setState({ selectedFile: file });
+  };
 
   handleChangeInputTitle = async (event) => {
     const title = event.target.value;
@@ -29,6 +37,15 @@ export default class NewsInsert extends Component {
     const payload = { title, date, description };
 
     await api.insertArticle(payload).then((res) => {
+      const id = res.data.id;
+      const extension = this.state.selectedFile.name.substring(
+        this.state.selectedFile.name.lastIndexOf(".")
+      );
+      const formData = new FormData();
+      formData.append("file", this.state.selectedFile, id + extension);
+      // Request made to the backend api
+      // Send formData object
+      api.uploadArticleImage(formData);
       window.alert(`Notícia inserida com Sucesso!`);
       this.setState({
         title: "",
@@ -51,8 +68,6 @@ export default class NewsInsert extends Component {
                 onChange={this.handleChangeInputTitle}
               />
             </Form.Group>
-
-           
           </Row>
           <Row className="mb-3">
             <Form.Group as={Col}>
@@ -69,8 +84,8 @@ export default class NewsInsert extends Component {
             <Form.Group as={Col} sm={4}>
               <Form.Label>Imagem</Form.Label>
               <Form.Group controlId="formFile" className="mb-3">
-                <Form.Control type="file" />
-              </Form.Group>
+              <Form.Control onChange={this.onFileChange} type="file" />
+            </Form.Group>
             </Form.Group>
           </Row>
         </Form>

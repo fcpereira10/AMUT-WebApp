@@ -10,5 +10,6 @@ router.delete('/article/:id', ArticleCtrl.deleteArticle)
 router.get('/article/:id', ArticleCtrl.getArticleById)
 router.get('/news', ArticleCtrl.getNews)
 router.get('/news/recent', ArticleCtrl.getMostRecentArticle)
+router.post('/uploadArticleImage', ArticleCtrl.uploadArticleImage)
 
 module.exports = router

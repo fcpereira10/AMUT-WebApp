@@ -54,7 +54,7 @@ export default class News extends Component {
           <NewsContainer>
             <NewsWrapper>
               {news.map((article) => (
-                <ArticleCard data={article} />
+                <ArticleCard key={article._id} data={article} />
               ))}
             </NewsWrapper>
           </NewsContainer>

@@ -13,8 +13,15 @@ export default class ActivitiesInsert extends Component {
       date: "",
       description: "",
       local: "",
+      selectedFile: "",
     };
   }
+  // On file select (from the pop up)
+  onFileChange = (event) => {
+    // Update the state
+    const file = event.target.files[0];
+    this.setState({ selectedFile: file });
+  };
 
   handleChangeInputTitle = async (event) => {
     const title = event.target.value;
@@ -38,6 +45,15 @@ export default class ActivitiesInsert extends Component {
     const payload = { title, date, description, local };
 
     await api.insertActivity(payload).then((res) => {
+      const id = res.data.id;
+      const extension = this.state.selectedFile.name.substring(
+        this.state.selectedFile.name.lastIndexOf(".")
+      );
+      const formData = new FormData();
+      formData.append("file", this.state.selectedFile, id + extension);
+      // Request made to the backend api
+      // Send formData object
+      api.uploadActivityImage(formData);
       window.alert(`Atividade inserida com Sucesso!`);
       this.setState({
         title: "",
@@ -92,13 +108,13 @@ export default class ActivitiesInsert extends Component {
         </Form>
 
         <Row className="mb-3">
-            <Form.Group as={Col} sm={4}>
-              <Form.Label>Imagem</Form.Label>
-              <Form.Group controlId="formFile" className="mb-3">
-                <Form.Control type="file" />
-              </Form.Group>
+          <Form.Group as={Col} sm={4}>
+            <Form.Label>Imagem</Form.Label>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control onChange={this.onFileChange} type="file" />
             </Form.Group>
-          </Row>
+          </Form.Group>
+        </Row>
 
         <Button to="" onClick={this.handleIncludeActivity}>
           Adicionar Atividade

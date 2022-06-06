@@ -14,11 +14,11 @@ import moment from 'moment';
 
 export default function EventCard(props){
 
+
     return (
       <>
-     
         <EventsCard>
-          <EventsIcon variant="top" src={Icon1} />
+          <EventsIcon variant="top" src={"../../../../backend/controllers/activities/"+ props.data._id + ".png"}  />
           <EventsCard.Body>
             <EventsH2>{moment(props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{props.data.title}</EventsP>

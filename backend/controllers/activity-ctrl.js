@@ -1,5 +1,6 @@
 const Activity = require('../models/activity-model')
 
+
 createActivity = (req, res) => {
     const body = req.body
 
@@ -126,6 +127,22 @@ getActivities = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+uploadActivityImage = async(req, res) => {
+  
+    const newpath = __dirname + "/activities/";
+    const file = req.files.file;
+    const filename = file.name;
+    
+    file.mv(`${newpath}${filename}`, (err) => {
+    if (err) {
+      res.status(500).send({ message: "File upload failed "+ err, code: 200 });
+    }
+    res.status(200).send({ message: "File Uploaded", code: 200 });
+  });
+};
+
+
+
 module.exports = {
     createActivity,
     updateActivity,
@@ -133,4 +150,5 @@ module.exports = {
     getActivities,
     getActivityById,
     getMostRecentActivity,
+    uploadActivityImage
 }
