@@ -52,6 +52,7 @@ export const NewsCard = styled(Card)`
 
 export const NewsIcon = styled(Card.Img)`
   border-radius: 10px;
+  max-width: 555px;
 `;
 
 export const NewsH1 = styled.h1`
@@ -104,7 +105,7 @@ export const NewsRow = styled.div`
 `;
 
 export const Column1 = styled.div`
-  min-width: 600px;
+  min-width: 200px;
   margin-bottom: 15px;
   padding: 0 15px;
   grid-area: col1;
@@ -116,6 +117,7 @@ export const Column1 = styled.div`
 export const Column2 = styled.div`
   margin-bottom: 15px;
   padding: 0 15px;
+  text-align: right !important;
   grid-area: col2;
 `;
 
@@ -159,7 +161,7 @@ export const BtnWrap = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-  max-width: 555px;
+  text-align: right;
   height: 100%;
 `;
 
@@ -167,6 +169,8 @@ export const Img = styled.img`
   width: 100%;
   height: 0 0 10px 0;
   padding-right: 0;
+  border-radius: 10px;
+  max-width: 555px;
 `;
 
 export const NewsWrap = styled.div`

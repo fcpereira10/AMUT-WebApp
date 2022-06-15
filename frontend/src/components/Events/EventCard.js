@@ -8,9 +8,8 @@ import {
   EventsP,
   DetailsButton,
 } from "./StyledEvents";
-
-import Icon1 from "../../images/buracas do casmilo.png";
 import moment from 'moment';
+import Icon1 from "../../images/events.svg";
 
 export default function EventCard(props){
 
@@ -18,7 +17,7 @@ export default function EventCard(props){
     return (
       <>
         <EventsCard>
-          <EventsIcon variant="top" src={"../../../../backend/controllers/activities/"+ props.data._id + ".png"}  />
+          <EventsIcon variant="top" src={"http://localhost:3000/static/"+ props.data._id + ".png"}  onError={(e)=>{e.target.onerror = null; e.target.src=Icon1}} />
           <EventsCard.Body>
             <EventsH2>{moment(props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{props.data.title}</EventsP>

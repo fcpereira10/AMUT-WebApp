@@ -20,6 +20,12 @@ export const updateArticleById = (id, payload) => api.put(`/article/${id}`, payl
 export const deleteArticleById = id => api.delete(`/article/${id}`)
 export const getArticleById = id => api.get(`/article/${id}`)
 export const uploadArticleImage = payload => api.post(`/uploadarticleimage`, payload);
+//Users
+export const insertUser = payload => api.post(`/user`, payload)
+export const getAllUsers = () => api.get(`/users`)
+export const updateUserById = (id, payload) => api.put(`/user/${id}`, payload)
+export const deleteUserById = id => api.delete(`/user/${id}`)
+export const getUserById = id => api.get(`/user/${id}`)
 
 
 const apis = {
@@ -39,6 +45,12 @@ const apis = {
     getArticleById,
     getMostRecentArticle,
     uploadArticleImage,
+    //News
+    insertUser,
+    getAllUsers,
+    updateUserById,
+    deleteUserById,
+    getUserById,
 }
 
 export default apis

@@ -50,9 +50,9 @@ updateUser = async (req, res) => {
                 message: 'User not found!',
             })
         }
-        user.name = body.name
-        user.time = body.time
-        user.rating = body.rating
+        user.title = body.title
+        user.description = body.description
+        user.date = body.date
         user
             .save()
             .then(() => {
@@ -115,6 +115,8 @@ getUsers = async (req, res) => {
         return res.status(200).json({ success: true, data: users })
     }).catch(err => console.log(err))
 }
+
+
 
 module.exports = {
     createUser,

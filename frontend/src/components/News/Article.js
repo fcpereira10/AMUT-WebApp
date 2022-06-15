@@ -12,7 +12,7 @@ import {
   PublicationDate,
 } from "./StyledNews";
 import api from "../../api";
-import Icon1 from "../../images/buracas do casmilo.png";
+import Icon1 from "../../images/news.svg";
 import moment from "moment";
 import { Button } from "../StyledButton";
 import { MdArrowBack, MdKeyboardArrowLeft } from "react-icons/md";
@@ -77,7 +77,8 @@ export default function Article(props) {
             </Column1>
             <Column2>
               {" "}
-              <NewsIcon variant="top" src={Icon1} />
+
+              <NewsIcon variant="top" src={"http://localhost:3000/static/"+ id + ".png"}  onError={(e)=>{e.target.onerror = null; e.target.src=Icon1}} />
             </Column2>
           </NewsRow>
 

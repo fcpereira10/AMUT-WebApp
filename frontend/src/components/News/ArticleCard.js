@@ -15,7 +15,6 @@ import {
   DetailsButton,
 } from "./StyledNews";
 import Icon1 from "../../images/news.svg";
-import { Button } from "../StyledButton";
 import moment from 'moment';
 class Details extends Component {
   eventPage = (event) => {
@@ -56,7 +55,7 @@ export default class ArticleCard extends Component {
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={Icon1} alt="news" />
+              <Img variant="top" src={"http://localhost:3000/static/"+ this.props.data._id + ".png"}  onError={(e)=>{e.target.onerror = null; e.target.src=Icon1}}/>
               </ImgWrap>
             </Column2>
           </NewsRow>

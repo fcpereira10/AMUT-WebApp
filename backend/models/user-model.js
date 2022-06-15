@@ -3,18 +3,18 @@ const Schema = mongoose.Schema
 
 const User = new Schema(
     {
-        userId: { type: String, required: true },
+        nrUser: { type: String, required: true },
+        isAdmin: { type: Boolean, required: true },
         email: { type: String, required: true },
-        password: { type: String, required: true },
-        /* 
-        nome: { type: String, required: true },
+        password: { type: String, required: false },
+        name: { type: String, required: true },
         nif: { type: String, required: true },
-        telemovel: { type: Number, required: false },
+        phone: { type: Number, required: false },
         iban: { type: String, required: false },
-        morada: { type: String, required: false },
-        cod_postal: { type: String, required: false },
-        localidade: { type: String, required: false },
-        falta os subscritores */
+        address: { type: String, required: false },
+        postalCode: { type: String, required: false },
+        local: { type: String, required: false },
+        /*falta os subscritores */
     },
     { timestamps: true },
 )

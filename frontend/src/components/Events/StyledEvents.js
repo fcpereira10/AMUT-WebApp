@@ -1,8 +1,7 @@
-import styled from 'styled-components'
-import {Card} from 'react-bootstrap'
-import { Button } from '../StyledButton';
+import styled from "styled-components";
+import { Card } from "react-bootstrap";
+import { Button } from "../StyledButton";
 import { FaClock, FaCalendarAlt, FaMapMarkerAlt, FaInfo } from "react-icons/fa";
-
 
 export const ContentContainer = styled.div`
   background-color: #fff;
@@ -10,16 +9,13 @@ export const ContentContainer = styled.div`
 `;
 
 export const EventsContainer = styled.div`
-  height:100%;
+  height: 100%;
   padding: 30px;
   display: flex;
   flex-direction: column;
-
 `;
 
 export const EventsWrapper = styled.div`
-
-
   margin: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -41,57 +37,61 @@ export const EventsWrapper = styled.div`
     grid-template-columns: 1fr;
     padding: 0 30px 30px;
   }
-`
+`;
 
 export const EventsCard = styled(Card)`
-   background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 30px;
-    border-radius: 10px;
-    height: 100%;
-
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  height: 100%;
 
   border: 1px solid #f2f2f2;
   box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease-in-out;
 
-    &:hover {
-        transform: scale(1.05);
-        transition: all 0.25s ease-in-out;
-        cursor: pointer
-    }
-`
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+  }
+`;
 
 export const EventsIcon = styled(Card.Img)`
-border-radius: 10px;
-`
-
+  border-radius: 10px;
+  height: 300px;
+  object-fit: cover;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.25s ease-in-out;
+  }
+`;
 
 export const EventsH1 = styled.h1`
-    font-size: 2.5rem;
-    font-weight: bold;
-    max-width: 555px;
-    @media screen and (max-width: 480px) {
-        font-size: 2rem;
-    }
-`
+  font-size: 2.5rem;
+  font-weight: bold;
+  max-width: 555px;
+  @media screen and (max-width: 480px) {
+    font-size: 2rem;
+  }
+`;
 
 export const EventsH2 = styled(Card.Title)`
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: bold;
-    padding-bottom: 30px;
-`
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 30px;
+`;
 
 export const EventsP = styled(Card.Subtitle)`
-    max-width: 240px;
-    font-size: 1.2rem;
-    text-align: center;
-    @media screen and (max-width: 1100px) {
-      max-width: 230px;
+  max-width: 240px;
+  font-size: 1.2rem;
+  text-align: center;
+  @media screen and (max-width: 1100px) {
+    max-width: 230px;
   }
   @media screen and (max-width: 800px) {
     max-width: 200px;
@@ -99,49 +99,43 @@ export const EventsP = styled(Card.Subtitle)`
   @media screen and (max-width: 580px) {
     max-width: 200px;
   }
-`
+`;
 export const DetailsButton = styled(Button)`
-font-size: 16px;
-`
+  font-size: 16px;
+`;
 
 export const TipologiaWrapper = styled.div`
-
-padding-top: 30px;
+  padding-top: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   grid-gap: 10px;
   @media screen and (max-width: 1100px) {
-     grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 `;
 
 export const IconHora = styled(FaClock)`
   width: 60px;
   height: 60px;
-
 `;
 export const IconCalendario = styled(FaCalendarAlt)`
   width: 60px;
   height: 60px;
-
 `;
 export const IconLocal = styled(FaMapMarkerAlt)`
   width: 60px;
   height: 60px;
-
 `;
 export const IconInfo = styled(FaInfo)`
   width: 60px;
   height: 60px;
-
 `;
 
 export const IconTextTipologia = styled.div`
   display: grid;
   grid-template-columns: 0.1fr 1fr;
   padding-bottom: 20px;
-
 `;
 export const TextTipologia = styled.div`
   padding-left: 10px;
@@ -158,12 +152,11 @@ export const TipologiaValor = styled.h4`
   font-size: 1.2rem;
 `;
 export const DescriptionText = styled(TipologiaValor)`
-max-width: 655px;
+  max-width: 655px;
   color: #000;
   font-weight: lighter;
   line-height: 2rem;
   font-size: 1.2rem;
-
 `;
 export const InfoRow = styled.div`
   display: grid;
@@ -190,7 +183,6 @@ export const Column1 = styled.div`
   @media screen and (max-width: 768px) {
     min-width: 0px;
   }
-
 `;
 
 export const Column2 = styled.div`
