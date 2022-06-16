@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
+import api from "../../api";
 import {
   Container,
   FormContent,
@@ -12,30 +13,57 @@ import {
   Reg,
 } from "./StyledLogin";
 
-export default class Login extends Component {
-  render() {
-    return (
-      <>
-        <Container>
-          <FormWrap>
-            <FormContent>
-              <Form action="#">
-                <FormH1>Área Reservada</FormH1>
-                <FormLabel htmlFor="for">Email</FormLabel>
-                <FormInput placeholder="exemplo@mail.com" type="email" required />
-                <FormLabel htmlFor='for'>Senha</FormLabel>
-                <FormInput type='password' required/>
-                <FormButton primary="true" dark="true" to="/area-reservada">
-                  Entrar
-                </FormButton>
-                <Text>Esqueceu-se da Senha?</Text>
-                <Reg to="/register">Solicitar Acesso</Reg>       
-              </Form>
-            </FormContent>
-          </FormWrap>
-          
-        </Container>
-      </>
-    );
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function loginUser(event) {
+    event.preventDefault();
+    const payload = { email, password };
+
+    await api.loginUser(payload).then((res) => {
+      console.log("res " + JSON.stringify(res.data));
+      if (res.data.status !== "error") {
+        localStorage.setItem("token", res.data.user);
+        alert("Login successful");
+        window.location.href = "/area-reservada";
+      } else {
+        alert("Please check your username and password");
+      }
+    });
   }
+
+  return (
+    <>
+      <Container>
+        <FormWrap>
+          <FormContent>
+            <Form>
+              <FormH1>Área Reservada</FormH1>
+              <FormLabel htmlFor="for">Email</FormLabel>
+              <FormInput
+                placeholder="exemplo@mail.com"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <FormLabel htmlFor="for">Senha</FormLabel>
+              <FormInput
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <FormButton primary="true" dark="true" to="" onClick={loginUser}>
+                Entrar
+              </FormButton>
+              <Text>Esqueceu-se da Senha?</Text>
+              <Reg to="/register">Solicitar Acesso</Reg>
+            </Form>
+          </FormContent>
+        </FormWrap>
+      </Container>
+    </>
+  );
 }

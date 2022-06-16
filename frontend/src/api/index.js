@@ -26,6 +26,10 @@ export const getAllUsers = () => api.get(`/users`)
 export const updateUserById = (id, payload) => api.put(`/user/${id}`, payload)
 export const deleteUserById = id => api.delete(`/user/${id}`)
 export const getUserById = id => api.get(`/user/${id}`)
+//Login
+export const loginUser = payload => api.post(`/login`, payload)
+export const registerUser = payload => api.post(`/register`, payload)
+export const getUserDataBasedOnToken = payload => api.post(`/getusertoken`, payload)
 
 
 const apis = {
@@ -51,6 +55,10 @@ const apis = {
     updateUserById,
     deleteUserById,
     getUserById,
+    //Login
+    loginUser,
+    registerUser,
+    getUserDataBasedOnToken,
 }
 
 export default apis

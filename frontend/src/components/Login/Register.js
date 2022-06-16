@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import api from "../../api";
 import {
   Container,
   FormContent,
@@ -12,32 +13,55 @@ import {
   Router,
 } from "./StyledLogin";
 
-export default class Register extends Component {
-  render() {
-    return (
-      <>
-        <Container>
-          <FormWrap>
-            <FormContent>
-              <Form action="#">
-                <FormH1>Solicitação de Acesso</FormH1>
-                <FormLabel htmlFor="for">Email</FormLabel>
-                <FormInput
-                  placeholder="exemplo@mail.com"
-                  type="email"
-                  required
-                />
-                <FormLabel htmlFor="for">NIF</FormLabel>
-                <FormInput placeholder="501634851" required />
-                <FormButton primary="true" dark="true" to="/area-reservada">
-                  Registar
-                </FormButton>
-                <Reg to="/login">Já registado?</Reg>
-              </Form>
-            </FormContent>
-          </FormWrap>
-        </Container>
-      </>
-    );
+export default function Register() {
+  const [email, setEmail] = useState("");
+  const [nif, setNif] = useState("");
+  async function registerUser(event) {
+    event.preventDefault();
+    const payload = { email, nif };
+
+    await api.registerUser(payload).then((res) => {
+      console.log("res " + JSON.stringify(res.data));
+      if (res.data.status !== "error") {
+        localStorage.setItem("token", res.data.user);
+        alert("Login successful");
+        window.location.href = "/area-reservada";
+      } else {
+        alert("Please check your username and password");
+      }
+    });
   }
+
+  return (
+    <>
+      <Container>
+        <FormWrap>
+          <FormContent>
+            <Form>
+              <FormH1>Solicitação de Acesso</FormH1>
+              <FormLabel htmlFor="for">Email</FormLabel>
+              <FormInput
+                placeholder="exemplo@mail.com"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <FormLabel htmlFor="for">NIF</FormLabel>
+              <FormInput
+                placeholder="501634851"
+                required
+                value={nif}
+                onChange={(e) => setNif(e.target.value)}
+              />
+              <FormButton primary="true" dark="true" to="" onClick={registerUser}>
+                Registar
+              </FormButton>
+              <Reg to="/login">Já registado?</Reg>
+            </Form>
+          </FormContent>
+        </FormWrap>
+      </Container>
+    </>
+  );
 }

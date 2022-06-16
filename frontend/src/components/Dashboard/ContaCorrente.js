@@ -21,9 +21,11 @@ import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import { ProgressBar,Table } from "react-bootstrap";
 
+
 export default class ContaCorrente extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       labels: ["Comparticipado", "Saldo"],
       medicamentosComp: 81.31,

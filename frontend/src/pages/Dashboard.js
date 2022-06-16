@@ -3,6 +3,7 @@ import DadosPessoais from "../components/Dashboard/DadosPessoais";
 import ContaCorrente from "../components/Dashboard/ContaCorrente";
 import Submissao from "../components/Dashboard/Submissao";
 import Sidebar from "../components/Dashboard/Sidebar";
+import api from "../api";
 
 import {
   Associado,
@@ -11,11 +12,21 @@ import {
 } from "../components/Dashboard/StyledDashboard";
 export default class DashboardPage extends Component {
   componentDidMount() {
+    const token = localStorage.getItem('token')
+    const payload = { token };
+    api.getUserDataBasedOnToken(payload).then((res) => {
+      console.log(res.data.user)
+      this.setState({
+        name: res.data.user.name,
+        nr: res.data.user.nrUser
+      })
+    })
     document.title = 'Área Reservada - AMUT Gondomar';
   }
   constructor(props) {
     super(props);
-    this.state = { selectedIndex: 1 };
+    
+    this.state = { selectedIndex: 1,  };
 
     this.setSelectedTab = this.setSelectedTab.bind(this);
   }
@@ -51,9 +62,9 @@ export default class DashboardPage extends Component {
           <Content>
             <Associado>
               Olá,
-              <br /> <b>Francisco Correia Pereira</b>
+              <br /> <b>{this.state.name}</b>
               <br />
-              <b>Nº 9999</b>{" "}
+              <b>{this.state.nr}</b>{" "}
             </Associado>
            { this.renderTab() }
           </Content>
