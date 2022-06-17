@@ -20,22 +20,33 @@ import {
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import { ProgressBar,Table } from "react-bootstrap";
-
+import api from "../../api";
 
 export default class ContaCorrente extends Component {
+  async componentDidMount() {
+    const payload = { id: this.props.id };
+    console.log(payload);
+    await api.getPlafondsByUser(this.props.id).then((res) => {
+      console.log(res.data.plafonds)
+
+      this.setState({
+        medicinesYearly: res.data.plafonds.medicinesYearly,
+        medicinesUsed: res.data.plafonds.medicinesUsed,
+        ambulatoryYearly: res.data.plafonds.ambulatoryYearly,
+        ambulatoryUsed: res.data.plafonds.ambulatoryUsed,
+        dentistYearly: res.data.plafonds.dentistYearly,
+        dentistUsed: res.data.plafonds.dentistUsed,
+        prosthesisYearly: res.data.plafonds.prosthesisYearly,
+        prosthesisUsed: res.data.plafonds.prosthesisUsed,
+
+      })
+    })
+  }
   constructor(props) {
     super(props);
-    
+    console.log(this.props.id)
     this.state = {
       labels: ["Comparticipado", "Saldo"],
-      medicamentosComp: 81.31,
-      medicamentosTotal: 625,
-      ambulatorioComp: 68.25,
-      ambulatorioTotal: 740,
-      estomatologiaComp: 39,
-      estomatologiaTotal: 530,
-      protesesComp: 0,
-      protesesTotal: 530,
     };
   }
   render() {
@@ -53,14 +64,14 @@ export default class ContaCorrente extends Component {
                     datasets: [
                       {
                         data: [
-                          this.state.medicamentosComp +
-                            this.state.ambulatorioComp +
-                            this.state.estomatologiaComp +
-                            this.state.protesesComp,
-                          this.state.medicamentosTotal +
-                            this.state.ambulatorioTotal +
-                            this.state.estomatologiaTotal +
-                            this.state.protesesTotal,
+                          this.state.medicinesUsed +
+                            this.state.ambulatoryUsed +
+                            this.state.dentistUsed +
+                            this.state.prosthesisUsed,
+                          this.state.medicinesYearly +
+                            this.state.ambulatoryYearly +
+                            this.state.dentistYearly +
+                            this.state.prosthesisYearly,
                         ],
                         backgroundColor: [
                           "rgba(166, 166, 165, 0.5)",
@@ -119,15 +130,15 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Medicamentos</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.medicamentosComp}€ /{" "}
-                        {this.state.medicamentosTotal}€
+                        {this.state.medicinesUsed}€ /{" "}
+                        {this.state.medicinesYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
 
                   <ProgressBar
-                    now={this.state.medicamentosComp}
-                    max={this.state.medicamentosTotal}
+                    now={this.state.medicinesUsed}
+                    max={this.state.medicinesYearly}
                     variant="danger"
                     animated
                   />
@@ -140,15 +151,15 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Ambulatório</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.ambulatorioComp}€ /{" "}
-                        {this.state.ambulatorioTotal}€
+                        {this.state.ambulatoryUsed}€ /{" "}
+                        {this.state.ambulatoryYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
 
                   <ProgressBar
-                    now={this.state.ambulatorioComp}
-                    max={this.state.ambulatorioTotal}
+                    now={this.state.ambulatoryUsed}
+                    max={this.state.ambulatoryYearly}
                     variant="danger"
                     animated
                   />
@@ -163,15 +174,15 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Estomatologia</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.estomatologiaComp}€ /{" "}
-                        {this.state.estomatologiaTotal}€
+                        {this.state.dentistUsed}€ /{" "}
+                        {this.state.dentistYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
 
                   <ProgressBar
-                    now={this.state.estomatologiaComp}
-                    max={this.state.estomatologiaTotal}
+                    now={this.state.dentistUsed}
+                    max={this.state.dentistYearly}
                     variant="danger"
                     animated
                   />
@@ -184,14 +195,14 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Próteses e Ortóteses</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.protesesComp}€ / {this.state.protesesTotal}€
+                        {this.state.prosthesisUsed}€ / {this.state.prosthesisYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
 
                   <ProgressBar
-                    now={this.state.protesesComp}
-                    max={this.state.protesesTotal}
+                    now={this.state.prosthesisUsed}
+                    max={this.state.prosthesisYearly}
                     variant="danger"
                     animated
                   />

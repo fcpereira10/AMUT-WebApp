@@ -22,13 +22,19 @@ export default function Login() {
     const payload = { email, password };
 
     await api.loginUser(payload).then((res) => {
-      console.log("res " + JSON.stringify(res.data));
+
       if (res.data.status !== "error") {
         localStorage.setItem("token", res.data.user);
-        alert("Login successful");
-        window.location.href = "/area-reservada";
+        
+        if (res.data.isAdmin){
+          window.location.href = "/admin";
+        } else{
+          window.location.href = "/area-reservada";
+        }
+        
+        
       } else {
-        alert("Please check your username and password");
+        alert("Por favor, confirme os seus dados");
       }
     });
   }

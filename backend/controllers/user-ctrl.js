@@ -4,39 +4,6 @@ const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 
-createUser = (req, res) => {
-  const body = req.body;
-
-  if (!body) {
-    return res.status(400).json({
-      success: false,
-      error: "You must provide a User",
-    });
-  }
-
-  const user = new User(body);
-
-  if (!user) {
-    return res.status(400).json({ success: false, error: err });
-  }
-
-  user
-    .save()
-    .then(() => {
-      return res.status(201).json({
-        success: true,
-        id: user._id,
-        message: "User created!",
-      });
-    })
-    .catch((error) => {
-      return res.status(400).json({
-        error,
-        message: "User not created!",
-      });
-    });
-};
-
 updateUser = async (req, res) => {
   const body = req.body;
 
@@ -80,20 +47,6 @@ updateUser = async (req, res) => {
         });
       });
   });
-};
-
-deleteUser = async (req, res) => {
-  await User.findOneAndDelete({ _id: req.params.id }, (err, user) => {
-    if (err) {
-      return res.status(400).json({ success: false, error: err });
-    }
-
-    if (!user) {
-      return res.status(404).json({ success: false, error: `User not found` });
-    }
-
-    return res.status(200).json({ success: true, data: user });
-  }).catch((err) => console.log(err));
 };
 
 getUserById = async (req, res) => {
@@ -144,7 +97,7 @@ console.log(req.body.password+ " "+ user.password)
       "secret123"
     );
 
-    return res.json({ status: "ok", user: token });
+    return res.json({ status: "ok", user: token, isAdmin: user.isAdmin });
   } else {
     return res.json({ status: "error", user: false });
   }
@@ -217,7 +170,8 @@ getUserDataBasedOnToken = async (req, res) => {
         const user = await User.findOne({
             email: decoded.email,
           });
-          res.json({user: user, status: 'success'})
+          const returnUser = {email: user.email, name: user.name, isAdmin: user.isAdmin, nrUser: user.nrUser, id: user._id};
+          res.json({user: returnUser, status: 'success'})
     } catch (error){
         console.log(error)
         res.json({status: 'error', error: 'invalid token'} )
@@ -225,9 +179,7 @@ getUserDataBasedOnToken = async (req, res) => {
 }
 
 module.exports = {
-  createUser,
   updateUser,
-  deleteUser,
   getUsers,
   getUserById,
   loginUser,

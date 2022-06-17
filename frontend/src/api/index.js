@@ -30,6 +30,9 @@ export const getUserById = id => api.get(`/user/${id}`)
 export const loginUser = payload => api.post(`/login`, payload)
 export const registerUser = payload => api.post(`/register`, payload)
 export const getUserDataBasedOnToken = payload => api.post(`/getusertoken`, payload)
+//Plafonds
+export const updatePlafonds = (id, payload) => api.put(`/plafonds`, payload)
+export const getPlafondsByUser = id => api.get(`/plafonds/${id}`)
 
 
 const apis = {
@@ -59,6 +62,9 @@ const apis = {
     loginUser,
     registerUser,
     getUserDataBasedOnToken,
+    //Plafonds
+    updatePlafonds,
+    getPlafondsByUser,
 }
 
 export default apis

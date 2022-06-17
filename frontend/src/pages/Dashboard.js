@@ -4,29 +4,33 @@ import ContaCorrente from "../components/Dashboard/ContaCorrente";
 import Submissao from "../components/Dashboard/Submissao";
 import Sidebar from "../components/Dashboard/Sidebar";
 import api from "../api";
-
 import {
   Associado,
   Content,
   ContentContainer,
 } from "../components/Dashboard/StyledDashboard";
+import AdminPage from "./Admin";
 export default class DashboardPage extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     const payload = { token };
     api.getUserDataBasedOnToken(payload).then((res) => {
-      console.log(res.data.user)
+
       this.setState({
         name: res.data.user.name,
-        nr: res.data.user.nrUser
+        nr: res.data.user.nrUser,
+        isAdmin: res.data.user.isAdmin,
+        id: res.data.user.id, 
+        loading: false
       })
     })
     document.title = 'Área Reservada - AMUT Gondomar';
   }
   constructor(props) {
     super(props);
+    console.log("constructor")
     
-    this.state = { selectedIndex: 1,  };
+    this.state = { selectedIndex: 1, loading: true };
 
     this.setSelectedTab = this.setSelectedTab.bind(this);
   }
@@ -44,7 +48,8 @@ export default class DashboardPage extends Component {
   renderTab() {
     switch(this.state.selectedIndex){
       case 1:
-        return <ContaCorrente/>;
+        console.log(this.state)
+        return <ContaCorrente id={this.state.id}/>;
       case 2:
         return <Submissao/>;
       case 3:
@@ -53,11 +58,13 @@ export default class DashboardPage extends Component {
         return <ContaCorrente/>;
     }
   }
-
   render() {
+    const {isAdmin, loading} = this.state;
     return (
       <>
-        <Sidebar setSelectedTab={this.setSelectedTab} parentCallback = {this.callbackFunction}/>
+       {!isAdmin &&
+        <Sidebar setSelectedTab={this.setSelectedTab} parentCallback = {this.callbackFunction}/>}
+        {!isAdmin && !loading &&
         <ContentContainer>
           <Content>
             <Associado>
@@ -68,7 +75,8 @@ export default class DashboardPage extends Component {
             </Associado>
            { this.renderTab() }
           </Content>
-        </ContentContainer>
+        </ContentContainer>}
+        {isAdmin && <AdminPage />}
       </>
     );
   }

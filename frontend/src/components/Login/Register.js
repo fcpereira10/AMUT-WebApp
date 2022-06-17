@@ -24,10 +24,9 @@ export default function Register() {
       console.log("res " + JSON.stringify(res.data));
       if (res.data.status !== "error") {
         localStorage.setItem("token", res.data.user);
-        alert("Login successful");
         window.location.href = "/area-reservada";
       } else {
-        alert("Please check your username and password");
+        alert("Por favor, Confirme os seus dados");
       }
     });
   }

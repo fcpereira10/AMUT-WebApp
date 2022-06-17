@@ -7,6 +7,7 @@ const db = require('./db')
 const ActivityRouter = require('./routes/activity-router')
 const NewsRouter = require('./routes/news-router')
 const UserRouter = require('./routes/user-router')
+const PlafondsRouter = require('./routes/plafonds-router')
 
 
 const app = express()
@@ -21,8 +22,6 @@ const path = require('path')
 app.use('/static', express.static(path.join(__dirname, '/controllers/activities')))
 app.use('/static', express.static(path.join(__dirname, '/controllers/news')))
 
-
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
@@ -32,6 +31,7 @@ app.get('/', (req, res) => {
 app.use('/api', ActivityRouter)
 app.use('/api', NewsRouter)
 app.use('/api', UserRouter)
+app.use('/api', PlafondsRouter)
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
