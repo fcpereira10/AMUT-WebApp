@@ -21,6 +21,7 @@ app.use(fileupload())
 const path = require('path')
 app.use('/static', express.static(path.join(__dirname, '/controllers/activities')))
 app.use('/static', express.static(path.join(__dirname, '/controllers/news')))
+app.use('/static', express.static(path.join(__dirname, '/controllers/files')))
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 

@@ -12,15 +12,12 @@ import {
   FormButton,
   Reg,
 } from "./StyledLogin";
-import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function onChange(value) {
-    console.log('Captcha value:', value);
-  }
   async function loginUser(event) {
     event.preventDefault();
     const payload = { email, password };
@@ -65,11 +62,6 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <ReCAPTCHA
-        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-        size="invisible"
-        onChange={onChange}
-      />
               <FormButton primary="true" dark="true" type="submit">
                 Entrar
               </FormButton>

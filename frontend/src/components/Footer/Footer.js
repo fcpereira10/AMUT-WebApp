@@ -43,7 +43,7 @@ export default class Footer extends Component {
               <FooterLink to="">(+351) 224 633 184</FooterLink>
               <FooterLink to="">(+351) 966 766 762</FooterLink>
               <FooterLink to="">amut@amut.pt</FooterLink>
-              <FooterLink to="https://g.page/AMUT-Gondomar?share">
+              <FooterLink to="">
                 Rua 5 de Outubro, 135 <p /> 4420-086 Gondomar
               </FooterLink>
             </FooterLinkItems>

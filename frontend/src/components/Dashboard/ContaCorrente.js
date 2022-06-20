@@ -233,8 +233,8 @@ export default class ContaCorrente extends Component {
                     <td>Francisco Correia Pereira</td>
                     <td>Medicamentos</td>
                     <td>
-                      <Doc to="/">fatura.pdf</Doc>
-                    </td>
+                      <a href="http://localhost:3000/static/62af5281671647892def2e5b-invoice.pdf" target="_blank" download>fatura.pdf</a>
+                      </td>
                     <td>
                       <Doc to="/">prescrição.pdf</Doc>
                     </td>
