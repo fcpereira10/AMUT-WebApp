@@ -33,7 +33,10 @@ export const getUserDataBasedOnToken = payload => api.post(`/getusertoken`, payl
 //Plafonds
 export const updatePlafonds = (id, payload) => api.put(`/plafonds`, payload)
 export const getPlafondsByUser = id => api.get(`/plafonds/${id}`)
-
+//Expenses
+export const createExpense = payload => api.post(`/expense`, payload)
+export const getExpensesByUser = id => api.get(`/expenses/${id}`)
+export const uploadFiles = (id, payload) => api.post(`/expenses/uploadFiles/${id}`, payload);
 
 const apis = {
     //Activities
@@ -65,6 +68,10 @@ const apis = {
     //Plafonds
     updatePlafonds,
     getPlafondsByUser,
+    //Expenses
+    createExpense,
+    getExpensesByUser,
+    uploadFiles
 }
 
 export default apis

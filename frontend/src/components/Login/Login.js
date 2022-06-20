@@ -44,7 +44,7 @@ export default function Login() {
       <Container>
         <FormWrap>
           <FormContent>
-            <Form>
+            <Form onSubmit={loginUser}> 
               <FormH1>Área Reservada</FormH1>
               <FormLabel htmlFor="for">Email</FormLabel>
               <FormInput
@@ -61,7 +61,7 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <FormButton primary="true" dark="true" to="" onClick={loginUser}>
+              <FormButton primary="true" dark="true" type="submit">
                 Entrar
               </FormButton>
               <Text>Esqueceu-se da Senha?</Text>

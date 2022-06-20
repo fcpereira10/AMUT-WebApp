@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Form, Row } from "react-bootstrap";
-import { Button } from "../../StyledButton";
+import { SubmitButton } from "../../StyledButton";
 import api from "../../../api";
 import { Wrapper } from "./StyledActivities";
 
@@ -68,13 +68,15 @@ export default class ActivitiesInsert extends Component {
     const { title, date, description, local } = this.state;
     return (
       <Wrapper>
-        <Form>
+        <Form onSubmit={this.handleIncludeActivity}>
+          <Form.Group role="form">
           <Row className="mb-3">
             <Form.Group as={Col}>
               <Form.Label>Título</Form.Label>
               <Form.Control
                 value={title}
                 onChange={this.handleChangeInputTitle}
+                required
               />
             </Form.Group>
             <Form.Group as={Col} sm={4}>
@@ -83,6 +85,7 @@ export default class ActivitiesInsert extends Component {
                 value={local}
                 onChange={this.handleChangeInputLocal}
                 rows={3}
+                required
               />
             </Form.Group>
             <Form.Group as={Col} sm={4}>
@@ -91,6 +94,7 @@ export default class ActivitiesInsert extends Component {
                 value={date}
                 onChange={this.handleChangeInputDate}
                 type="date"
+                required
               />
             </Form.Group>
           </Row>
@@ -102,10 +106,11 @@ export default class ActivitiesInsert extends Component {
                 onChange={this.handleChangeInputDescription}
                 as="textarea"
                 rows={3}
+                required
               />
             </Form.Group>
           </Row>
-        </Form>
+         
 
         <Row className="mb-3">
           <Form.Group as={Col} sm={4}>
@@ -115,10 +120,12 @@ export default class ActivitiesInsert extends Component {
             </Form.Group>
           </Form.Group>
         </Row>
-
-        <Button to="" onClick={this.handleIncludeActivity}>
+        <SubmitButton type="submit">
           Adicionar Atividade
-        </Button>
+        </SubmitButton>
+        </Form.Group>
+
+        </Form>
       </Wrapper>
     );
   }

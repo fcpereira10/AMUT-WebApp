@@ -13,6 +13,7 @@ import AdminPage from "./Admin";
 export default class DashboardPage extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
+    if (token != null ){
     const payload = { token };
     api.getUserDataBasedOnToken(payload).then((res) => {
 
@@ -25,10 +26,12 @@ export default class DashboardPage extends Component {
       })
     })
     document.title = 'Área Reservada - AMUT Gondomar';
+  } else {
+    window.location.href="/login"
+  }
   }
   constructor(props) {
     super(props);
-    console.log("constructor")
     
     this.state = { selectedIndex: 1, loading: true };
 
@@ -51,11 +54,11 @@ export default class DashboardPage extends Component {
         console.log(this.state)
         return <ContaCorrente id={this.state.id}/>;
       case 2:
-        return <Submissao/>;
+        return <Submissao id={this.state.id} name={this.state.name}/>;
       case 3:
         return <DadosPessoais/>;
       default:
-        return <ContaCorrente/>;
+        return <ContaCorrente id={this.state.id}/>;
     }
   }
   render() {

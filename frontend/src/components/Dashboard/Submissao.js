@@ -9,7 +9,9 @@ import {
 } from "./StyledSubmissao";
 import "chart.js/auto";
 import { Col, Form, Row, InputGroup, FormControl } from "react-bootstrap";
-import { Button } from "../StyledButton";
+import { SubmitButton } from "../StyledButton";
+import api from "../../api";
+import moment from "moment";
 
 const value = `1 – Todas as faturas-recibo ou faturas simplificadas apresentadas, devem conter o nome e número de contribuinte;
 2 - As faturas-recibo referentes à aquisição de medicamentos, têm que ser acompanhadas por um dos seguintes documentos: prescrição médica, guia de tratamento ou guia de aviamento;
@@ -26,7 +28,122 @@ const value = `1 – Todas as faturas-recibo ou faturas simplificadas apresentad
 9 - Os Associados para terem direito a receber as comparticipações, têm que ter as suas quotas em dia.`;
 
 export default class Submissao extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      invoiceNr: "",
+      name: this.props.name,
+      date: moment(Date.now()).format("YYYY-MM-DD"),
+      type: "Medicamentos",
+      price: "",
+      beneficiary: "Associado",
+      userId: this.props.id,
+      isNameDisabled: true,
+      selectedInvoice: "",
+      selectedPrescription: "",
+      selectedStatement: "",
+    };
+  }
+
+  // On file select (from the pop up)
+  onInvoiceFileChange = (event) => {
+    // Update the state
+    const file = event.target.files[0];
+    this.setState ({selectedInvoice: file})
+  };
+
+    // On file select (from the pop up)
+  onPrescriptionFileChange = (event) => {
+    // Update the state
+    const file = event.target.files[0];
+    this.setState ({selectedPrescription: file})
+  };
+
+    // On file select (from the pop up)
+  onStatementFileChange = (event) => {
+  // Update the state
+  const file = event.target.files[0];
+  this.setState ({selectedStatement: file})
+  };
+
+  handleChangeInputName = async (event) => {
+    const name = event.target.value;
+    this.setState({ name });
+  };
+  handleChangeInputInvoiceNr = async (event) => {
+    const invoiceNr = event.target.value;
+    this.setState({ invoiceNr });
+  };
+  handleChangeInputDate = async (event) => {
+    const date = event.target.value;
+    this.setState({ date });
+  };
+  handleChangeInputPrice = async (event) => {
+    const price = event.target.value;
+    this.setState({ price });
+  };
+  handleChangeInputType = async (event) => {
+    const type = event.target.value;
+    this.setState({ type });
+  };
+  handleChangeInputBeneficiaryType = async (beneficiary) => {
+    // const beneficiary = value;
+    this.setState({ beneficiary });
+    if (beneficiary === "Associado") {
+      this.setState({ name: this.props.name, isNameDisabled: true });
+    } else {
+      this.setState({ name: "", isNameDisabled: false });
+    }
+  };
+
+  handleIncludeExpense = async (event) => {
+    event.preventDefault()
+    const { invoiceNr, name, date, type, price, userId } = this.state;
+    const payload = { invoiceNr, name, date, type, price, userId };
+    console.log("handle include expense");
+
+    await api.createExpense(payload).then((res) => {
+      if (res.data.success) {
+        window.alert(`Despesa registada com Sucesso!`);
+        this.setState({
+          invoiceNr: "",
+          name: this.props.name,
+          date: moment(Date.now()).format("YYYY-MM-DD"),
+          type: "Medicamentos",
+          price: "",
+          beneficiary: "Associado",
+          userId: this.props.id,
+          isNameDisabled: true,
+        });
+        const id = res.data.id;
+        const extension = this.state.selectedInvoice.name.substring(
+          this.state.selectedInvoice.name.lastIndexOf(".")
+        );
+        const formData = new FormData();
+        formData.append("files", this.state.selectedInvoice, id + "-invoice"+ extension);
+        formData.append("files", this.state.selectedPrescription, id + "-prescription" +extension);
+        formData.append("files", this.state.selectedStatement, id + "-statement" + extension);
+        // Request made to the backend api
+        // Send formData object
+        api.uploadFiles(id, formData);
+
+        this.setState({
+          title: "",
+          date: moment(Date.now()).format("YYYY-MM-DD"),
+          description: "",
+        });
+      } else {
+        window.alert(`Verifique os Dados!`);
+      }
+      
+    });
+  };
+
+
+
   render() {
+    const { name, date, invoiceNr, type, price, beneficiary } = this.state;
     return (
       <>
         <SubmissaoContainer>
@@ -36,50 +153,75 @@ export default class Submissao extends Component {
                 <IconAtencao />
                 <TextTipologia>
                   <Atencao.Heading>Atenção</Atencao.Heading>
-                  Deve fazer uma submissão por cada despesa a reembolsar.
+                  Deve fazer uma submissão para cada despesa a reembolsar.
                 </TextTipologia>
               </IconTextTipologia>
             </Atencao>
-            <Form>
+            <Form onSubmit={this.handleIncludeExpense}>
+            <Form.Group role="form">
               <Row className="mb-3">
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Tipo Beneficiário</Form.Label>
-                  <Form.Control as="select" defaultValue="Associado Efetivo">
-                    <option>Associado Efetivo</option>
-                    <option>Subscritor (Familiar)</option>
+                  <Form.Control
+                    as="select"
+                    value={beneficiary}
+                    onChange={(e) =>
+                      this.handleChangeInputBeneficiaryType(e.target.value)
+                    }
+                  >
+                    <option value="Associado">Associado Efetivo</option>
+                    <option value="Subscritor">Subscritor (Familiar)</option>
                   </Form.Control>
                 </Form.Group>
 
                 <Form.Group as={Col} hasValidation>
                   <Form.Label>Nome Beneficiário</Form.Label>
-                  <Form.Control required isInvalid />
-                  <Form.Control.Feedback type="invalid">
+                  <Form.Control
+                    required
+                    //isInvalid
+                    value={name}
+                    onChange={this.handleChangeInputName}
+                    disabled={this.state.isNameDisabled}
+                  />
+                 {/*  <Form.Control.Feedback type="invalid">
                     Por favor, preencha o nome do beneficiário.
-                  </Form.Control.Feedback>
+                  </Form.Control.Feedback> */} 
                 </Form.Group>
               </Row>
               <Row className="mb-3">
                 <Form.Group as={Col} sm={3} hasValidation>
                   <Form.Label>Tipo Despesa</Form.Label>
-                  <Form.Control as="select" defaultValue="Medicamentos">
-                    <option>Medicamentos</option>
-                    <option>Ambulatório</option>
-                    <option>Estomatologia</option>
-                    <option>Próteses e Ortóteses</option>
+                  <Form.Control
+                    as="select"
+                    value={type}
+                    onChange={(e) => this.handleChangeInputType(e.target.value)}
+                    required
+                  >
+                    <option value="Medicamentos">Medicamentos</option>
+                    <option value="Ambulatório">Ambulatório</option>
+                    <option value="Estomatologia">Estomatologia</option>
+                    <option value="Próteses e Ortóteses">
+                      Próteses e Ortóteses
+                    </option>
                   </Form.Control>
                 </Form.Group>
 
                 <Form.Group as={Col} sm={3} hasValidation>
                   <Form.Label>Nº Fatura/Recibo</Form.Label>
-                  <Form.Control />
+                  <Form.Control
+                    value={invoiceNr}
+                    onChange={this.handleChangeInputInvoiceNr}
+                    required
+                  />
                 </Form.Group>
 
                 <Form.Group as={Col} sm={3}>
                   <Form.Label>Data Fatura/Recibo</Form.Label>
                   <Form.Control
                     type="date"
-                    name="data fatura"
-                    placeholder="Date of Birth"
+                    value={date}
+                    onChange={this.handleChangeInputDate}
+                    required
                   />
                 </Form.Group>
                 <Form.Group as={Col} sm={3}>
@@ -90,6 +232,9 @@ export default class Submissao extends Component {
                       type={"number"}
                       step={"0.01"}
                       min={0}
+                      value={price}
+                      onChange={this.handleChangeInputPrice}
+                      required
                     />
                     <InputGroup.Text>€</InputGroup.Text>
                   </InputGroup>
@@ -99,21 +244,21 @@ export default class Submissao extends Component {
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Fatura/Recibo</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" />
+                    <Form.Control type="file" onChange={this.onInvoiceFileChange} required/>
                   </Form.Group>
                 </Form.Group>
 
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Prescrição Médica</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" />
+                    <Form.Control type="file" onChange={this.onPrescriptionFileChange} required/>
                   </Form.Group>
                 </Form.Group>
 
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Declaração Médica</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" />
+                    <Form.Control type="file" onChange={this.onStatementFileChange} required/>
                   </Form.Group>
                 </Form.Group>
               </Row>
@@ -129,12 +274,17 @@ export default class Submissao extends Component {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
+                  required
                   type="checkbox"
-                  label="Concordo com Requisitos para o Reembolso"
+                  label="Concordo com os Requisitos para o Reembolso"
                 />
               </Form.Group>
+           
+            </Form.Group>
+            <SubmitButton type="submit">
+              Submeter
+            </SubmitButton>
             </Form>
-            <Button to="">Submeter</Button>
           </Wrapper>
         </SubmissaoContainer>
       </>

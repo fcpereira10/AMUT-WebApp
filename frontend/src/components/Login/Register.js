@@ -10,7 +10,6 @@ import {
   FormWrap,
   FormButton,
   Reg,
-  Router,
 } from "./StyledLogin";
 
 export default function Register() {
@@ -21,7 +20,7 @@ export default function Register() {
     const payload = { email, nif };
 
     await api.registerUser(payload).then((res) => {
-      console.log("res " + JSON.stringify(res.data));
+      
       if (res.data.status !== "error") {
         localStorage.setItem("token", res.data.user);
         window.location.href = "/area-reservada";
@@ -36,7 +35,7 @@ export default function Register() {
       <Container>
         <FormWrap>
           <FormContent>
-            <Form>
+            <Form onSubmit={registerUser}>
               <FormH1>Solicitação de Acesso</FormH1>
               <FormLabel htmlFor="for">Email</FormLabel>
               <FormInput
@@ -53,7 +52,7 @@ export default function Register() {
                 value={nif}
                 onChange={(e) => setNif(e.target.value)}
               />
-              <FormButton primary="true" dark="true" to="" onClick={registerUser}>
+              <FormButton primary="true" dark="true" type="submit">
                 Registar
               </FormButton>
               <Reg to="/login">Já registado?</Reg>

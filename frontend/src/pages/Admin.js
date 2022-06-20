@@ -6,8 +6,6 @@ import {
   Content,
   ContentContainer,
 } from "../components/Admin/StyledAdmin";
-
-import NewsList from "../components/Admin/News/NewsList";
 import UsersList from "../components/Admin/Users/UsersList";
 import Activity from "../components/Admin/Activities/Activity";
 import News from "../components/Admin/News/News";
@@ -17,6 +15,7 @@ export default class AdminPage extends Component {
   componentDidMount() {
     const token = localStorage.getItem('token')
     const payload = { token };
+    if (token != null) {
     api.getUserDataBasedOnToken(payload).then((res) => {
     
       this.setState({
@@ -25,6 +24,9 @@ export default class AdminPage extends Component {
         isAdmin: res.data.user.isAdmin
       })
     })
+  } else {
+    window.location.href= "/"
+  }
 
     document.title = "Administração - AMUT Gondomar";
   }

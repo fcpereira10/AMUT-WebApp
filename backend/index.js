@@ -8,7 +8,7 @@ const ActivityRouter = require('./routes/activity-router')
 const NewsRouter = require('./routes/news-router')
 const UserRouter = require('./routes/user-router')
 const PlafondsRouter = require('./routes/plafonds-router')
-
+const ExpensesRouter = require('./routes/expenses-router')
 
 const app = express()
 const apiPort = 3000
@@ -32,6 +32,7 @@ app.use('/api', ActivityRouter)
 app.use('/api', NewsRouter)
 app.use('/api', UserRouter)
 app.use('/api', PlafondsRouter)
+app.use('/api', ExpensesRouter)
 
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

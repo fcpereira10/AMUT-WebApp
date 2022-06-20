@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Form as form } from "react-bootstrap";
-import { Button } from "../StyledButton";
+import { SubmitButton } from "../StyledButton";
 
 export const Container = styled.div`
   min-height: 692px;
@@ -87,7 +87,7 @@ export const FormInput = styled(Form.Control)`
   border-radius: 10px;
   
 `;
-export const FormButton = styled(Button)`
+export const FormButton = styled(SubmitButton)`
   background: #d1312c;
   padding: 16px 0;
   border: none;

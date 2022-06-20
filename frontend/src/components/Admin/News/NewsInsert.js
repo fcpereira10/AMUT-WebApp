@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Col, Form, Row } from "react-bootstrap";
-import { Button } from "../../StyledButton";
+import { SubmitButton } from "../../StyledButton";
 import api from "../../../api";
 import { Wrapper } from "../Activities/StyledActivities";
+import moment from "moment";
 
 export default class NewsInsert extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class NewsInsert extends Component {
 
     this.state = {
       title: "",
-      date: Date.now(),
+      date: moment(Date.now()).format("YYYY-MM-DD"),
       description: "",
       selectedFile: "",
     };
@@ -59,13 +60,15 @@ export default class NewsInsert extends Component {
     const { title, description } = this.state;
     return (
       <Wrapper>
-        <Form>
+        <Form onSubmit={this.handleIncludeArticle}>
+        <Form.Group role="form">
           <Row className="mb-3">
             <Form.Group as={Col}>
               <Form.Label>Título</Form.Label>
               <Form.Control
                 value={title}
                 onChange={this.handleChangeInputTitle}
+                required
               />
             </Form.Group>
           </Row>
@@ -77,6 +80,7 @@ export default class NewsInsert extends Component {
                 onChange={this.handleChangeInputDescription}
                 as="textarea"
                 rows={10}
+                required
               />
             </Form.Group>
           </Row>
@@ -88,10 +92,11 @@ export default class NewsInsert extends Component {
             </Form.Group>
             </Form.Group>
           </Row>
-        </Form>
-        <Button to="" onClick={this.handleIncludeArticle}>
+          <SubmitButton type="submit">
           Adicionar Notícia
-        </Button>
+        </SubmitButton>
+        </Form.Group>
+        </Form>
       </Wrapper>
     );
   }

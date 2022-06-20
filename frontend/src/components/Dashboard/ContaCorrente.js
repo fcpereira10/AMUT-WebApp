@@ -24,8 +24,6 @@ import api from "../../api";
 
 export default class ContaCorrente extends Component {
   async componentDidMount() {
-    const payload = { id: this.props.id };
-    console.log(payload);
     await api.getPlafondsByUser(this.props.id).then((res) => {
       console.log(res.data.plafonds)
 
@@ -40,6 +38,9 @@ export default class ContaCorrente extends Component {
         prosthesisUsed: res.data.plafonds.prosthesisUsed,
 
       })
+    })
+    await api.getExpensesByUser(this.props.id).then((res) => {
+      console.log(res.data.expenses)
     })
   }
   constructor(props) {

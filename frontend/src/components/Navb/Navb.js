@@ -11,11 +11,39 @@ import { Component } from "react";
 import { animateScroll as scroll } from "react-scroll";
 
 export default class Navb extends Component {
+
+  componentDidMount() {
+    
+    const token = localStorage.getItem('token');
+    const isLoggedIn = token != null ? true: false;
+    this.setState({
+      isLoggedIn
+    })
+    console.log("token "+ token +" "+isLoggedIn)
+
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn : false, 
+    }
+  }
+  handleLogin = () => {
+    if (this.state.isLoggedIn) {
+      localStorage.removeItem('token');
+      this.setState({isLoggedIn: false});
+      window.location.href = '/'
+    } else {
+      window.location.href = 'login'
+    }
+  }
   render() {
     const toggleHome = () => {
       scroll.scrollToTop();
     };
+    const {isLoggedIn} = this.state
     return (
+
       <>
         <StyledNavbar collapseOnSelect expand="lg" variant="dark" sticky="top">
           <Container>
@@ -65,7 +93,7 @@ export default class Navb extends Component {
                 <StyledNavLink href="/">Projetos</StyledNavLink>
               </StyledNav>
               <StyledNav>
-                <StyledNavLink href="/login">Entrar</StyledNavLink>
+                <StyledNavLink onClick={this.handleLogin}>{!isLoggedIn ? 'Entrar': 'Sair'}</StyledNavLink>
               </StyledNav>
             </StyledNavbar.Collapse>
           </Container>
