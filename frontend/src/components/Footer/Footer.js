@@ -31,23 +31,19 @@ export default class Footer extends Component {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Acesso Rápido</FooterLinkTitle>
-              <FooterLink to="/login">Saber</FooterLink>
-              <FooterLink to="/login">Clínica</FooterLink>
-              <FooterLink to="/login">Caminhando</FooterLink>
-              <FooterLink to="/login">Protocolos</FooterLink>
-              <FooterLink to="/login">Notícias</FooterLink>
-              <FooterLink to="/login">Eventos</FooterLink>
-              <FooterLink to="/login">Área Reservada</FooterLink>
-              <FooterLink to="/login">Contactos</FooterLink>
+              <FooterLink to="/area-reservada">Área Reservada</FooterLink>
+              <FooterLink to="/atividades">Eventos</FooterLink>
+              <FooterLink to="/noticias">Notícias</FooterLink>
+              <FooterLink to="/Associados">Benefícios</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Contactos</FooterLinkTitle>
-              <FooterLink to="/login">(+351) 224 633 184</FooterLink>
-              <FooterLink to="/login">(+351) 966 766 762</FooterLink>
-              <FooterLink to="/login">amut@amut.pt</FooterLink>
-              <FooterLink to="/login">
+              <FooterLink to="">(+351) 224 633 184</FooterLink>
+              <FooterLink to="">(+351) 966 766 762</FooterLink>
+              <FooterLink to="">amut@amut.pt</FooterLink>
+              <FooterLink to="https://g.page/AMUT-Gondomar?share">
                 Rua 5 de Outubro, 135 <p /> 4420-086 Gondomar
               </FooterLink>
             </FooterLinkItems>

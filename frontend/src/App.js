@@ -17,6 +17,8 @@ import AssociadosPage from "./pages/Associados";
 import ActivitiesUpdatePage from "./pages/ActivitiesUpdate";
 import ArticlePage from "./pages/Article";
 import NewsUpdatePage from "./pages/NewsUpdate";
+import ComingSoonPage from "./pages/ComingSoon";
+import QuemSomosPage from "./pages/QuemSomos";
 
 function App() {
   return (
@@ -29,12 +31,17 @@ function App() {
         <Route path="/area-reservada" element={<DashboardPage />} />
         <Route path="/noticias" element={<NewsPage />} />
         <Route path="/AMUT/associados" element={<AssociadosPage />} />
+        <Route path="/AMUT/quemsomos" element={<QuemSomosPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/atividades/:id" element={<ActivitiesUpdatePage />}/>
         <Route path="/admin/noticias/:id" element={<NewsUpdatePage />}/>
         <Route path="/atividades" element={<EventsPage />} />
         <Route path="/atividades/:id" element={<EventPage />} />
         <Route path="/noticias/:id" element={<ArticlePage />} />
+        <Route path="/saude" element={<ComingSoonPage />} />
+        <Route path="/caminhando" element={<ComingSoonPage />} />
+        <Route path="/formacao" element={<ComingSoonPage />} />
+        <Route path="/projetos" element={<ComingSoonPage />} />
         <Route path="*" element={<NotFoundPage />} />
         
       </Routes>

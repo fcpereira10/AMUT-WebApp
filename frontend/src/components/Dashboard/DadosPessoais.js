@@ -17,11 +17,11 @@ export default class DadosPessoais extends Component {
             <Form>
               <DadosPessoaisTitle>Contactos</DadosPessoaisTitle>
               <Row className="mb-4">
-                <Form.Group as={Col}>
+                <Form.Group as={Col} hasValidation>
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" />
+                  <Form.Control type="email" required/>
                 </Form.Group>
-                <Form.Group as={Col} sm={5} hasValidation>
+                <Form.Group as={Col} sm={5}>
                   <Form.Label>Telemóvel</Form.Label>
                   <Form.Control type="phone" required />
                 </Form.Group>
@@ -54,7 +54,7 @@ export default class DadosPessoais extends Component {
                   </Form.Group>
                 </Form.Group>
               </Row>
-              <Row className="mb-1">
+              <Row className="mb-1" style={{paddingBottom:"30px"}}>
                 <Form.Group as={Col} sm={4} hasValidation>
                   <Form.Label>Nome da Rua e Nº da Porta</Form.Label>
                   <Form.Control placeholder="Rua 5 de Outubro, 135" />
@@ -68,8 +68,9 @@ export default class DadosPessoais extends Component {
                   <Form.Control placeholder="Gondomar" />
                 </Form.Group>
               </Row>
+              <Button to="">Guardar</Button>
             </Form>
-            <Button to="">Guardar</Button>
+            
           </Wrapper>
         </DadosPessoaisContainer>
       </>

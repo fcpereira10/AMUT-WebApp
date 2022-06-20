@@ -3,7 +3,7 @@ import {
   EventsContainer,
   EventsWrapper,
   ContentContainer,
-  EventsIcon,
+  EventImage,
   TipologiaWrapper,
   IconTextTipologia,
   TextTipologia,
@@ -18,8 +18,8 @@ import {
   Column2,
 } from "./StyledEvents";
 import api from "../../api";
-import Icon1 from "../../images/buracas do casmilo.png";
 import moment from "moment";
+import Icon1 from "../../images/events.svg";
 import { Button } from "../StyledButton";
 import { MdArrowBack, MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams } from "react-router-dom";
@@ -106,7 +106,7 @@ export default function Event(props) {
             </Column1>
             <Column2>
               {" "}
-              <EventsIcon variant="top" src={Icon1} />
+              <EventImage variant="top" src={"http://localhost:3000/static/"+ id + ".png"}  onError={(e)=>{e.target.onerror = null; e.target.src=Icon1}} />
             </Column2>
           </InfoRow>
 

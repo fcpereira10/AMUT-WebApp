@@ -41,7 +41,7 @@ export default class NewsCard extends Component {
        
             Publicado em {moment(this.props.data.date).format("DD/MM/YYYY")}
           </NewsP>
-          <DetailsButton to="/">Continuar a Ler</DetailsButton>
+          <DetailsButton to={`/noticias/${this.props.data._id}`}>Continuar a Ler</DetailsButton>
         </EventsCard>
       </>
     );

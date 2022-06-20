@@ -66,34 +66,40 @@ export default class Navb extends Component {
               <StyledNav className="m-auto">
                 <StyledNavLink href="/">Home</StyledNavLink>
                 <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
+                  <NavDropdown.Item href="/quemsomos">
                     Quem Somos
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="AMUT/Associados">
+                  <NavDropdown.Item href="/Associados">
                     Associados
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
+                  <NavDropdown.Item >
                     Missão, Visão e Valores
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Equipa</NavDropdown.Item>
+                  <NavDropdown.Item href="/">Equipa</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
+                  <NavDropdown.Item href="/">
                     Documentos
                   </NavDropdown.Item>
                 </StyledDropdown>
-                <StyledNavLink href="/">Saúde</StyledNavLink>
-                <StyledNavLink href="/">Caminhando</StyledNavLink>
-                <StyledNavLink href="/">Formação</StyledNavLink>
+               {/* <StyledNavLink href="/saude">Saúde</StyledNavLink>
+                <StyledNavLink href="/caminhando">Caminhando</StyledNavLink>
+                <StyledNavLink href="/formacao">Formação</StyledNavLink> */}
                 <StyledDropdown title="Atividades" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/atividades">
                     Eventos
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/noticias">Notícias</NavDropdown.Item>
                 </StyledDropdown>
-                <StyledNavLink href="/">Projetos</StyledNavLink>
+               {/*  <StyledNavLink href="/projetos">Projetos</StyledNavLink> */}
+            
               </StyledNav>
               <StyledNav>
-                <StyledNavLink onClick={this.handleLogin}>{!isLoggedIn ? 'Entrar': 'Sair'}</StyledNavLink>
+              <StyledDropdown title="Área Reservada" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="/area-reservada">
+                    Conta Corrente
+                  </NavDropdown.Item>
+                  {isLoggedIn ? <NavDropdown.Item onClick={this.handleLogin}>Sair</NavDropdown.Item> : ''}
+                </StyledDropdown>
               </StyledNav>
             </StyledNavbar.Collapse>
           </Container>

@@ -148,6 +148,8 @@ export default class Submissao extends Component {
       <>
         <SubmissaoContainer>
           <Wrapper>
+            
+            <Form onSubmit={this.handleIncludeExpense}>
             <Atencao>
               <IconTextTipologia>
                 <IconAtencao />
@@ -157,7 +159,6 @@ export default class Submissao extends Component {
                 </TextTipologia>
               </IconTextTipologia>
             </Atencao>
-            <Form onSubmit={this.handleIncludeExpense}>
             <Form.Group role="form">
               <Row className="mb-3">
                 <Form.Group as={Col} sm={4}>

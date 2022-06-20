@@ -27,21 +27,14 @@ export default class NotFound extends Component {
                   <NotFoundLinksContainer>
           <NotFoundLinksWrapper>
             <NotFoundLinkItems>
-              <NotFoundLink to="/">Saber</NotFoundLink>
-              <NotFoundLink to="/login">Clínica</NotFoundLink>
-              <NotFoundLink to="/login">Caminhando</NotFoundLink>
-              <NotFoundLink to="/login">Protocolos</NotFoundLink>
+              <NotFoundLink to="/area-reservada">Área Reservada</NotFoundLink>
+              <NotFoundLink to="/atividades">Eventos</NotFoundLink>
+              <NotFoundLink to="/noticias">Notícias</NotFoundLink>
+              <NotFoundLink to="/Associados">Benefícios</NotFoundLink>
            
             </NotFoundLinkItems>
           </NotFoundLinksWrapper>
-          <NotFoundLinksWrapper>
-            <NotFoundLinkItems>
-            <NotFoundLink to="/login">Notícias</NotFoundLink>
-              <NotFoundLink to="/login">Eventos</NotFoundLink>
-              <NotFoundLink to="/login">Área Reservada</NotFoundLink>
-              <NotFoundLink to="/login">Contactos</NotFoundLink>
-            </NotFoundLinkItems>
-          </NotFoundLinksWrapper>
+    
           </NotFoundLinksContainer>
                 </TextWrapper>
               </Column1>

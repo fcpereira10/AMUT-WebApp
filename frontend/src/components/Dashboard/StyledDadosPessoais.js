@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   align-items: center;
   grid-gap: 30px;
   @media screen and (max-width: 1100px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     padding: 0 30px 30px;
   }
   @media screen and (max-width: 768px) {

@@ -22,7 +22,7 @@ export default class ActivitiesCard extends Component {
             <EventsH2>{moment(this.props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{this.props.data.title}</EventsP>
           </EventsCard.Body>
-          <DetailsButton to="">Ver Detalhes</DetailsButton>
+          <DetailsButton to={`/atividades/${this.props.data._id}`}>Ver Detalhes</DetailsButton>
         </EventsCard>
       </>
     );

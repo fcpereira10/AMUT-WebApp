@@ -69,6 +69,21 @@ export const EventsIcon = styled(Card.Img)`
     transition: all 0.25s ease-in-out;
   }
 `;
+export const EventImage = styled(EventsIcon)`
+  height: 300px;
+  width: 300px;
+  justify-content: center;
+  margin-bottom: 10px;
+  @media screen and (max-width: 1380px) {
+    height: 250px;
+    width: 250px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 200px;
+    width: 200px;
+  }
+`;
 
 export const EventsH1 = styled.h1`
   font-size: 2.5rem;
@@ -176,10 +191,11 @@ export const InfoRow = styled.div`
   }
 `;
 export const Column1 = styled.div`
-  min-width: 600px;
+  min-width: 200px;
   margin-bottom: 15px;
   padding: 0 15px;
   grid-area: col1;
+  
   @media screen and (max-width: 768px) {
     min-width: 0px;
   }
@@ -188,5 +204,6 @@ export const Column1 = styled.div`
 export const Column2 = styled.div`
   margin-bottom: 15px;
   padding: 0 15px;
+  text-align: right !important;
   grid-area: col2;
 `;
