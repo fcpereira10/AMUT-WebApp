@@ -167,7 +167,7 @@ export const IconProteses = styled(FaGlasses)`
   }
 `;
 
-export const Doc = styled(Link)`
+export const Doc = styled.a`
   text-align: center;
   margin-top: 24px;
   color: #3d3d3d;

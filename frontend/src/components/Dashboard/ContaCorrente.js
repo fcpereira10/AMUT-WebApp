@@ -20,12 +20,13 @@ import {
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import { ProgressBar,Table } from "react-bootstrap";
+import { MdOpenInNew } from "react-icons/md";
 import api from "../../api";
+import moment from "moment";
 
 export default class ContaCorrente extends Component {
   async componentDidMount() {
     await api.getPlafondsByUser(this.props.id).then((res) => {
-      console.log(res.data.plafonds)
 
       this.setState({
         medicinesYearly: res.data.plafonds.medicinesYearly,
@@ -40,17 +41,22 @@ export default class ContaCorrente extends Component {
       })
     })
     await api.getExpensesByUser(this.props.id).then((res) => {
-      console.log(res.data.expenses)
+     
+      this.setState({
+        expenses: res.data.expenses,
+      });
+      
     })
   }
   constructor(props) {
     super(props);
-    console.log(this.props.id)
     this.state = {
       labels: ["Comparticipado", "Saldo"],
+      expenses: [],
     };
   }
   render() {
+    const { expenses } = this.state;
     return (
       <>
         <ContaCorrenteContainer>
@@ -220,20 +226,21 @@ export default class ContaCorrente extends Component {
                     <th>Nº Fatura/Recibo</th>
                     <th>Data</th>
                     <th>Beneficiário</th>
-                    <th>Tipo de Despesa</th>
+                    <th>Tipo</th>
                     <th>Fatura/Recibo</th>
                     <th>Prescrição</th>
                     <th>Declaração</th>
                   </tr>
                 </thead>
                 <tbody>
+                {expenses.map((expense) => (
                   <tr>
-                    <td>123</td>
-                    <td>07/04/2022</td>
-                    <td>Francisco Correia Pereira</td>
-                    <td>Medicamentos</td>
+                    <td>{expense.invoiceNr}</td>
+                    <td>{moment(expense.date).format("DD-MM-YYYY")}</td>
+                    <td>{expense.name}</td>
+                    <td>{expense.type}</td>
                     <td>
-                      <a href="http://localhost:3000/static/62af5281671647892def2e5b-invoice.pdf" target="_blank" download>fatura.pdf</a>
+                      <Doc href={"http://localhost:3000/static/"+ expense._id + "-invoice.pdf"} target="_blank" download>Fatura<MdOpenInNew/></Doc>
                       </td>
                     <td>
                       <Doc to="/">prescrição.pdf</Doc>
@@ -241,37 +248,7 @@ export default class ContaCorrente extends Component {
                     <td>
                       <Doc to="/">declaração.pdf</Doc>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>999</td>
-                    <td>01/01/2022</td>
-                    <td>Francisco Correia Pereira</td>
-                    <td>Próteses e Ortóteses</td>
-                    <td>
-                      <Doc to="/">fatura.pdf</Doc>
-                    </td>
-                    <td>
-                      <Doc to="/">prescrição.pdf</Doc>
-                    </td>
-                    <td>
-       
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>666</td>
-                    <td>07/02/2022</td>
-                    <td>Francisco Correia Pereira</td>
-                    <td>Estomatologia</td>
-                    <td>
-                      <Doc to="/">fatura.pdf</Doc>
-                    </td>
-                    <td>
-               
-                    </td>
-                    <td>
-                  
-                    </td>
-                  </tr>
+                  </tr> ))}
                 </tbody>
               </Table>
             </ContaCorrenteCard>

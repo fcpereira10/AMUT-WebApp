@@ -51,7 +51,6 @@ export default class DashboardPage extends Component {
   renderTab() {
     switch(this.state.selectedIndex){
       case 1:
-        console.log(this.state)
         return <ContaCorrente id={this.state.id}/>;
       case 2:
         return <Submissao id={this.state.id} name={this.state.name}/>;

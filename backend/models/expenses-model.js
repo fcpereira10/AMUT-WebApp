@@ -9,9 +9,6 @@ const Expenses = new Schema(
         type: { type: String, required: true },
         price: { type: Number, required: true },
         userId: {type: String, required: true},
-        invoiceFile: {type: String, required: false},
-        prescriptionFile: {type: String, required: false},
-        statementFile: {type: String, required: false}
     },
     { timestamps: true },
 )

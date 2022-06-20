@@ -83,8 +83,7 @@ export default class Submissao extends Component {
     const price = event.target.value;
     this.setState({ price });
   };
-  handleChangeInputType = async (event) => {
-    const type = event.target.value;
+  handleChangeInputType = async (type) => {
     this.setState({ type });
   };
   handleChangeInputBeneficiaryType = async (beneficiary) => {
@@ -101,11 +100,9 @@ export default class Submissao extends Component {
     event.preventDefault()
     const { invoiceNr, name, date, type, price, userId } = this.state;
     const payload = { invoiceNr, name, date, type, price, userId };
-    console.log("handle include expense");
-
     await api.createExpense(payload).then((res) => {
       if (res.data.success) {
-        window.alert(`Despesa registada com Sucesso!`);
+       
         this.setState({
           invoiceNr: "",
           name: this.props.name,
@@ -121,9 +118,13 @@ export default class Submissao extends Component {
           this.state.selectedInvoice.name.lastIndexOf(".")
         );
         const formData = new FormData();
-        formData.append("files", this.state.selectedInvoice, id + "-invoice"+ extension);
-        formData.append("files", this.state.selectedPrescription, id + "-prescription" +extension);
-        formData.append("files", this.state.selectedStatement, id + "-statement" + extension);
+        formData.append("files"[], this.state.selectedInvoice, id + "-invoice"+ extension);
+        if (this.state.selectedPrescription !== ""){
+          formData.append("files", this.state.selectedPrescription, id + "-prescription" +extension);
+        }
+        if (this.state.selectedStatement !== ""){
+          formData.append("files", this.state.selectedStatement, id + "-statement" + extension);
+        }
         // Request made to the backend api
         // Send formData object
         api.uploadFiles(id, formData);
@@ -133,6 +134,7 @@ export default class Submissao extends Component {
           date: moment(Date.now()).format("YYYY-MM-DD"),
           description: "",
         });
+        window.alert(`Despesa registada com Sucesso!`);
       } else {
         window.alert(`Verifique os Dados!`);
       }
@@ -196,7 +198,6 @@ export default class Submissao extends Component {
                     as="select"
                     value={type}
                     onChange={(e) => this.handleChangeInputType(e.target.value)}
-                    required
                   >
                     <option value="Medicamentos">Medicamentos</option>
                     <option value="Ambulatório">Ambulatório</option>
@@ -252,14 +253,14 @@ export default class Submissao extends Component {
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Prescrição Médica</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" onChange={this.onPrescriptionFileChange} required/>
+                    <Form.Control type="file" onChange={this.onPrescriptionFileChange} />
                   </Form.Group>
                 </Form.Group>
 
                 <Form.Group as={Col} sm={4}>
                   <Form.Label>Declaração Médica</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Control type="file" onChange={this.onStatementFileChange} required/>
+                    <Form.Control type="file" onChange={this.onStatementFileChange}/>
                   </Form.Group>
                 </Form.Group>
               </Row>

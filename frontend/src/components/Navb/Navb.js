@@ -19,7 +19,6 @@ export default class Navb extends Component {
     this.setState({
       isLoggedIn
     })
-    console.log("token "+ token +" "+isLoggedIn)
 
   }
   constructor(props) {
