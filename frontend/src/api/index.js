@@ -55,7 +55,7 @@ const apis = {
     getArticleById,
     getMostRecentArticle,
     uploadArticleImage,
-    //News
+    //Users
     insertUser,
     getAllUsers,
     updateUserById,

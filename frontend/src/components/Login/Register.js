@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api from "../../api";
 import {
+  FormGroup,
   Container,
   FormContent,
   Form,
@@ -20,12 +21,12 @@ export default function Register() {
     const payload = { email, nif };
 
     await api.registerUser(payload).then((res) => {
-      
       if (res.data.status !== "error") {
-        localStorage.setItem("token", res.data.user);
-        window.location.href = "/area-reservada";
+
+        alert(res.data.message)
+        window.location.href = "/login";
       } else {
-        alert("Por favor, Confirme os seus dados");
+        alert(res.data.message);
       }
     });
   }
@@ -37,21 +38,25 @@ export default function Register() {
           <FormContent>
             <Form onSubmit={registerUser}>
               <FormH1>Solicitação de Acesso</FormH1>
-              <FormLabel htmlFor="for">Email</FormLabel>
-              <FormInput
-                placeholder="exemplo@mail.com"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <FormLabel htmlFor="for">NIF</FormLabel>
-              <FormInput
-                placeholder="501634851"
-                required
-                value={nif}
-                onChange={(e) => setNif(e.target.value)}
-              />
+              <FormGroup>
+                <FormLabel htmlFor="for">Email</FormLabel>
+                <FormInput
+                  placeholder="exemplo@mail.com"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormGroup>
+              <FormGroup>
+                <FormLabel htmlFor="for">NIF</FormLabel>
+                <FormInput
+                  placeholder="501634851"
+                  required
+                  value={nif}
+                  onChange={(e) => setNif(e.target.value)}
+                />
+              </FormGroup>
               <FormButton primary="true" dark="true" type="submit">
                 Registar
               </FormButton>

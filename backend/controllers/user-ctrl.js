@@ -3,35 +3,36 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
+const { Console } = require("console");
 
-updateUser = async (req, res) => {
-  const body = req.body;
+updateUserById = async (req, res) => {
+ 
+  const user = await User.findOne({
+    _id: req.params.id,
+    
+  }).clone().exec();
 
-  if (!body) {
-    return res.status(400).json({
-      success: false,
-      error: "You must provide a body to update",
-    });
+  if (!user) {
+    return res.json({ success: false, message: "Erro ao encontrar Utilizador" });
   }
 
-  User.findOne({ _id: req.params.id }, (err, user) => {
-    if (err) {
-      return res.status(404).json({
-        err,
-        message: "User not found!",
-      });
-    }
-    user.nrUser = body.nrUser;
+
+/*  user.nrUser = body.nrUser;
     user.isAdmin = body.isAdmin;
     user.email = body.email;
-    user.password = body.password;
     user.nif = body.nif;
     user.phone = body.phone;
     user.iban = body.iban;
     user.address = body.address;
     user.postalCode = body.postalCode;
-    user.local = body.local;
-    user
+    user.local = body.local; */
+  
+    const isPasswordValid = await bcrypt.compare(req.body.password,user.password);
+
+    if (isPasswordValid) {
+
+      user.password = await bcrypt.hash(req.body.newPassword, 10);
+      user
       .save()
       .then(() => {
         return res.status(200).json({
@@ -46,7 +47,11 @@ updateUser = async (req, res) => {
           message: "User not updated!",
         });
       });
-  });
+      //return res.json({ success: true, message: "Dados Atualizados com sucesso" });
+    } else {
+      return res.json({ success: false, message: "Senha Errada! Verifique a Senha Atual."});
+      
+    }
 };
 
 getUserById = async (req, res) => {
@@ -58,7 +63,7 @@ getUserById = async (req, res) => {
     if (!user) {
       return res.status(404).json({ success: false, error: `User not found` });
     }
-    return res.status(200).json({ success: true, data: user });
+    return res.status(200).json({ success: true, user: user });
   }).catch((err) => console.log(err));
 };
 
@@ -70,19 +75,22 @@ getUsers = async (req, res) => {
     if (!users.length) {
       return res.status(404).json({ success: false, error: `User not found` });
     }
-    return res.status(200).json({ success: true, data: users });
+    return res.status(200).json({ success: true, users: users });
   }).catch((err) => console.log(err));
 };
+
 
 loginUser = async (req, res) => {
   const user = await User.findOne({
     email: req.body.email,
     
   });
-  if (!user) {
-    return res.json({ status: "error", error: "Login Inválido" });
+
+  if (!user || !user.password) {
+    return res.json({ success: false, error: "Utilizador não registado!" });
   }
-console.log(req.body.password+ " "+ user.password)
+
+
   const isPasswordValid = await bcrypt.compare(
     req.body.password,
     user.password
@@ -97,11 +105,13 @@ console.log(req.body.password+ " "+ user.password)
       "secret123"
     );
 
-    return res.json({ status: "ok", user: token, isAdmin: user.isAdmin });
+    return res.json({ success: true, user: token, isAdmin: user.isAdmin });
   } else {
-    return res.json({ status: "error", user: false });
+    return res.json({ success: false, user: false, error: "Verifique a Senha!"});
   }
 };
+
+
 registerUser = async (req, res) => {
   const user = await User.findOne({
     email: req.body.email,
@@ -110,33 +120,34 @@ registerUser = async (req, res) => {
   if (!user) {
     return res.json({
       status: "error",
-      error: "Por favor verifique os dados inseridos",
+      message: "Por favor verifique os dados inseridos!",
     });
   }
   if (user.password != null) {
     return res.json({
       status: "error",
-      error: "Este Utilizador já existe",
+      message: "Já foi gerada uma password para este utilizador. Verifique a sua caixa de correio!",
     });
   }
   const newPassword = crypto.randomBytes(8).toString("hex");
   const errorWhileSendingEmail = sendEmail(newPassword, user.email, res);
   
   if (!errorWhileSendingEmail){
-    console.log(errorWhileSendingEmail + " error")
+
     user.password = await bcrypt.hash(newPassword, 10)
     user.save()
     .then(() => {
+      
       return res.status(200).json({
         success: true,
         id: user._id,
-        message: "User updated!",
+        message: "Utilizador Registado! A password foi enviada para o seu email",
       });
     })
     .catch((error) => {
       return res.status(404).json({
         error,
-        message: "User not updated!",
+        message: "Utilizador não registado!",
       });
     });
   }
@@ -173,13 +184,12 @@ getUserDataBasedOnToken = async (req, res) => {
           const returnUser = {email: user.email, name: user.name, isAdmin: user.isAdmin, nrUser: user.nrUser, id: user._id};
           res.json({user: returnUser, status: 'success'})
     } catch (error){
-        console.log(error)
         res.json({status: 'error', error: 'invalid token'} )
     }
 }
 
 module.exports = {
-  updateUser,
+  updateUserById,
   getUsers,
   getUserById,
   loginUser,

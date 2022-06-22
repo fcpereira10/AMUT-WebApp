@@ -42,21 +42,19 @@ updatePlafonds = async (req, res) => {
 };
 
 getPlafondsByUser = async (req, res) => {
-  console.log("req "+ req.params.id)
   const query = { "userId":  req.params.id  }
-  console.log(query)
   await Plafonds.findOne(query, (err, plafonds)=> {
-    console.log("inside query find ")
     if (err) {
       return res.status(400).json({ success: false, error: err });
     }
-    console.log("plafonds " +plafonds)
+
     if (!plafonds) {
       return res.status(404).json({ success: false, error: `Plafonds not found` });
     }
     return res.status(200).json({ success: true, plafonds: plafonds });
   }).catch((err) => console.log(err));
 };
+
 
 module.exports = {
   updatePlafonds,

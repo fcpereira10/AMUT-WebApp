@@ -19,7 +19,7 @@ import {
 } from "./StyledContaCorrente";
 import "chart.js/auto";
 import { Pie } from "react-chartjs-2";
-import { ProgressBar,Table } from "react-bootstrap";
+import { ProgressBar, Table } from "react-bootstrap";
 import { MdOpenInNew } from "react-icons/md";
 import api from "../../api";
 import moment from "moment";
@@ -27,7 +27,6 @@ import moment from "moment";
 export default class ContaCorrente extends Component {
   async componentDidMount() {
     await api.getPlafondsByUser(this.props.id).then((res) => {
-
       this.setState({
         medicinesYearly: res.data.plafonds.medicinesYearly,
         medicinesUsed: res.data.plafonds.medicinesUsed,
@@ -37,16 +36,13 @@ export default class ContaCorrente extends Component {
         dentistUsed: res.data.plafonds.dentistUsed,
         prosthesisYearly: res.data.plafonds.prosthesisYearly,
         prosthesisUsed: res.data.plafonds.prosthesisUsed,
-
-      })
-    })
+      });
+    });
     await api.getExpensesByUser(this.props.id).then((res) => {
-     
       this.setState({
         expenses: res.data.expenses,
       });
-      
-    })
+    });
   }
   constructor(props) {
     super(props);
@@ -181,8 +177,7 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Estomatologia</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.dentistUsed}€ /{" "}
-                        {this.state.dentistYearly}€
+                        {this.state.dentistUsed}€ / {this.state.dentistYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
@@ -202,7 +197,8 @@ export default class ContaCorrente extends Component {
                     <TextTipologia>
                       <TipologiaTitle>Próteses e Ortóteses</TipologiaTitle>
                       <TipologiaValor>
-                        {this.state.prosthesisUsed}€ / {this.state.prosthesisYearly}€
+                        {this.state.prosthesisUsed}€ /{" "}
+                        {this.state.prosthesisYearly}€
                       </TipologiaValor>
                     </TextTipologia>
                   </IconTextTipologia>
@@ -233,22 +229,56 @@ export default class ContaCorrente extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {expenses.map((expense) => (
-                  <tr>
-                    <td>{expense.invoiceNr}</td>
-                    <td>{moment(expense.date).format("DD-MM-YYYY")}</td>
-                    <td>{expense.name}</td>
-                    <td>{expense.type}</td>
-                    <td>
-                      <Doc href={"http://localhost:3000/static/"+ expense._id + "-invoice.pdf"} target="_blank" download>Fatura<MdOpenInNew/></Doc>
+                  {expenses.map((expense) => (
+                    <tr>
+                      <td>{expense.invoiceNr}</td>
+                      <td>{moment(expense.date).format("DD-MM-YYYY")}</td>
+                      <td>{expense.name}</td>
+                      <td>{expense.type}</td>
+                      <td>
+                        <Doc
+                          href={
+                            "http://localhost:3000/static/" +
+                            expense._id +
+                            "-invoice.pdf"
+                          }
+                          target="_blank"
+                          download
+                        >
+                          Fatura
+                          <MdOpenInNew />
+                        </Doc>
                       </td>
-                    <td>
-                      <Doc to="/">prescrição.pdf</Doc>
-                    </td>
-                    <td>
-                      <Doc to="/">declaração.pdf</Doc>
-                    </td>
-                  </tr> ))}
+                      <td>
+                        <Doc
+                          href={
+                            "http://localhost:3000/static/" +
+                            expense._id +
+                            "-prescription.pdf"
+                          }
+                          target="_blank"
+                          download
+                        >
+                          Receita
+                          <MdOpenInNew />
+                        </Doc>
+                      </td>
+                      <td>
+                        <Doc
+                          href={
+                            "http://localhost:3000/static/" +
+                            expense._id +
+                            "-statement.pdf"
+                          }
+                          target="_blank"
+                          download
+                        >
+                          Declaração
+                          <MdOpenInNew />
+                        </Doc>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
             </ContaCorrenteCard>

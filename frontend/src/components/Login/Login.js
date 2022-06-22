@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { InputGroup } from "react-bootstrap";
 import api from "../../api";
 import {
   Container,
@@ -11,20 +12,31 @@ import {
   Text,
   FormButton,
   Reg,
+  FormGroup,
 } from "./StyledLogin";
 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [validated, setValidated] = useState(false);
+
 
   async function loginUser(event) {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
     event.preventDefault();
     const payload = { email, password };
+    console.log(payload)
 
     await api.loginUser(payload).then((res) => {
 
-      if (res.data.status !== "error") {
+      if (res.data.success) {
         localStorage.setItem("token", res.data.user);
         
         if (res.data.isAdmin){
@@ -35,7 +47,7 @@ export default function Login() {
         
         
       } else {
-        alert("Por favor, confirme os seus dados");
+        alert(res.data.error);
       }
     });
   }
@@ -45,16 +57,23 @@ export default function Login() {
       <Container>
         <FormWrap>
           <FormContent>
-            <Form onSubmit={loginUser} autocomplete="on"> 
+            <Form noValidate validated={validated} onSubmit={loginUser} autoComplete="on"> 
               <FormH1>Área Reservada</FormH1>
+              <FormGroup >
               <FormLabel htmlFor="email">Email</FormLabel>
               <FormInput
+                validated="false"
                 placeholder="exemplo@mail.com"
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+               <Form.Control.Feedback type="invalid">
+              Por favor, verifique o email.
+            </Form.Control.Feedback>
+            </FormGroup>
+              <FormGroup >
               <FormLabel htmlFor="password">Senha</FormLabel>
               <FormInput
                 type="password"
@@ -62,6 +81,10 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+            <Form.Control.Feedback type="invalid">
+              Por favor, verifique a senha.
+            </Form.Control.Feedback>
+            </FormGroup>
               <FormButton primary="true" dark="true" type="submit">
                 Entrar
               </FormButton>

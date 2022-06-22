@@ -44,7 +44,6 @@ getExpensesByUser = async (req, res) => {
     if (err) {
       return res.status(400).json({ success: false, error: err });
     }
-    console.log("expenses " +expenses)
     if (!expenses) {
       return res.status(404).json({ success: false, error: `Expenses not found` });
     }
@@ -53,9 +52,15 @@ getExpensesByUser = async (req, res) => {
 };
 
 uploadFiles = async (req, res) => {
-  console.log("upload files");
   const newpath = __dirname + "/files/";
-  const files = req.files.files;
+
+  const files = [];
+  if (Array.isArray(req.files.files)){
+    files = req.files.files;
+  }else{
+    files.push(req.files.files);
+  }
+  
   files.forEach((file) => 
     file.mv(`${newpath}${file.name}`, (err) => {
       if (err) {

@@ -82,9 +82,12 @@ export const FormLabel = styled(form.Label)`
 
 export const FormInput = styled(Form.Control)`
   padding: 16px 16px;
-  margin-bottom: 32px;
   border: none;
   border-radius: 10px;
+  
+`;
+export const FormGroup = styled(Form.Group)`
+  margin-bottom: 32px;
   
 `;
 export const FormButton = styled(SubmitButton)`

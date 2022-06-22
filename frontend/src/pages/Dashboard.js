@@ -55,7 +55,7 @@ export default class DashboardPage extends Component {
       case 2:
         return <Submissao id={this.state.id} name={this.state.name}/>;
       case 3:
-        return <DadosPessoais/>;
+        return <DadosPessoais id={this.state.id}/>;
       default:
         return <ContaCorrente id={this.state.id}/>;
     }

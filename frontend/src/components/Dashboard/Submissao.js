@@ -118,7 +118,7 @@ export default class Submissao extends Component {
           this.state.selectedInvoice.name.lastIndexOf(".")
         );
         const formData = new FormData();
-        formData.append("files"[], this.state.selectedInvoice, id + "-invoice"+ extension);
+        formData.append("files", this.state.selectedInvoice, id + "-invoice"+ extension);
         if (this.state.selectedPrescription !== ""){
           formData.append("files", this.state.selectedPrescription, id + "-prescription" +extension);
         }
@@ -152,7 +152,7 @@ export default class Submissao extends Component {
           <Wrapper>
             
             <Form onSubmit={this.handleIncludeExpense}>
-            <Atencao>
+            <Atencao >
               <IconTextTipologia>
                 <IconAtencao />
                 <TextTipologia>

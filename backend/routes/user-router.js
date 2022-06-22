@@ -4,7 +4,7 @@ const UserCtrl = require('../controllers/user-ctrl')
 
 const router = express.Router()
 
-router.put('/user/:id', UserCtrl.updateUser)
+router.put('/user/:id', UserCtrl.updateUserById)
 router.get('/user/:id', UserCtrl.getUserById)
 router.get('/users', UserCtrl.getUsers)
 
