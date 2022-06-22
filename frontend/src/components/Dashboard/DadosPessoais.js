@@ -74,6 +74,14 @@ export default class DadosPessoais extends Component {
 
   handleUpdateUser = async (event) => {
     event.preventDefault();
+    if (this.state.password === ""){
+      const password = undefined
+      this.setState(password)
+    }
+    if (this.state.newPassword === ""){
+      const newPassword = undefined
+      this.setState(newPassword)
+    }
     if (this.state.newPassword === this.state.confirmPassword) {
       
       const {
@@ -87,7 +95,7 @@ export default class DadosPessoais extends Component {
         postalCode,
         local,
       } = this.state;
-      const payload = { password, newPassword };
+      const payload = {password, newPassword, email ,phone, iban, address, postalCode, local };
       await api.updateUserById(id, payload).then((res) => {
         alert(res.data.message);
       });
@@ -109,7 +117,7 @@ export default class DadosPessoais extends Component {
                   <Form.Control
                     value={this.state.email}
                     type="email"
-                    required
+           
                     onChange={this.handleChangeEmail}
                   />
                 </Form.Group>
@@ -118,7 +126,7 @@ export default class DadosPessoais extends Component {
                   <Form.Control
                     value={this.state.phone}
                     type="phone"
-                    required
+                
                     onChange={this.handleChangePhone}
                   />
                 </Form.Group>
@@ -130,7 +138,7 @@ export default class DadosPessoais extends Component {
                   <Form.Control
                     value={this.state.password}
                     type="password"
-                    required
+
                     onChange={this.handleChangePassword}
                   />
                 </Form.Group>
@@ -139,7 +147,7 @@ export default class DadosPessoais extends Component {
                   <Form.Control
                     value={this.state.newPassword}
                     type="password"
-                    required
+          
                     onChange={this.handleChangeNewPassword}
                   />
                 </Form.Group>
