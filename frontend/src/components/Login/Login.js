@@ -41,7 +41,7 @@ export default function Login() {
         
         if (res.data.isAdmin){
           window.location.href = "/admin";
-        } else{
+        } else {
           window.location.href = "/area-reservada";
         }
         

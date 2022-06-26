@@ -90,7 +90,9 @@ deleteActivity = async (req, res) => {
 }
 
 getMostRecentActivity = async (req, res) => {
-    await Activity.find({}, (err, activities) => {
+    var now = new Date()
+    var fullDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    await Activity.find({date: {$gte: fullDate }}, null, {sort: {date: 1}},  (err, activities) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -124,7 +126,8 @@ getActivities = async (req, res) => {
                 .json({ success: false, error: `Activity not found` })
         }
         return res.status(200).json({ success: true, data: activities })
-    }).catch(err => console.log(err))
+    }).clone()
+    .exec().catch(err => console.log(err))
 }
 
 uploadActivityImage = async(req, res) => {
@@ -141,6 +144,42 @@ uploadActivityImage = async(req, res) => {
   });
 };
 
+getPastActivities = async (req, res) => {
+    var now = new Date()
+    var fullDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    await Activity.find({date: {$lt: fullDate }}, (err, news) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!news.length) {
+
+            return res
+                .status(404)
+                .json({ success: false, error: `There's no past activities` })
+        }
+        return res.status(200).json({ success: true, data: news })
+    }).clone()
+    .exec().catch(err => console.log(err))
+}
+
+
+getFutureActivities = async (req, res) => {
+    var now = new Date()
+    var fullDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    await Activity.find({date: {$gte: fullDate }}, (err, activities) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!activities.length) {
+
+            return res
+                .status(404)
+                .json({ success: false, error: `There's no past activities` })
+        }
+        return res.status(200).json({ success: true, data: activities })
+    }).clone()
+    .exec().catch(err => console.log(err))
+}
 
 
 module.exports = {
@@ -150,5 +189,8 @@ module.exports = {
     getActivities,
     getActivityById,
     getMostRecentActivity,
-    uploadActivityImage
+    uploadActivityImage,
+    getPastActivities, 
+    getFutureActivities
+
 }

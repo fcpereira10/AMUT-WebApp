@@ -1,4 +1,4 @@
-const Article = require('../models/news-model')
+const News = require('../models/news-model')
 
 createArticle = (req, res) => {
     const body = req.body
@@ -10,7 +10,7 @@ createArticle = (req, res) => {
         })
     }
 
-    const article = new Article(body)
+    const article = new News(body)
 
     if (!article) {
         return res.status(400).json({ success: false, error: err })
@@ -43,7 +43,7 @@ updateArticle = async (req, res) => {
         })
     }
 
-    Article.findOne({ _id: req.params.id }, (err, article) => {
+    News.findOne({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(404).json({
                 err,
@@ -72,7 +72,7 @@ updateArticle = async (req, res) => {
 }
 
 deleteArticle = async (req, res) => {
-    await Article.findOneAndDelete({ _id: req.params.id }, (err, article) => {
+    await News.findOneAndDelete({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -88,7 +88,7 @@ deleteArticle = async (req, res) => {
 }
 
 getArticleById = async (req, res) => {
-    await Article.findOne({ _id: req.params.id }, (err, article) => {
+    await News.findOne({ _id: req.params.id }, (err, article) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -102,10 +102,11 @@ getArticleById = async (req, res) => {
     }).catch(err => console.log(err))
 }
 getMostRecentArticle = async (req, res) => {
-    await Article.find({}, (err, news) => {
+    await News.find({}, null, {sort: {date: -1}},function (err, news)  {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
+        console.log("article "+news)
         if (!news.length) {
             return res
                 .status(404)
@@ -114,9 +115,8 @@ getMostRecentArticle = async (req, res) => {
         return res.status(200).json({ success: true, data: news[0] })
     }).catch(err => console.log(err))
 }
-
 getNews = async (req, res) => {
-    await Article.find({}, (err, articles) => {
+    await News.find({}, (err, articles) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -151,5 +151,5 @@ module.exports = {
     getNews,
     getArticleById,
     getMostRecentArticle,
-    uploadArticleImage,
+    uploadArticleImage
 }

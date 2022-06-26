@@ -23,6 +23,7 @@ import { ProgressBar, Table } from "react-bootstrap";
 import { MdOpenInNew } from "react-icons/md";
 import api from "../../api";
 import moment from "moment";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default class ContaCorrente extends Component {
   async componentDidMount() {
@@ -38,24 +39,54 @@ export default class ContaCorrente extends Component {
         prosthesisUsed: res.data.plafonds.prosthesisUsed,
       });
     });
-    await api.getExpensesByUser(this.props.id).then((res) => {
-      this.setState({
-        expenses: res.data.expenses,
-      });
+    let expenses = await api.getExpensesByUser(this.props.id).then((res) => {
+      let expensesData = res.data.expenses.map(async el =>  ({...el,
+        statementFileUrl: await Promise.resolve(this.checkFile("http://localhost:3000/static/" +
+        el._id +
+        "-statement.pdf")).then(result => {return result;}), 
+        prescriptionFileUrl:  await Promise.resolve(this.checkFile("http://localhost:3000/static/" +
+        el._id +
+        "-prescription.pdf")).then(result => { return result;  }), 
+        invoiceFileUrl: await Promise.resolve(this.checkFile("http://localhost:3000/static/" +
+        el._id +
+        "-invoice.pdf")).then(result => { return result;  })
+
+      }));  
+      return expensesData;
     });
+    Promise.all(expenses).then(result => {
+      this.setState({
+        expenses: result,
+        waitForLoadingStop: false,
+      })
+    })
+    
   }
+
+   async checkFile(url) {
+     return await fetch(url).then((res) => {
+      if(res.status === 200) 
+        return url;
+      return null;
+    }).catch(err => {
+      return null;
+    })
+};
+
+
   constructor(props) {
     super(props);
     this.state = {
       labels: ["Comparticipado", "Saldo"],
       expenses: [],
+      waitForLoadingStop: true, 
     };
   }
   render() {
-    const { expenses } = this.state;
+    const { expenses, waitForLoadingStop } = this.state;
     return (
       <>
-        <ContaCorrenteContainer>
+       {!waitForLoadingStop && <ContaCorrenteContainer>
           <ContaCorrenteWrapper>
             <ContaCorrenteCard>
               <ContaCorrenteH2>Resumo Anual</ContaCorrenteH2>
@@ -229,7 +260,8 @@ export default class ContaCorrente extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {expenses.map((expense) => (
+                  {
+                  expenses.map((expense) => (
                     <tr>
                       <td>{expense.invoiceNr}</td>
                       <td>{moment(expense.date).format("DD-MM-YYYY")}</td>
@@ -238,9 +270,7 @@ export default class ContaCorrente extends Component {
                       <td>
                         <Doc
                           href={
-                            "http://localhost:3000/static/" +
-                            expense._id +
-                            "-invoice.pdf"
+                            expense.invoiceFileUrl
                           }
                           target="_blank"
                           download
@@ -250,7 +280,7 @@ export default class ContaCorrente extends Component {
                         </Doc>
                       </td>
                       <td>
-                        <Doc
+                        {expense.prescriptionFileUrl != null && <Doc
                           href={
                             "http://localhost:3000/static/" +
                             expense._id +
@@ -261,10 +291,10 @@ export default class ContaCorrente extends Component {
                         >
                           Receita
                           <MdOpenInNew />
-                        </Doc>
+                        </Doc>}
                       </td>
                       <td>
-                        <Doc
+                        {expense.statementFileUrl != null && <Doc
                           href={
                             "http://localhost:3000/static/" +
                             expense._id +
@@ -275,7 +305,7 @@ export default class ContaCorrente extends Component {
                         >
                           Declaração
                           <MdOpenInNew />
-                        </Doc>
+                        </Doc>}
                       </td>
                     </tr>
                   ))}
@@ -284,6 +314,7 @@ export default class ContaCorrente extends Component {
             </ContaCorrenteCard>
           </HistoricWrapper>
         </ContaCorrenteContainer>
+  }
       </>
     );
   }

@@ -1,15 +1,15 @@
 const express = require('express')
 
-const ArticleCtrl = require('../controllers/news-ctrl')
+const NewsCtrl = require('../controllers/news-ctrl')
 
 const router = express.Router()
 
-router.post('/article', ArticleCtrl.createArticle)
-router.put('/article/:id', ArticleCtrl.updateArticle)
-router.delete('/article/:id', ArticleCtrl.deleteArticle)
-router.get('/article/:id', ArticleCtrl.getArticleById)
-router.get('/news', ArticleCtrl.getNews)
-router.get('/news/recent', ArticleCtrl.getMostRecentArticle)
-router.post('/uploadArticleImage', ArticleCtrl.uploadArticleImage)
+router.post('/article', NewsCtrl.createArticle)
+router.put('/article/:id', NewsCtrl.updateArticle)
+router.delete('/article/:id', NewsCtrl.deleteArticle)
+router.get('/article/:id', NewsCtrl.getArticleById)
+router.get('/news', NewsCtrl.getNews)
+router.get('/news/recent', NewsCtrl.getMostRecentArticle)
+router.post('/uploadArticleImage', NewsCtrl.uploadArticleImage)
 
 module.exports = router

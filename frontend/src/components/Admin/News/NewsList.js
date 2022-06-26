@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactTable from "react-table";
 import api from "../../../api";
 import { Delete, ListWrapper, Update } from "../Activities/StyledActivities";
-
+import moment from "moment";
 import "react-table/react-table.css";
 
 class UpdateArticle extends Component {
@@ -52,13 +52,19 @@ export default class NewsList extends Component {
     this.setState({activeButton});
 
   }
+  formatDate(date) {
+    return moment(date).format("yyyy-MM-DD")
+  }
 
   componentDidMount = async () => {
     this.setState({ isLoading: true });
 
     await api.getAllNews().then((news) => {
+      let newsData = news.data.data.map(el => ({ ...el,
+        date: this.formatDate(el.date)
+      }));
       this.setState({
-        news: news.data.data,
+        news: newsData,
         isLoading: false,
       });
     });

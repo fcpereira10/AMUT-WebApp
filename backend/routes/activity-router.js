@@ -11,5 +11,7 @@ router.get('/activity/:id', ActivityCtrl.getActivityById)
 router.get('/activities', ActivityCtrl.getActivities)
 router.get('/activities/recent', ActivityCtrl.getMostRecentActivity)
 router.post('/uploadActivityImage', ActivityCtrl.uploadActivityImage)
+router.get('/pastActivities', ActivityCtrl.getPastActivities)
+router.get('/futureActivities', ActivityCtrl.getFutureActivities)
 
 module.exports = router

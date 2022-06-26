@@ -42,7 +42,7 @@ export default class UsersList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activities: [],
+      users: [],
       columns: [],
       isLoading: false,
     };
@@ -52,41 +52,42 @@ export default class UsersList extends Component {
   componentDidMount = async () => {
     this.setState({ isLoading: true });
 
-    await api.getAllActivities().then((activities) => {
+    await api.getAllUsers().then((res) => {
+      console.log(res.data.users)
       this.setState({
-        activities: activities.data.data,
+        users: res.data.users,
         isLoading: false,
       });
     });
   };
 
   render() {
-    const { activities, isLoading } = this.state;
+    const { users, isLoading } = this.state;
 
     const columns = [
       {
-        Header: "ID",
-        accessor: "_id",
+        Header: "Nº Associado",
+        accessor: "nrUser",
         filterable: true,
       },
       {
-        Header: "Título",
-        accessor: "title",
-        filterable: true,
-      },
-      {
-        Header: "Data",
-        accessor: "date",
-        filterable: true,
-      },
-      {
-        Header: "Descrição",
-        accessor: "description",
+        Header: "Nome",
+        accessor: "name",
         filterable: false,
       },
       {
-        Header: "Local",
-        accessor: "local",
+        Header: "Telefone",
+        accessor: "phone",
+        filterable: true,
+      },
+      {
+        Header: "Email",
+        accessor: "email",
+        filterable: true,
+      },
+      {
+        Header: "NIF",
+        accessor: "nif",
         filterable: true,
       },
       {
@@ -114,7 +115,7 @@ export default class UsersList extends Component {
     ];
 
     let showTable = true;
-    if (!activities.length) {
+    if (!users.length) {
       showTable = false;
       return <div>Não existem Associados registados para serem mostrados.</div>
     }
@@ -130,7 +131,7 @@ export default class UsersList extends Component {
         <ListWrapper>
           {showTable && (
             <ReactTable
-              data={activities}
+              data={users}
               columns={columns}
               loading={isLoading}
               defaultPageSize={10}

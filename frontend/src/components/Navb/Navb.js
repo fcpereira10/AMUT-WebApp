@@ -65,10 +65,10 @@ export default class Navb extends Component {
               <StyledNav className="m-auto">
                 <StyledNavLink href="/">Home</StyledNavLink>
                 <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/quemsomos">
+                  <NavDropdown.Item href="/amut/quemsomos">
                     Quem Somos
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/Associados">
+                  <NavDropdown.Item href="/amut/associados">
                     Associados
                   </NavDropdown.Item>
                   <NavDropdown.Item >
@@ -90,11 +90,10 @@ export default class Navb extends Component {
                   <NavDropdown.Item href="/noticias">Notícias</NavDropdown.Item>
                 </StyledDropdown>
                {/*  <StyledNavLink href="/projetos">Projetos</StyledNavLink> */}
-            
               </StyledNav>
               <StyledNav>
               <StyledDropdown title="Área Reservada" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/area-reservada">
+                  <NavDropdown.Item href={isLoggedIn ? "/area-reservada" : "/login" }>
                     Conta Corrente
                   </NavDropdown.Item>
                   {isLoggedIn ? <NavDropdown.Item onClick={this.handleLogin}>Sair</NavDropdown.Item> : ''}

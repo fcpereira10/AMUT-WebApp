@@ -48,13 +48,14 @@ getExpensesByUser = async (req, res) => {
       return res.status(404).json({ success: false, error: `Expenses not found` });
     }
     return res.status(200).json({ success: true, expenses: expenses });
-  }).catch((err) => console.log(err));
+  }).clone()
+  .exec().catch((err) => console.log(err));
 };
 
 uploadFiles = async (req, res) => {
   const newpath = __dirname + "/files/";
 
-  const files = [];
+  let files = [];
   if (Array.isArray(req.files.files)){
     files = req.files.files;
   }else{

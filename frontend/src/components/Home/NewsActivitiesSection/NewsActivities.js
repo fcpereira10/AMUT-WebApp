@@ -5,7 +5,6 @@ import {
   NewsH1,
   NewsWrapper,
   ActivityNewsWrapper,
-  ArticleCard,
 } from "./StyledNews";
 import { Button } from "../../StyledButton";
 import { animateScroll as scroll } from "react-scroll";
