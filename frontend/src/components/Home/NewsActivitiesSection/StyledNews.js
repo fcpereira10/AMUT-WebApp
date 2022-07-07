@@ -17,6 +17,7 @@ export const ActivityNewsWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   align-items: center;
   grid-gap: 30px;
   @media screen and (max-width: 1380px) {
@@ -62,18 +63,18 @@ export const ArticleCard = styled(Card)`
 `;
 
 export const NewsIcon = styled(Card.Img)`
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  object-fit: scale-down;
   justify-content: center;
   margin-bottom: 10px;
   @media screen and (max-width: 1380px) {
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
   }
 
   @media screen and (max-width: 768px) {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
   }
 `;
 
@@ -136,10 +137,19 @@ export const EventsCard = styled(Card)`
 `;
 
 export const EventsIcon = styled(Card.Img)`
-  height: 400px;
-  width:  100%;
+   height: 400px;
+  object-fit: scale-down;
   justify-content: center;
   margin-bottom: 10px;
+  @media screen and (max-width: 1380px) {
+    height: 3500px;
+    width: 350px;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 300px;
+    width: 300px;
+  }
 `;
 
 export const EventsH1 = styled.h1`
@@ -167,4 +177,17 @@ export const EventsP = styled(Card.Subtitle)`
 export const DetailsButton = styled(Button)`
   font-size: 16px;
   margin-top: auto;
+`;
+export const Heading = styled.h1`
+  margin-bottom: 24px;
+  text-align: center;
+  max-width: 100%;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 600;
+  color: ${({ lightText }) => (lightText ? "#f7f8fa" : "#010606")};
+
+  @media screen and (max-width: 480px) {
+    font-size: 25px;
+  }
 `;

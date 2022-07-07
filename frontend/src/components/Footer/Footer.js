@@ -34,7 +34,7 @@ export default class Footer extends Component {
               <FooterLink to="/area-reservada">Área Reservada</FooterLink>
               <FooterLink to="/atividades">Eventos</FooterLink>
               <FooterLink to="/noticias">Notícias</FooterLink>
-              <FooterLink to="/Associados">Benefícios</FooterLink>
+              <FooterLink to="/AMUT/Associados">Benefícios</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>

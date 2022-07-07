@@ -50,3 +50,28 @@ export const SubmitButton = styled.button`
         background: ${({primary}) => (primary ? '#fff' : '#d1312c')};
     }
 `;
+
+export const LinkButton = styled.a`
+    border-radius: 50px;
+    background: ${({primary}) => (primary ? '#d1312c' : '#010606')};
+    white-space: nowrap;
+    padding: ${({big}) => (big ? '14px 48px' : '12px 20px')};
+    font-size: ${({fontBig}) => (fontBig ? '25px' : '21px')};
+    color: ${({dark}) => (dark ? '#010606' : '#FFF')} !important; 
+    outline: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        text-decoration: none;
+        transform: translate(0%);
+        transition: 0.25s ease-in-out ;
+
+        background: ${({primary}) => (primary ? '#fff' : '#d1312c')};
+    }
+`;

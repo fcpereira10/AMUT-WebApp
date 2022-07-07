@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "../../StyledButton";
+import { Button, LinkButton } from "../../StyledButton";
 import {
   BtnWrap,
   Column1,
@@ -36,8 +36,10 @@ export default class Info extends Component {
                     {this.props.info.description}
                   </Subtitle>
                   <BtnWrap>
-                    <Button
-                      to="/"
+                    <LinkButton
+        
+                     href="https://amut.pt/wp-content/uploads/2022/06/AMUTPartilha_Jun22_27.pdf"
+                     target="_blank"
                       smooth="true"
                       duration={500}
                       spy="true"
@@ -48,7 +50,7 @@ export default class Info extends Component {
                       dark2={this.props.info.dark2 ? 1 : 0}
                     >
                       {this.props.info.buttonLabel}
-                    </Button>
+                    </LinkButton>
                   </BtnWrap>
                 </TextWrapper>
               </Column1>

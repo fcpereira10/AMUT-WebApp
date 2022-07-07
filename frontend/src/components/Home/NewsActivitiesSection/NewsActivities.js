@@ -5,12 +5,14 @@ import {
   NewsH1,
   NewsWrapper,
   ActivityNewsWrapper,
+  EventsCard,
 } from "./StyledNews";
 import { Button } from "../../StyledButton";
 import { animateScroll as scroll } from "react-scroll";
 import api from "../../../api/";
 import ActivitiesCard from "./ActivitiesCard";
 import NewsCard from "./NewsCard";
+import { Spinner } from "react-bootstrap";
 
 export default class NewsActivities extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ export default class NewsActivities extends Component {
     this.state = {
       activities: [],
       news: [],
+      isLoading: true,
     };
   }
 
@@ -32,9 +35,10 @@ export default class NewsActivities extends Component {
         activities: activities.data.data,
       });
     });
+    this.setState({ isLoading: false });
   };
   render() {
-    const { activities, news } = this.state;
+    const { activities, news, isLoading } = this.state;
 
     const toggleHome = () => {
       scroll.scrollToTop();
@@ -46,7 +50,7 @@ export default class NewsActivities extends Component {
           <ActivityNewsWrapper>
             <NewsWrapper>
               <NewsH1>Atividade em Destaque</NewsH1>
-              <ActivitiesCard data={activities} />
+              { !isLoading ? <ActivitiesCard data={activities} />: <EventsCard style={{justifyContent: "center", alignItems: "center", display: "flex"}}><Spinner animation="border" variant="danger" style={{ width: "10rem", height: "10rem" }}/></EventsCard>}
               <Button
                 primary="true"
                 dark="true"
@@ -59,7 +63,7 @@ export default class NewsActivities extends Component {
            
             <NewsWrapper>
               <NewsH1>Notícia em Destaque</NewsH1>
-              <NewsCard data={news} />
+              { !isLoading ? <NewsCard data={news} /> : <EventsCard style={{justifyContent: "center", alignItems: "center", display: "flex"}}><Spinner animation="border" variant="danger" style={{ width: "10rem", height: "10rem" }}/></EventsCard>}
               <Button
                 primary="true"
                 dark="true"

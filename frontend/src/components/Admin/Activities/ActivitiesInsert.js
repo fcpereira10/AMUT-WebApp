@@ -40,27 +40,40 @@ export default class ActivitiesInsert extends Component {
     this.setState({ local });
   };
 
-  handleIncludeActivity = async () => {
+  handleIncludeActivity = async (event) => {
+    event.preventDefault()
     const { title, date, description, local } = this.state;
     const payload = { title, date, description, local };
 
     await api.insertActivity(payload).then((res) => {
-      const id = res.data.id;
-      const extension = this.state.selectedFile.name.substring(
-        this.state.selectedFile.name.lastIndexOf(".")
-      );
-      const formData = new FormData();
-      formData.append("file", this.state.selectedFile, id + extension);
-      // Request made to the backend api
-      // Send formData object
-      api.uploadActivityImage(formData);
-      window.alert(`Atividade inserida com Sucesso!`);
-      this.setState({
-        title: "",
-        date: "",
-        description: "",
-        local: "",
-      });
+      if(res.status === 400){
+        window.alert(`Atividade não inserida!`);
+      }else{ 
+  
+        if (this.state.selectedFile !== ""){
+          const id = res.data.id;
+
+          const extension = this.state.selectedFile.name.substring(
+            this.state.selectedFile.name.lastIndexOf(".")
+          );
+          const formData = new FormData();
+          formData.append("file", this.state.selectedFile, id + extension);
+          // Request made to the backend api
+          // Send formData object
+          api.uploadActivityImage(formData);
+          
+          
+        }
+        window.alert(`Atividade inserida com Sucesso!`);
+        this.setState({
+          title: "",
+          date: "",
+          description: "",
+          local: "",
+        });
+      
+      }
+      
     });
   };
 

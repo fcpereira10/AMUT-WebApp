@@ -43,7 +43,7 @@ export default class ArticleCard extends Component {
                 <Heading lightText={false}>
                 {this.props.data.title}
                 </Heading>
-                <TopLine>#saber #amut #caminhadas</TopLine>
+                {/*<TopLine>#saber #amut #caminhadas</TopLine>*/}
                 <Subtitle lightTextDesc={false}>
                   {fn( this.props.data.description, 400)}
                 </Subtitle>

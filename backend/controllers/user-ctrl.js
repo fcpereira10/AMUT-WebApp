@@ -159,7 +159,7 @@ sendEmail = (password, email) => {
     service: "gmail",
     auth: {
       user: "amutfrancisco@gmail.com",
-      pass: "imhcukmugirafrpg",
+      pass: "zjourgsninqqmldp",
     },
   });
   let mailOptions = {

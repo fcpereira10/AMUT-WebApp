@@ -33,12 +33,15 @@ export default class NewsInsert extends Component {
     this.setState({ description });
   };
 
-  handleIncludeArticle = async () => {
+  handleIncludeArticle = async (event) => {
+
+     event.preventDefault()
     const { title, date, description } = this.state;
     const payload = { title, date, description };
 
     await api.insertArticle(payload).then((res) => {
-      const id = res.data.id;
+      if (this.state.selectedFile !== ""){
+        const id = res.data.id;
       const extension = this.state.selectedFile.name.substring(
         this.state.selectedFile.name.lastIndexOf(".")
       );
@@ -53,7 +56,10 @@ export default class NewsInsert extends Component {
         date: Date.now(),
         description: "",
       });
+
+      }
     });
+      
   };
 
   render() {

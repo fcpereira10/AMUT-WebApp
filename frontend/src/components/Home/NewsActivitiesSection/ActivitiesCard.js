@@ -17,7 +17,7 @@ export default class ActivitiesCard extends Component {
     return (
       <>
         <EventsCard>
-          <EventsIcon variant="top" src={Icon1} />
+          <EventsIcon variant="top" src={"http://localhost:3000/static/"+ this.props.data._id + ".png"}  onError={(e)=>{e.target.onerror = null; e.target.src=Icon1}} />
           <EventsCard.Body>
             <EventsH2>{moment(this.props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{this.props.data.title}</EventsP>

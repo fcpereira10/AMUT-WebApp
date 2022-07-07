@@ -3,7 +3,7 @@ const Activity = require('../models/activity-model')
 
 createActivity = (req, res) => {
     const body = req.body
-
+console.log(body)
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -131,7 +131,7 @@ getActivities = async (req, res) => {
 }
 
 uploadActivityImage = async(req, res) => {
-  
+    console.log("upload")
     const newpath = __dirname + "/activities/";
     const file = req.files.file;
     const filename = file.name;
@@ -151,12 +151,6 @@ getPastActivities = async (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!news.length) {
-
-            return res
-                .status(404)
-                .json({ success: false, error: `There's no past activities` })
-        }
         return res.status(200).json({ success: true, data: news })
     }).clone()
     .exec().catch(err => console.log(err))
@@ -169,12 +163,6 @@ getFutureActivities = async (req, res) => {
     await Activity.find({date: {$gte: fullDate }}, (err, activities) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
-        }
-        if (!activities.length) {
-
-            return res
-                .status(404)
-                .json({ success: false, error: `There's no past activities` })
         }
         return res.status(200).json({ success: true, data: activities })
     }).clone()

@@ -88,7 +88,7 @@ export const EventImage = styled(EventsIcon)`
 export const EventsH1 = styled.h1`
   font-size: 2.5rem;
   font-weight: bold;
-  max-width: 555px;
+
   @media screen and (max-width: 480px) {
     font-size: 2rem;
   }
@@ -167,7 +167,7 @@ export const TipologiaValor = styled.h4`
   font-size: 1.2rem;
 `;
 export const DescriptionText = styled(TipologiaValor)`
-  max-width: 655px;
+
   color: #000;
   font-weight: lighter;
   line-height: 2rem;

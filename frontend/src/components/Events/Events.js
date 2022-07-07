@@ -28,7 +28,7 @@ export default class Events extends Component {
       });
     }
     });
-
+   
     await api.getPastActivities().then((res) => {
       if (res.data.success) {
       this.setState({
@@ -37,6 +37,7 @@ export default class Events extends Component {
       });
     }
     });
+    console.log(this.state.pastActivities)
   };
 
   render() {

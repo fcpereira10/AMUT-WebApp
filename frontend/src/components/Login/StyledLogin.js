@@ -8,11 +8,7 @@ export const Container = styled.div`
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(
-    108deg,
-    rgba(209, 49, 44, 100) 0%, 
-    rgba(300, 49, 60, 100) 100%
-  );
+  background: #dcdcdc;
 `;
 
 export const FormWrap = styled.div`

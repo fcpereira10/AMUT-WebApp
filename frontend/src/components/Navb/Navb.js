@@ -64,31 +64,37 @@ export default class Navb extends Component {
             <StyledNavbar.Collapse id="responsive-navbar-nav">
               <StyledNav className="m-auto">
                 <StyledNavLink href="/">Home</StyledNavLink>
-                <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/amut/quemsomos">
+                <StyledNavLink href="/amut/associados">Benefícios</StyledNavLink>
+                <StyledNavLink href="/atividades">Atividades</StyledNavLink>
+                <StyledNavLink href="/noticias">Notícias</StyledNavLink>
+                 {/* <StyledDropdown title="AMUT" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/amut/quemsomos">
                     Quem Somos
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/amut/associados">
                     Associados
-                  </NavDropdown.Item>
-                  <NavDropdown.Item >
+    </NavDropdown.Item> 
+    */}
+                 {/* <NavDropdown.Item >
                     Missão, Visão e Valores
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/">Equipa</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/">
                     Documentos
-                  </NavDropdown.Item>
+    </NavDropdown.Item> 
                 </StyledDropdown>
+
                {/* <StyledNavLink href="/saude">Saúde</StyledNavLink>
                 <StyledNavLink href="/caminhando">Caminhando</StyledNavLink>
-                <StyledNavLink href="/formacao">Formação</StyledNavLink> */}
+                <StyledNavLink href="/formacao">Formação</StyledNavLink> 
                 <StyledDropdown title="Atividades" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/atividades">
-                    Eventos
+                    Atividades
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/noticias">Notícias</NavDropdown.Item>
                 </StyledDropdown>
+                */}
                {/*  <StyledNavLink href="/projetos">Projetos</StyledNavLink> */}
               </StyledNav>
               <StyledNav>
