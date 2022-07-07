@@ -13,7 +13,9 @@ import moment from 'moment';
 export default class ActivitiesCard extends Component {
     
   render() {
-    
+    const toggleHome = () => {
+      window.scrollTo(0, 0);
+    };
     return (
       <>
         <EventsCard>
@@ -22,7 +24,7 @@ export default class ActivitiesCard extends Component {
             <EventsH2>{moment(this.props.data.date).format("DD/MM/YYYY")}</EventsH2>
             <EventsP>{this.props.data.title}</EventsP>
           </EventsCard.Body>
-          <DetailsButton to={`/atividades/${this.props.data._id}`}>Ver Detalhes</DetailsButton>
+          <DetailsButton onClick={toggleHome} to={`/atividades/${this.props.data._id}`}>Ver Detalhes</DetailsButton>
         </EventsCard>
       </>
     );

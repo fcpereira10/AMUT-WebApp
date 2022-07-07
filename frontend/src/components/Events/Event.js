@@ -16,6 +16,7 @@ import {
   InfoRow,
   Column1,
   Column2,
+  EventsCard,
 } from "./StyledEvents";
 import api from "../../api";
 import moment from "moment";
@@ -23,6 +24,7 @@ import Icon1 from "../../images/events.svg";
 import { Button } from "../StyledButton";
 import { MdArrowBack, MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 export default function Event(props) {
 
@@ -31,6 +33,7 @@ export default function Event(props) {
   const [description, setDescription] = useState("");
   const [local, setLocal] = useState("");
   const [hover, setHover] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const { id } = useParams();
   
@@ -48,6 +51,7 @@ export default function Event(props) {
       setDate(activity.data.data.date);
       setDescription(activity.data.data.description);
       setLocal(activity.data.data.local);
+      setLoading(false)
     };
     fetchData();
     
@@ -55,6 +59,7 @@ export default function Event(props) {
 
   return (
     <>
+    { !isLoading ?
       <ContentContainer>
         <div
           className="btnWrapper"
@@ -113,6 +118,7 @@ export default function Event(props) {
           <EventsWrapper></EventsWrapper>
         </EventsContainer>
       </ContentContainer>
+      : <EventsCard style={{justifyContent: "center", alignItems: "center", display: "flex"}}><Spinner animation="border" variant="danger" style={{ width: "10rem", height: "10rem" }}/></EventsCard>}
     </>
   );
 }

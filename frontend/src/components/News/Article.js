@@ -17,12 +17,16 @@ import moment from "moment";
 import { Button } from "../StyledButton";
 import { MdArrowBack, MdKeyboardArrowLeft } from "react-icons/md";
 import { useParams } from "react-router-dom";
+import { EventsCard } from "../Home/NewsActivitiesSection/StyledNews";
+import { Spinner } from "react-bootstrap";
+
 
 export default function Article(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [hover, setHover] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -30,19 +34,23 @@ export default function Article(props) {
     setHover(!hover);
   };
 
+
   useEffect(() => {
     const fetchData = async () => {
       const article = await api.getArticleById(id);
       setTitle(article.data.data.title);
       setDate(article.data.data.date);
       setDescription(article.data.data.description);
+      setLoading(false)
     };
     fetchData();
   }, [id]);
 
   return (
     <>
+    { !isLoading ?
       <ContentContainer>
+        
         <div
           className="btnWrapper"
           style={{
@@ -85,6 +93,7 @@ export default function Article(props) {
           <NewsWrapper></NewsWrapper>
         </NewsContainer>
       </ContentContainer>
+: <EventsCard style={{justifyContent: "center", alignItems: "center", display: "flex"}}><Spinner animation="border" variant="danger" style={{ width: "10rem", height: "10rem" }}/></EventsCard>}
     </>
   );
 }

@@ -12,10 +12,14 @@ import {
   Subtitle,
   NewsP,
 } from "../../News/StyledNews";
-
+import { animateScroll as scroll } from "react-scroll";
 export default class NewsCard extends Component {
 
   render() {
+    const toggleHome = () => {
+      window.scrollTo(0, 0);
+    };
+
     function fn(text, count){
       return text.slice(0, count) + (text.length > count ? "..." : "");
   }
@@ -32,7 +36,7 @@ export default class NewsCard extends Component {
        
             Publicado em {moment(this.props.data.date).format("DD/MM/YYYY")}
           </NewsP>
-          <DetailsButton to={`/noticias/${this.props.data._id}`}>Continuar a Ler</DetailsButton>
+          <DetailsButton onClick={toggleHome} to={`/noticias/${this.props.data._id}`}>Continuar a Ler</DetailsButton>
     </EventsCard>
       </>
     );
